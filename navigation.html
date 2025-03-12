@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>배재대학교 본관 캠퍼스맵 (카카오 지도)</title>
+    <script type="text/javascript"
+        src="http://dapi.kakao.com/v2/maps/sdk.js?appkey=124e4b785cbdd3fc46a37b0abd30547f&autoload=false"></script>
+    <style>
+        html,
+        body {
+            /* 화면 스크롤 X */
+            overflow: hidden;
+            height: 100%;
+            /* HTML과 body 태그의 높이를 100%로 설정 */
+            margin: 0;
+            /* 기본 margin 제거 */
+            padding: 0;
+            /* 기본 padding 제거 */
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            /* 수직으로 레이아웃 배치 */
+        }
+
+        header {
+            height: 80px;
+            /* 상단 헤더 높이 설정 */
+        }
+
+        #map {
+            width: 70vw;
+            height: 60vh;
+            position: relative;
+            /* margin: auto; */
+        }
+
+        .header {
+            position: relative;
+            width: 100%;
+            height: 80px;
+            /* 원하는 높이 설정 */
+            background-color: deepskyblue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            /* 요소가 겹칠 때 위에 표시하기 위한 용도 */
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 24px;
+            margin: 0;
+        }
+
+        /* 현재 위치 버튼 바탕 */
+        .button-container {
+            position: absolute;
+            /* 현재 화면의 높이 */
+            top: 2vh;
+            right: 1vw;
+            display: flex;
+            align-items: center;
+            width: 70px;
+            background: white;
+            /* 둥근 버튼 */
+            border-radius: 25px;
+            padding: 6px 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 현재 위치 버튼 */
+        .button-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 13px;
+            padding: 5px;
+            outline: none;
+        }
+
+        .button-container:hover {
+            background: lightgray;
+        }
+
+        /* 검색창 바탕 */
+        .search-container {
+            position: absolute;
+            top: 1.5vh;
+            right: 8vw;
+            display: flex;
+            align-items: center;
+            width: 300px;
+            background: white;
+            border-radius: 25px;
+            padding: 5px 10px;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 검색창 입력 란 */
+        .search-container input {
+            flex: 1;
+            border: none;
+            outline: none;
+            padding: 8px;
+            font-size: 16px;
+            border-radius: 25px;
+        }
+
+        /* 검색 버튼 */
+        .search-container button {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 18px;
+            padding: 8px;
+            outline: none;
+        }
+
+        /* 카테고리 (편의점 등등) 버튼 */
+        .category-buttons {
+            position: absolute;
+            top: 2.5vh;
+            left: 2vw;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        /* 카테고리 버튼 크기 및 모양 */
+        .category-buttons button {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            /* 둥근 버튼 */
+            padding: 8px 15px;
+            /* 버튼 안의 텍스트와 테두리의 여백 조절 */
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        /* 마우스 올려놓을 시 색상 변경 */
+        .category-buttons button:hover {
+            background: lightgrey;
+        }
+
+        /* 오른쪽의 각 장소 버튼 */
+        .place-buttons {
+            position: absolute;
+            top: 80px;
+            left: 85%;
+            transform: translateX(-50%);
+            background: white;
+            /* 버튼 배경을 흰색으로 유지 */
+            display: flex;
+            /* 버튼이 width를 넘길 경우 다음 줄에 생성 */
+            flex-wrap: wrap;
+            /* 각 버튼 사이의 공간 */
+            gap: 15px;
+            /* vw = 현재 화면의 너비 */
+            width: 90vw;
+            height: 85%;
+            /* 버튼들이 너무 길어지지 않도록 설정 */
+            max-width: 400px;
+            /* 최대 너비 설정 */
+            justify-content: center;
+            padding: 20px;
+            /* 버튼과 지도 사이 여백 */
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            /* 버튼 영역에 그림자 추가 */
+            border-radius: 10px;
+            /* 세로 스크롤 O */
+            overflow-y: auto;
+        }
+
+        .place-buttons button {
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 25px;
+            /* 버튼의 모서리를 둥글게 만드는 용도 */
+            /* 둥근 버튼 */
+            padding: 8px 15px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+            transition: background 0.3s ease;
+        }
+
+        .place-buttons button:hover {
+            background: lightgray;
+        }
+
+        @media (max-width: 1920px) { /* FHD 해상도 */
+            #map {
+                width: 85vw;
+                height: 550px;
+            }
+        }
+
+        @media (max-width: 2560px) { /* QHD 해상도 */
+            #map {
+                width: 75vw;
+                height: 600px;
+            }
+        }
+
+        @media (max-width: 3840px) { /* 4K 해상도 */
+            #map {
+                width: 70vw;
+                height: 700px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>배재대학교 본관 캠퍼스맵</h1>
+    </header>
+
+    <div class="search-container">
+        <input type="text" id="searchInput" placeholder="장소를 입력하세요" onkeypress="handleKeyPress(event)">
+        <button onclick="searchLocation()">🔍</button>
+    </div>
+
+    <div class="button-container">
+        <button onclick="getCurrentLocation()">📍 내 위치</button>
+    </div>
+
+    <div class="place-buttons">
+        <button onclick="getLocation()">21세기관 대학본부 ( P ) </button>
+        <button onclick="getLocation()">예술관 ( Y ) </button>
+        <button onclick="getLocation()">아펜젤러기념관 ( AM ) </button>
+        <button onclick="getLocation()">백산관 ( B ) </button>
+        <button onclick="getLocation()">우남관 ( W ) </button>
+        <button onclick="getLocation()">아펜젤러관 ( A ) </button>
+        <button onclick="getLocation()">정보과학관 ( C ) </button>
+        <button onclick="getLocation()">소월관 ( S ) </button>
+        <button onclick="getLocation()">21세기관 대학본부 ( P ) </button>
+        <button onclick="getLocation()">예술관 ( Y ) </button>
+        <button onclick="getLocation()">아펜젤러기념관 ( AM ) </button>
+        <button onclick="getLocation()">백산관 ( B ) </button>
+        <button onclick="getLocation()">우남관 ( W ) </button>
+        <button onclick="getLocation()">아펜젤러관 ( A ) </button>
+        <button onclick="getLocation()">정보과학관 ( C ) </button>
+        <button onclick="getLocation()">소월관 ( S ) </button>
+        <button onclick="getLocation()">21세기관 대학본부 ( P ) </button>
+        <button onclick="getLocation()">예술관 ( Y ) </button>
+        <button onclick="getLocation()">아펜젤러기념관 ( AM ) </button>
+        <button onclick="getLocation()">백산관 ( B ) </button>
+        <button onclick="getLocation()">우남관 ( W ) </button>
+        <button onclick="getLocation()">아펜젤러관 ( A ) </button>
+        <button onclick="getLocation()">정보과학관 ( C ) </button>
+        <button onclick="getLocation()">소월관 ( S ) </button>
+        <button onclick="getLocation()">21세기관 대학본부 ( P ) </button>
+        <button onclick="getLocation()">예술관 ( Y ) </button>
+        <button onclick="getLocation()">아펜젤러기념관 ( AM ) </button>
+        <button onclick="getLocation()">백산관 ( B ) </button>
+        <button onclick="getLocation()">우남관 ( W ) </button>
+        <button onclick="getLocation()">아펜젤러관 ( A ) </button>
+        <button onclick="getLocation()">정보과학관 ( C ) </button>
+        <button onclick="getLocation()">소월관 ( S ) </button>
+    </div>
+
+    <div id="map">
+        <div class="category-buttons">
+            <button onclick="searchPlaces('FD6')">🍽 음식점</button>
+            <button onclick="searchPlaces('CS2')">🏪 편의점</button>
+            <button onclick="searchPlaces('CE7')">☕ 카페</button>
+        </div>
+    </div>
+
+    <script>
+        let map, userMarker;
+
+        function initMap() {
+            console.log(kakao);
+            let container = document.getElementById("map");
+            let options = {
+                center: new kakao.maps.LatLng(36.320630029704, 127.36680988956), // 배재대 중앙 위치 / 초기 위치
+                level: 3 // 줌 레벨 (값이 낮을수록 확대)
+            };
+            map = new kakao.maps.Map(container, options);
+        }
+
+        function getCurrentLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(
+                    function (position) {
+                        let lat = position.coords.latitude; // 현재 위도
+                        let lng = position.coords.longitude; // 현재 경도
+                        let userLocation = new kakao.maps.LatLng(lat, lng);
+
+                        // 지도 중심 이동
+                        map.setCenter(userLocation);
+
+                        // 기존 마커 삭제 후 새 마커 추가
+                        if (userMarker) {
+                            userMarker.setMap(null);
+                        }
+                        userMarker = new kakao.maps.Marker({ // 지도 위 마커 표시
+                            position: userLocation,
+                            map: map
+                        });
+
+                        alert("현재 위치를 찾았습니다!");
+                    },
+                    function () {
+                        alert("위치 정보를 가져올 수 없습니다.");
+                    }
+                );
+            } else {
+                alert("이 브라우저에서는 위치 찾기를 지원하지 않습니다.");
+            }
+        }
+
+        function searchLocation() {
+            let placeName = document.getElementById("searchInput").value;
+
+            if (placeName) {
+                let geocoder = new kakao.maps.services.Geocoder();
+
+                geocoder.addressSearch(placeName, function (result, status) {
+                    if (status === kakao.maps.services.Status.OK) {
+                        let lat = result[0].y;  // 위도
+                        let lng = result[0].x;  // 경도
+                        let placeLocation = new kakao.maps.LatLng(lat, lng);
+
+                        // 지도 중심을 검색된 장소로 이동
+                        map.setCenter(placeLocation);
+
+                        // 마커 생성 및 지도에 표시
+                        if (userMarker) {
+                            userMarker.setMap(null); // 기존 마커 제거
+                        }
+                        userMarker = new kakao.maps.Marker({
+                            position: placeLocation,
+                            map: map
+                        });
+
+                        // 장소 정보 알림
+                        alert("장소를 찾았습니다: " + result[0].place_name);
+                    } else {
+                        alert("장소를 찾을 수 없습니다.");
+                    }
+                });
+            } else {
+                alert("장소를 입력하세요.");
+            }
+        }
+
+        // 엔터 키 입력 시 검색
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                searchLocation();
+            }
+        }
+
+        // 장소 검색
+        function getLocation() {
+
+        }
+
+        kakao.maps.load(function () {
+            initMap(); // 지도 로딩 후 호출
+        });
+    </script>
+</body>
+
+</html>
