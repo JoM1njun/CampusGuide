@@ -9,7 +9,7 @@ function searchPlaces(category) {
 
   if (category) {
     fetch(
-      `http://localhost:3000/api/db-status?query=` + encodeURIComponent(category)
+      `https://campusguide-back.onrender.com/api/db-status?query=` + encodeURIComponent(category)
     )
       .then((response) => response.json())
       .then((data) => {
