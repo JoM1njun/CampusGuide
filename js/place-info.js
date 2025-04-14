@@ -44,7 +44,7 @@ function getLocation(place) {
 
   if (place) {
     fetch(
-      `http://localhost:3000/api/place-info?alias=` + encodeURIComponent(place)
+      `https://campusguide-back.onrender.com/api/place-info?alias=` + encodeURIComponent(place)
     )
       .then((response) => response.json())
       .then((data) => {
