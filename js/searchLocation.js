@@ -5,7 +5,7 @@ function searchLocation() {
 
   if (input) {
     let url =
-      "http://localhost:3000/api/db-status?query=" + encodeURIComponent(input);
+      "https://campusguide-back.onrender.com/api/db-status?query=" + encodeURIComponent(input);
     console.log("URL : ", url);
 
     fetch(url)
@@ -135,7 +135,7 @@ function handleKeyPress(event) {
 // 🚍 버스 정류장 시간표 불러오기 함수
 function fetchBusTimetable(stopId, marker, location, placeInfo) {
   console.log("Stop : ", stopId);
-  fetch(`http://localhost:3000/api/bus-time?station=${stopId}`)
+  fetch(`https://campusguide-back.onrender.com/api/bus-time?station=${stopId}`)
     .then((response) => response.json())
     .then((data) => {
       console.log("Time : ", data.timetable);
