@@ -6,7 +6,7 @@ let infoWindows = []; // etc 정보창
 let locationFound = false;
 const mobile = window.innerWidth <= 1024;
 
-fetch("http://localhost:3000/config")
+fetch("https://campusguide-back.onrender.com/config")
   .then((response) => response.json())
   .then((config) => {
     console.log(config);
@@ -31,7 +31,7 @@ fetch("http://localhost:3000/config")
 
 // 서버 연결 확인을 위한 부분 (없어도 됨)
 window.onload = function () {
-  fetch("http://localhost:3000/api/db-connect")
+  fetch("https://campusguide-back.onrender.com/api/db-connect")
     .then((response) => response.json())
     .then((data) => {
       if (data.status === "success") {
