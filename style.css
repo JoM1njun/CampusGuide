@@ -415,7 +415,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: calc(var(--vh) * 15);
+        top: 15dvh;
         right: 2vw;
         width: 6px;
         height: 1px;
