@@ -28,6 +28,12 @@ mapContainer.addEventListener("touchend", () => {
       isAutoCentering = true;
       recenterButton.style.display = "none";
     }, 10000);
+
+    // 버튼은 예를 들어 3초 후에 숨기기
+    clearTimeout(buttonHideTimeout);
+    buttonHideTimeout = setTimeout(() => {
+      recenterButton.style.display = "none";
+    }, 3000);
   }
 });
 
@@ -70,12 +76,6 @@ kakao.maps.event.addListener(map, "zoom_changed", function () {
     isAutoCentering = true;
     recenterButton.style.display = "none";
   }, 10000);
-
-  // 버튼은 예를 들어 3초 후에 숨기기
-    clearTimeout(buttonHideTimeout);
-    buttonHideTimeout = setTimeout(() => {
-      recenterButton.style.display = "none";
-    }, 3000);
 });
 
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
