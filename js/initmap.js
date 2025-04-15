@@ -2,7 +2,7 @@ fetch("/api/kakao_key") // Render 서버에서 API 키 받아옴
   .then((res) => res.json())
   .then((data) => {
     const script = document.createElement("script");
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${data.apikey}&autoload=false&libraries=services`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${data.apikey}&autoload=false&libraries=services,clusterer`;
     script.onload = () => {
       kakao.maps.load(() => {
         // 초기 지도 화면 설정 및 infoWindow 닫기
