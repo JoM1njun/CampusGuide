@@ -354,7 +354,7 @@
     .search-container {
         display: flex;
         position: absolute;
-        top: 10dvh;
+        top: calc(var(--vh) * 10);
         right: 22vw;
         align-items: center;
         width: 200px;
@@ -415,7 +415,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: 15dvh;
+        top: calc(var(--vh) * 15);
         right: 2vw;
         width: 6px;
         height: 1px;
