@@ -12,11 +12,11 @@ function initMap() {
       map = new kakao.maps.Map(container, options);
 
       window.markerImage = new kakao.maps.MarkerImage(
-        "/public/marker/marker.svg",
+        "marker/marker.svg",
         new kakao.maps.Size(75, 30)
       );
       window.redmarkerImage = new kakao.maps.MarkerImage(
-        "/public/marker/red-marker.svg",
+        "marker/red-marker.svg",
         new kakao.maps.Size(75, 30)
       );
     }
