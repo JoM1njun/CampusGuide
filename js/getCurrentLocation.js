@@ -17,6 +17,14 @@ kakao.maps.event.addListener(map, 'zoom_changed', function () {
   isAutoCentering = false;
 });
 
+// "현재 위치로 돌아가기" 버튼 클릭 이벤트
+document.getElementById("recenter-btn").addEventListener("click", function () {
+  if (currentLocationMarker) {
+    isAutoCentering = true;  // 자동 중심 이동 활성화
+    map.setCenter(currentLocationMarker.getPosition()); // 현재 위치로 지도 중심 이동
+  }
+});
+
 function getCurrentLocation() {
   var markersrc = "marker/current-marker.svg";
   var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
