@@ -4,7 +4,7 @@ let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
 
 // "현재 위치로 돌아가기" 버튼 숨김/보임 제어
-const recenterButton = document.getElementById("recenter-btn");
+const recenterButton = document.getElementById("recent-button");
 
 // 사용자가 지도를 드래그하면 자동 중심 이동 해제
 kakao.maps.event.addListener(map, 'dragstart', function () {
