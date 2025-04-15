@@ -29,14 +29,11 @@ if ("ontouchstart" in window) {
     console.log("Test");
     isAutoCentering = false;
     recenterButton.style.display = "block";
-  });
 
-  kakao.maps.event.addListener(map, "dragend", function () {
-    // 드래그가 5초동안 없을 시 자동 중심 이동 시작
-    isDragging = false;
     clearTimeout(autoCenterTimeout);
     autoCenterTimeout = setTimeout(() => {
       isAutoCentering = true;
+      recenterButton.style.display = "none";
     }, 10000);
   });
 
