@@ -1,16 +1,26 @@
 let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
 let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
+let isTouchDragging = false;
 let isDragging = false;
 
 //map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
 
 // "현재 위치로 돌아가기" 버튼 숨김/보임 제어
 const recenterButton = document.getElementById("recent-button");
+const mapContainer = document.getElementById("map");
 
-if ("ontouchstart" in window) {
-  // 모바일 환경을 위한 터치 이벤트 확인
-  kakao.maps.event.addListener(map, "touchstart", function () {
-    isDragging = true;
+mapContainer.addEventListener("touchstart", () => {
+  isTouchDragging = false;
+});
+
+mapContainer.addEventListener("touchmove", () => {
+  isTouchDragging = true;
+});
+
+mapContainer.addEventListener("touchend", () => {
+  if (isTouchDragging) {
+    console.log("드래그 감지됨!");
+
     isAutoCentering = false;
     recenterButton.style.display = "block";
 
@@ -19,23 +29,21 @@ if ("ontouchstart" in window) {
       isAutoCentering = true;
       recenterButton.style.display = "none";
     }, 10000);
-  });
+  }
+});
 
-  // 줌인/아웃 시에도 자동 중심 끔
-  kakao.maps.event.addListener(map, "zoom_changed", function () {
-    isAutoCentering = false;
-    recenterButton.style.display = "none";
-  });
+mapContainer.addEventListener("mousedown", () => {
+  isDragging = false;
+});
 
-  // kakao.maps.event.addListener(map, "touchend", function () {
-  //   isDragging = false;
-    
-  // });
-} else {
-  // 사용자가 지도를 드래그하면 자동 중심 이동 해제
-  kakao.maps.event.addListener(map, "dragstart", function () {
-    isDragging = true;
-    console.log("Test");
+mapContainer.addEventListener("mousemove", () => {
+  isDragging = true;
+});
+
+mapContainer.addEventListener("mouseup", () => {
+  if (isDragging) {
+    console.log("PC 드래그 감지됨!");
+
     isAutoCentering = false;
     recenterButton.style.display = "block";
 
@@ -44,14 +52,20 @@ if ("ontouchstart" in window) {
       isAutoCentering = true;
       recenterButton.style.display = "none";
     }, 10000);
-  });
+  }
+});
 
   // 줌인/아웃 시에도 자동 중심 끔
-  kakao.maps.event.addListener(map, "zoom_changed", function () {
-    isAutoCentering = false;
+kakao.maps.event.addListener(map, "zoom_changed", function () {
+  isAutoCentering = false;
+  recenterButton.style.display = "block";
+
+  clearTimeout(autoCenterTimeout);
+  autoCenterTimeout = setTimeout(() => {
+    isAutoCentering = true;
     recenterButton.style.display = "none";
-  });
-}
+  }, 10000);
+});
 
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
 document.getElementById("recent-button").addEventListener("click", function () {
