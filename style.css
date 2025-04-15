@@ -962,6 +962,11 @@ body {
     border-radius: 8px;
 }
 
+.info-window .coordinates {
+    margin-top: 10px;
+    color: #666;
+}
+
 button {
   color: #000 !important;
   fill: #000 !important;
@@ -971,10 +976,4 @@ button {
   background: none;
   border: none;
   -webkit-tap-highlight-color: transparent;
-}
-
-
-.info-window .coordinates {
-    margin-top: 10px;
-    color: #666;
 }
