@@ -1,5 +1,5 @@
 function getCurrentLocation() {
-    var markersrc = "/public/marker/current-marker.png";
+    var markersrc = "marker/current-marker.png";
   var imageSize = new kakao.maps.Size(80, 40); // 마커이미지의 크기
 
   var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
