@@ -1,3 +1,17 @@
+let isAutoCentering = true;
+
+map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
+
+// 사용자가 지도를 드래그하면 자동 중심 이동 해제
+kakao.maps.event.addListener(map, 'dragstart', function () {
+  isAutoCentering = false;
+});
+
+// 줌인/아웃 시에도 자동 중심 끔
+kakao.maps.event.addListener(map, 'zoom_changed', function () {
+  isAutoCentering = false;
+});
+
 function getCurrentLocation() {
   var markersrc = "marker/current-marker.svg";
   var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
@@ -44,7 +58,9 @@ function getCurrentLocation() {
           map.setLevel(2);
         }
         // 지도 중심 이동
-        map.setCenter(userLocation);
+        if (isAutoCentering) {
+          map.setCenter(userLocation);
+        }
 
         if (!locationFound) {
           alert("현재 위치를 찾았습니다!");
