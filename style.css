@@ -327,7 +327,7 @@
     .button-container {
         position: absolute;
         /* 현재 화면의 높이 */
-        top: 75dvh;
+        top: 75vh;
         right: 3vw;
         display: flex;
         align-items: center;
@@ -354,7 +354,7 @@
     .search-container {
         display: flex;
         position: absolute;
-        top: calc(var(--vh) * 11);
+        top: 11vh;
         right: 22vw;
         align-items: center;
         width: 200px;
@@ -388,7 +388,7 @@
     /* 카테고리 버튼 */
     .category-buttons {
         position: absolute;
-        top: calc(var(--vh) * 6;
+        top: calc(var(--vh) * 6);
         left: 1.5vw;
         display: flex;
         gap: 5px;
