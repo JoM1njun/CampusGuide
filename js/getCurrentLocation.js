@@ -13,15 +13,24 @@ if ("ontouchstart" in window) {
     isDragging = true;
     isAutoCentering = false;
     recenterButton.style.display = "block";
-  });
 
-  kakao.maps.event.addListener(map, "touchend", function () {
-    isDragging = false;
     clearTimeout(autoCenterTimeout);
     autoCenterTimeout = setTimeout(() => {
       isAutoCentering = true;
+      recenterButton.style.display = "none";
     }, 10000);
   });
+
+  // 줌인/아웃 시에도 자동 중심 끔
+  kakao.maps.event.addListener(map, "zoom_changed", function () {
+    isAutoCentering = false;
+    recenterButton.style.display = "none";
+  });
+
+  // kakao.maps.event.addListener(map, "touchend", function () {
+  //   isDragging = false;
+    
+  // });
 } else {
   // 사용자가 지도를 드래그하면 자동 중심 이동 해제
   kakao.maps.event.addListener(map, "dragstart", function () {
