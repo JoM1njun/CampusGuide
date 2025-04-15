@@ -49,6 +49,11 @@ function getCurrentLocation() {
 
                 // 지도 중심 이동
                 map.setCenter(userLocation);
+                if (window.innerWidth <= 768) {
+                  map.setLevel(3);
+                } else {
+                  map.setLevel(2);
+                }
 
                 if (!locationFound) {
                     alert("현재 위치를 찾았습니다!");
