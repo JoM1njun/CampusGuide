@@ -6,7 +6,7 @@ let infoWindows = []; // etc 정보창
 let locationFound = false;
 const mobile = window.innerWidth <= 1024;
 
-fetch("https://campusguide-back.onrender.com/api/kakao_key")
+fetch(`https://campusguide-back.onrender.com/api/kakao_key`)
   .then((response) => response.json())
   .then((config) => {
     console.log(config);
