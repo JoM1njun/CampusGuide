@@ -971,6 +971,12 @@ body {
     color: #666;
 }
 
+// 스타일 (CSS)에서 마커 회전 관련
+.custom-marker {
+    position: relative;
+    transform-origin: center center; /* 회전 중심 설정 */
+}
+
 button {
   color: #000 !important;
   fill: #000 !important;
