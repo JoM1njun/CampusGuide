@@ -6,28 +6,28 @@ let infoWindows = []; // etc 정보창
 let locationFound = false;
 const mobile = window.innerWidth <= 1024;
 
-fetch("https://campusguide-back.onrender.com/api/kakao_key")
-  .then((response) => response.json())
-  .then((config) => {
-    console.log(config);
-    const apikey = config.apikey;
-    console.log("API key : ", apikey);
+// fetch("https://campusguide-back.onrender.com/api/kakao_key")
+//   .then((response) => response.json())
+//   .then((config) => {
+//     console.log(config);
+//     const apikey = config.apikey;
+//     console.log("API key : ", apikey);
 
-    const script = document.createElement("script");
-    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apikey}&autoload=false&libraries=services`;
-    script.onload = function () {
-      // Kakao Maps API 로드가 완료된 후에 initMap을 호출
-      kakao.maps.load(initMap);
-    };
-    // 오류 처리: script 로드 실패 시
-    script.onerror = function () {
-      console.error("Kakao Maps SDK 로딩 실패");
-    };
-    document.head.appendChild(script);
-  })
-  .catch((error) => {
-    console.error("Error loading Kakao API key:", error);
-  });
+//     const script = document.createElement("script");
+//     script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apikey}&autoload=false&libraries=services`;
+//     script.onload = function () {
+//       // Kakao Maps API 로드가 완료된 후에 initMap을 호출
+//       kakao.maps.load(initMap);
+//     };
+//     // 오류 처리: script 로드 실패 시
+//     script.onerror = function () {
+//       console.error("Kakao Maps SDK 로딩 실패");
+//     };
+//     document.head.appendChild(script);
+//   })
+//   .catch((error) => {
+//     console.error("Error loading Kakao API key:", error);
+//   });
 
 // 서버 연결 확인을 위한 부분 (없어도 됨)
 window.onload = function () {
