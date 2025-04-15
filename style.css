@@ -7,14 +7,14 @@
         /* margin: auto; */
     }
 
-    .logo {
+    .title {
         display: flex;
         align-items: center;
         justify-content: center;
         /* 중앙 정렬 */
     }
 
-    .logo img {
+    .title img {
         height: 40px;
         padding-left: 24vw;
     }
@@ -312,14 +312,14 @@
         /* margin: auto; */
     }
 
-    .logo {
+    .title {
         display: flex;
         align-items: center;
         justify-content: center;
         /* 중앙 정렬 */
     }
 
-    .logo img {
+    .title img {
         height: 40px;
         padding-left: 25vw;
     }
@@ -596,11 +596,11 @@
 
 /* 데스크톱 (1025px 이상) */
 @media (min-width: 1025px) {
-    .logo {
+    .title {
         display: flex;
     }
 
-    .logo img {
+    .title img {
         height: 60px;
         padding-left: 1vw;
     }
