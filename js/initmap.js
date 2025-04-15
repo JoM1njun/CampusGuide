@@ -1,4 +1,4 @@
-fetch("/api/KAKAO_API_key") // Render 서버에서 API 키 받아옴
+fetch("/api/kakao_key") // Render 서버에서 API 키 받아옴
   .then((res) => res.json())
   .then((data) => {
     const script = document.createElement("script");
