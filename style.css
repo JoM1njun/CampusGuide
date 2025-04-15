@@ -354,7 +354,7 @@
     .search-container {
         display: flex;
         position: absolute;
-        top: 12vh;
+        top: 11vh;
         right: 22vw;
         align-items: center;
         width: 200px;
@@ -961,6 +961,18 @@ body {
     height: 100px;
     border-radius: 8px;
 }
+
+button {
+  color: #000 !important;
+  fill: #000 !important;
+  -webkit-text-fill-color: #000 !important;
+  -webkit-appearance: none;
+  appearance: none;
+  background: none;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
 
 .info-window .coordinates {
     margin-top: 10px;
