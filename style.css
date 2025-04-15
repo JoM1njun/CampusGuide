@@ -608,13 +608,14 @@
     #recent-button {
         display: none;
         position: absolute;
-        top: 10vh;
+        top: 15vh;
+        left: 50%;
         transform: translateX(-50%);
         font-size: 15px;
         border-radius: 25px;
         border: none;
-        width: 150px;
-        height: 50px;
+        width: 120px;
+        height: 20px;
         align-items: center;
         justify-content: center;
         background-color: white;
@@ -946,6 +947,7 @@
         display: none;
         position: absolute;
         top: 0vh;
+        left: 50%;
         transform: translateX(-50%);
         font-size: 18px;
         border-radius: 25px;
