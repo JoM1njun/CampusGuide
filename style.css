@@ -327,7 +327,7 @@
     .button-container {
         position: absolute;
         /* 현재 화면의 높이 */
-        top: calc(var(--vh) * 75);
+        top: calc(var(--vh, 1vh) * 75);
         right: 3vw;
         display: flex;
         align-items: center;
@@ -354,7 +354,7 @@
     .search-container {
         display: flex;
         position: absolute;
-        top: calc(var(--vh) * 11);
+        top: calc(var(--vh, 1vh) * 11);
         right: 22vw;
         align-items: center;
         width: 200px;
@@ -388,7 +388,7 @@
     /* 카테고리 버튼 */
     .category-buttons {
         position: absolute;
-        top: calc(var(--vh) * 6);
+        top: calc(var(--vh, 1vh) * 6);
         left: 1.5vw;
         display: flex;
         gap: 5px;
@@ -415,7 +415,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: calc(var(--vh) * 15);
+        top: calc(var(--vh, 1vh) * 15);
         right: 2vw;
         width: 6px;
         height: 1px;
