@@ -921,17 +921,19 @@
     }
 
     #recent-button {
-        display: none;
-        top: 2vh;
-        right: 50%;
-        left: 50%;
+        position: absolute;
+        top: 0vh;
+        right: 46%;
         font-size: 18px;
         border-radius: 25px;
-        width: 20px;
-        height: 10px;
+        border: none;
+        width: 150px;
+        height: 50px;
         align-items: center;
         justify-content: center;
         background-color: white;
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
         z-index: 2;
     }
 
