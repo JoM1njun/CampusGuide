@@ -10,10 +10,12 @@ const recenterButton = document.getElementById("recenter-btn");
 kakao.maps.event.addListener(map, 'dragstart', function () {
   isAutoCentering = false;
   recenterButton.style.display = "none";
+
+  // 드래그가 5초동안 없을 시 자동 중심 이동 시작
   clearTimeout(autoCenterTimeout);
   autoCenterTimeout = setTimeout(() => {
     isAutoCentering = true;
-  }, 5000); // 5초 후 다시 자동 중심
+  }, 5000);
 });
 
 // 줌인/아웃 시에도 자동 중심 끔
