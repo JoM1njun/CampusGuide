@@ -408,6 +408,10 @@
         transition: background-color 0.3s ease;
     }
 
+    .category-buttons button:hover {
+        background-color: lightgrey;
+    }
+
     .category-buttons button.active {
         background: lightgrey;
     }
