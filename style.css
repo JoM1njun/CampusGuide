@@ -925,12 +925,18 @@
         top: 2vh;
         right: 50%;
         left: 50%;
+        font-size: 18px;
         border-radius: 25px;
         width: 20px;
         height: 10px;
         align-items: center;
+        justify-content: center;
+        background-color: white;
         z-index: 2;
     }
+
+    #recent-button:hover {
+        background-color: lightgray;
 }
 
 html,
