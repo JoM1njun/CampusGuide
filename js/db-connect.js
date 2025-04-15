@@ -14,7 +14,7 @@ fetch("https://campusguide-back.onrender.com/api/kakao_key")
     console.log("API key : ", apikey);
 
     const script = document.createElement("script");
-    script.src = `http://dapi.kakao.com/v2/maps/sdk.js?appkey=${apikey}&autoload=false&libraries=services`;
+    script.src = `https://dapi.kakao.com/v2/maps/sdk.js?appkey=${apikey}&autoload=false&libraries=services`;
     script.onload = function () {
       // Kakao Maps API 로드가 완료된 후에 initMap을 호출
       kakao.maps.load(initMap);
