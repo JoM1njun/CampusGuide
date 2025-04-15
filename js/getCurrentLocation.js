@@ -7,7 +7,7 @@ map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRI
 const recenterButton = document.getElementById("recent-button");
 
 // 사용자가 지도를 드래그하면 자동 중심 이동 해제
-kakao.maps.event.addListener(map, 'dragstart', function () {
+kakao.maps.event.addListener(map, 'center_changed', function () {
   console.log("Test");
   isAutoCentering = false;
   recenterButton.style.display = "block";
@@ -16,7 +16,7 @@ kakao.maps.event.addListener(map, 'dragstart', function () {
   clearTimeout(autoCenterTimeout);
   autoCenterTimeout = setTimeout(() => {
     isAutoCentering = true;
-  }, 5000);
+  }, 10000);
 });
 
 // 줌인/아웃 시에도 자동 중심 끔
