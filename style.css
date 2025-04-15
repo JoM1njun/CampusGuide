@@ -919,6 +919,14 @@
         /* 강조 색상 */
         font-weight: bold;
     }
+
+    #recent-button {
+        display: none;
+        border-radius: 25px;
+        width: 20px;
+        height: 10px;
+        align-items: center;
+    }
 }
 
 html,
