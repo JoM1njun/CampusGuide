@@ -327,7 +327,7 @@
     .button-container {
         position: absolute;
         /* 현재 화면의 높이 */
-        top: calc(var(--vh) * 75);
+        top: 75dvh;
         right: 3vw;
         display: flex;
         align-items: center;
