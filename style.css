@@ -946,7 +946,7 @@
     #recent-button {
         display: none;
         position: absolute;
-        top: 0vh;
+        top: 2vh;
         left: 50%;
         transform: translateX(-50%);
         font-size: 18px;
