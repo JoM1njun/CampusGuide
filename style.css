@@ -921,9 +921,10 @@
     }
 
     #recent-button {
+        display: none;
         position: absolute;
         top: 0vh;
-        right: 46%;
+        transform: translateX(-50%);
         font-size: 18px;
         border-radius: 25px;
         border: none;
