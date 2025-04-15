@@ -1,8 +1,24 @@
 function getCurrentLocation() {
     var markersrc = "marker/current-marker.png";
-  var imageSize = new kakao.maps.Size(80, 40); // 마커이미지의 크기
+    var imageSize = new kakao.maps.Size(80, 40); // 마커이미지의 크기
 
-  var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
+    var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
+
+    let currentLocationMarker = null;
+    let userDirection = 0; // 사용자의 시선 방향 저장
+
+    // 방향 감지 이벤트
+    window.addEventListener("deviceorientation", (event) => {
+      if (event.alpha !== null) {
+        userDirection = event.alpha;
+            if (currentLocationMarker) {
+                const markerEl = document.querySelector(".custom-marker");
+                if (markerE1) {
+                    markerEl.style.transform = `rotate(${userDirection}deg)`;
+                }
+            }
+        }
+    });
 
     if (navigator.geolocation) {
         navigator.geolocation.watchPosition( // 위치를 실시간으로 업데이트
@@ -12,6 +28,10 @@ function getCurrentLocation() {
                 let userLocation = new kakao.maps.LatLng(lat, lng);
 
                 if (!currentLocationMarker) {
+                    const markerContent = document.createElement("div");
+                    markerContent.className = "custom-marker";
+                    markerContent.style.transform = `rotate(${userDirection}deg)`;
+                    
                     currentLocationMarker = new kakao.maps.Marker({
                         map: map,
                         position: userLocation,
