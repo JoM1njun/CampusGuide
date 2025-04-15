@@ -625,7 +625,7 @@
     }
 
     #recent-button:hover {
-        background-color: lightgray;
+        background-color: rgba(201, 201, 201, 0.6);
     }
 }
 
@@ -963,7 +963,7 @@
     }
 
     #recent-button:hover {
-        background-color: lightgray;
+        background-color: rgba(201, 201, 201, 0.6);
     }
 }
 
