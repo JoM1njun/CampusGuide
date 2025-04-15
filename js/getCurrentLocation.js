@@ -1,9 +1,8 @@
 let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
 let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
+let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
-
-//map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
 
 // "현재 위치로 돌아가기" 버튼 숨김/보임 제어
 const recenterButton = document.getElementById("recent-button");
@@ -52,6 +51,12 @@ mapContainer.addEventListener("mouseup", () => {
       isAutoCentering = true;
       recenterButton.style.display = "none";
     }, 10000);
+
+    // 버튼은 예를 들어 3초 후에 숨기기
+    clearTimeout(buttonHideTimeout);
+    buttonHideTimeout = setTimeout(() => {
+      recenterButton.style.display = "none";
+    }, 3000);
   }
 });
 
@@ -65,6 +70,12 @@ kakao.maps.event.addListener(map, "zoom_changed", function () {
     isAutoCentering = true;
     recenterButton.style.display = "none";
   }, 10000);
+
+  // 버튼은 예를 들어 3초 후에 숨기기
+    clearTimeout(buttonHideTimeout);
+    buttonHideTimeout = setTimeout(() => {
+      recenterButton.style.display = "none";
+    }, 3000);
 });
 
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
