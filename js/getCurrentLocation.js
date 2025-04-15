@@ -3,7 +3,7 @@ function getCurrentLocation() {
     var imageSize = new kakao.maps.Size(80, 40); // 마커이미지의 크기
 
     var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
-
+    
     let currentLocationMarker = null;
     let userDirection = 0; // 사용자의 시선 방향 저장
 
