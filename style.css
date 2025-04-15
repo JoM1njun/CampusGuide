@@ -354,7 +354,7 @@
     .search-container {
         display: flex;
         position: absolute;
-        top: 11vh;
+        top: 11dvh;
         right: 22vw;
         align-items: center;
         width: 200px;
@@ -388,7 +388,7 @@
     /* 카테고리 버튼 */
     .category-buttons {
         position: absolute;
-        top: 6vh;
+        top: 6dvh;
         left: 1.5vw;
         display: flex;
         gap: 5px;
@@ -415,7 +415,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: 12vh;
+        top: 12dvh;
         right: 2vw;
         width: 6px;
         height: 1px;
