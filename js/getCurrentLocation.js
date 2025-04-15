@@ -9,7 +9,7 @@ const recenterButton = document.getElementById("recenter-btn");
 // 사용자가 지도를 드래그하면 자동 중심 이동 해제
 kakao.maps.event.addListener(map, 'dragstart', function () {
   isAutoCentering = false;
-  recenterButton.style.display = "none";
+  recenterButton.style.display = "block";
 
   // 드래그가 5초동안 없을 시 자동 중심 이동 시작
   clearTimeout(autoCenterTimeout);
@@ -21,7 +21,7 @@ kakao.maps.event.addListener(map, 'dragstart', function () {
 // 줌인/아웃 시에도 자동 중심 끔
 kakao.maps.event.addListener(map, 'zoom_changed', function () {
   isAutoCentering = false;
-  recenterButton.style.display = "block";
+  recenterButton.style.display = "none";
 });
 
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
