@@ -7,7 +7,7 @@ let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 const recenterButton = document.getElementById("recent-button");
 
 // 사용자가 지도를 드래그하면 자동 중심 이동 해제
-kakao.maps.event.addListener(map, 'center_changed', function () {
+kakao.maps.event.addListener(map, 'dragstart', function () {
   if (!isAutoCentering)
     return;
   
