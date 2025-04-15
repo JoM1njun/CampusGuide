@@ -435,7 +435,7 @@
     #place-buttons {
         display: none;
         position: absolute;
-        top: calc(var(--vh) * 23;
+        top: 23dvh;
         right: 0px;
         background: white;
         /* 버튼 배경을 흰색으로 유지 */
@@ -478,7 +478,7 @@
 
     #place-info {
         position: fixed;
-        top: 25vh;
+        top: 25dvh;
         right: 0px;
         background-color: white;
         padding: 20px;
