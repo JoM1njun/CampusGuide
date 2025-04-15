@@ -6,7 +6,7 @@ function searchPlaces(category) {
   var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
   var redmarkerImage = new kakao.maps.MarkerImage(redmarkersrc, imageSize);
   var activemarker = null;
-
+  
   if (category) {
     fetch(
       `https://campusguide-back.onrender.com/api/db-status?query=` + encodeURIComponent(category)
