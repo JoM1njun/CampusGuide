@@ -1,37 +1,56 @@
 let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
 let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
+let isDragging = false;
 
 //map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
 
 // "현재 위치로 돌아가기" 버튼 숨김/보임 제어
 const recenterButton = document.getElementById("recent-button");
 
-// 사용자가 지도를 드래그하면 자동 중심 이동 해제
-kakao.maps.event.addListener(map, 'dragstart', function () {
-  if (!isAutoCentering)
-    return;
-  
-  console.log("Test");
-  isAutoCentering = false;
-  recenterButton.style.display = "block";
+if ("ontouchstart" in window) {
+  // 모바일 환경을 위한 터치 이벤트 확인
+  kakao.maps.event.addListener(map, "touchstart", function () {
+    isDragging = true;
+    isAutoCentering = false;
+    recenterButton.style.display = "block";
+  });
 
-  // 드래그가 5초동안 없을 시 자동 중심 이동 시작
-  clearTimeout(autoCenterTimeout);
-  autoCenterTimeout = setTimeout(() => {
-    isAutoCentering = true;
-  }, 10000);
-});
+  kakao.maps.event.addListener(map, "touchend", function () {
+    isDragging = false;
+    clearTimeout(autoCenterTimeout);
+    autoCenterTimeout = setTimeout(() => {
+      isAutoCentering = true;
+    }, 10000);
+  });
+} else {
+  // 사용자가 지도를 드래그하면 자동 중심 이동 해제
+  kakao.maps.event.addListener(map, "dragstart", function () {
+    isDragging = true;
+    console.log("Test");
+    isAutoCentering = false;
+    recenterButton.style.display = "block";
+  });
 
-// 줌인/아웃 시에도 자동 중심 끔
-kakao.maps.event.addListener(map, 'zoom_changed', function () {
-  isAutoCentering = false;
-  recenterButton.style.display = "none";
-});
+  kakao.maps.event.addListener(map, "dragend", function () {
+    // 드래그가 5초동안 없을 시 자동 중심 이동 시작
+    isDragging = false;
+    clearTimeout(autoCenterTimeout);
+    autoCenterTimeout = setTimeout(() => {
+      isAutoCentering = true;
+    }, 10000);
+  });
+
+  // 줌인/아웃 시에도 자동 중심 끔
+  kakao.maps.event.addListener(map, "zoom_changed", function () {
+    isAutoCentering = false;
+    recenterButton.style.display = "none";
+  });
+}
 
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
 document.getElementById("recent-button").addEventListener("click", function () {
   if (currentLocationMarker) {
-    isAutoCentering = true;  // 자동 중심 이동 활성화
+    isAutoCentering = true; // 자동 중심 이동 활성화
     map.setCenter(currentLocationMarker.getPosition()); // 현재 위치로 지도 중심 이동
   }
 });
