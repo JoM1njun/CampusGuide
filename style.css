@@ -44,6 +44,9 @@
         margin-top: 4px;
         padding: 0px;
         outline: none;
+        color: #000000;
+        -webkit-appearance: none;
+        -webkit-text-fill-color: #000000;
     }
 
     .search-container {
@@ -78,6 +81,9 @@
         font-size: 13px;
         padding: 0px;
         outline: none;
+        color: #000000;
+        -webkit-appearance: none;
+        -webkit-text-fill-color: #000000;
     }
 
     /* 카테고리 버튼 */
@@ -101,6 +107,9 @@
         font-size: 11px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
+        color: #000000;
+        -webkit-appearance: none;
+        -webkit-text-fill-color: #000000;
     }
 
     .category-buttons button.active {
@@ -349,6 +358,9 @@
         margin-top: 2px;
         padding: 3px;
         outline: none;
+        color: #000000;
+        -webkit-appearance: none;
+        -webkit-text-fill-color: #000000;
     }
 
     .search-container {
@@ -383,6 +395,9 @@
         font-size: 13px;
         padding: 0px;
         outline: none;
+        color: #000000;
+        -webkit-appearance: none;
+        -webkit-text-fill-color: #000000;
     }
 
     /* 카테고리 버튼 */
