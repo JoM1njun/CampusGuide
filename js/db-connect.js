@@ -23,7 +23,3 @@ window.onload = function () {
         "서버에 접근 할 수 없음" + error;
     });
 };
-
-kakao.maps.load(function () {
-  initMap(); // 지도 로딩 후 호출
-});
