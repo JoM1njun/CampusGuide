@@ -1,10 +1,15 @@
-let isAutoCentering = true;
+let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
+let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 
 map.addControl(new kakao.maps.MapTypeControl(), kakao.maps.ControlPosition.TOPRIGHT);
 
 // 사용자가 지도를 드래그하면 자동 중심 이동 해제
 kakao.maps.event.addListener(map, 'dragstart', function () {
   isAutoCentering = false;
+  clearTimeout(autoCenterTimeout);
+  autoCenterTimeout = setTimeout(() => {
+    isAutoCentering = true;
+  }, 5000); // 5초 후 다시 자동 중심
 });
 
 // 줌인/아웃 시에도 자동 중심 끔
