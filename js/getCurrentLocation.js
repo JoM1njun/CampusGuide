@@ -17,6 +17,10 @@ kakao.maps.event.addListener(map, 'zoom_changed', function () {
   isAutoCentering = false;
 });
 
+// "현재 위치로 돌아가기" 버튼 숨김/보임 제어
+const recenterButton = document.getElementById("recenter-btn");
+recenterButton.style.display = "none";
+
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
 document.getElementById("recenter-btn").addEventListener("click", function () {
   if (currentLocationMarker) {
