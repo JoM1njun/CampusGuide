@@ -357,6 +357,7 @@
         top: calc(var(--vh, 1vh) * 11);
         right: 22vw;
         align-items: center;
+        justify-content: center;
         width: 200px;
         background: white;
         border-radius: 25px;
@@ -419,7 +420,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: calc(var(--vh, 1vh) * 15);
+        top: calc(var(--vh, 1vh) * 18);
         right: 2vw;
         width: 6px;
         height: 1px;
