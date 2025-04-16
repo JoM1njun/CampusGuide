@@ -636,7 +636,7 @@
 /* 데스크톱 (1025px 이상) */
 @media (min-width: 1025px) {
     .title {
-        display: flex;
+        display: block;
         height: 60px;
         width: 100%;
         align-items: center;
@@ -645,7 +645,6 @@
     .title img {
         height: 40px;
         padding-left: 1vw;
-        flex-shrink: 0; /* 이미지가 박스를 줄이지 않도록 설정 */
     }
 
     #map {
@@ -1016,8 +1015,6 @@ body {
     display: flex;
     align-items: center;
 }
-
-
 
 .info-window p {
     color: #555;
