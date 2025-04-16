@@ -637,7 +637,7 @@
 @media (min-width: 1025px) {
     .title {
         display: flex;
-        height: 15vh
+        height: 8dvh;
         width: 100%;
     }
 
