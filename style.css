@@ -639,10 +639,11 @@
         display: flex;
         height: 60px;
         width: 100%;
+        align-items: center;
     }
 
     .title img {
-        height: 60px;
+        height: 40px;
         padding-left: 1vw;
     }
 
