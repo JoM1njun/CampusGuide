@@ -638,16 +638,13 @@
     .title {
         display: flex;
         align-items: center;
-        height: 60px;
+        height: 100px;
         width: 100%;
     }
 
     .title img {
         height: 40px;
         padding-left: 1vw;
-        width: auto; /* 비율 유지 */
-        min-height: 0; /* 최소 높이 제거 */
-        min-width: 0; /* 최소 너비 제거 */
         flex-shrink: 0; /* 축소 방지 */
     }
 
