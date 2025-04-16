@@ -314,15 +314,12 @@
 
     .title {
         display: flex;
-        align-items: center;
-        justify-content: center;
-        /* 중앙 정렬 */
+        position: ralative;
     }
 
     .title img {
         position: absoulute;
         height: 40px;
-/*         padding-left: 25vw; */
         left: 50%;
         transform: translateX(-50%);
     }
