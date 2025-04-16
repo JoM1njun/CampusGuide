@@ -314,11 +314,11 @@
 
     .title {
         display: flex;
-        position: ralative;
+        position: relative;
     }
 
     .title img {
-        position: absoulute;
+        position: absolute;
         height: 40px;
         left: 50%;
         transform: translateX(-50%);
