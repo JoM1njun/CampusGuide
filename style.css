@@ -313,7 +313,6 @@
     }
 
     .title {
-        display: flex;
         position: relative;
         height: 60px; /* 또는 min-height: 60px; */
         align-items: center;
@@ -986,6 +985,7 @@ body {
 }
 
 #header {
+    width: 100%;
     background-color: darkblue;
     color: white;
     display: flex;
