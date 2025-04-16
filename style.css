@@ -307,6 +307,8 @@
 @media (min-width: 376px) and (max-width: 768px) {
     #map {
         width: 100%;
+        align-items: center;
+        justify-content: center;
         height: calc(100vh - 10vh);
         position: relative;
         /* margin: auto; */
@@ -640,7 +642,7 @@
     }
 
     .title img {
-        height: 60px;
+        height: 40px;
         padding-left: 1vw;
     }
 
