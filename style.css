@@ -313,17 +313,15 @@
     }
 
     .title {
-        position: relative;
-        height: 60px; /* 또는 min-height: 60px; */
-        align-items: center;
-        justify-content: center;
+        display: flex;
+        align-items: center;         /* 세로 가운데 */
+        justify-content: center;     /* 가로 가운데 */
+        height: 40dvh;                /* 높이 필수! */
+        width: 100%;  
     }
 
     .title img {
-        position: absolute;
         height: 40px;
-        left: 50%;
-        transform: translateX(-50%);
     }
 
     .button-container {
