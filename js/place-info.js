@@ -57,18 +57,26 @@ function getLocation(place) {
         } else {
           if (places && places.length > 0) {
             places.forEach((place, index) => {
-              document.getElementById(
-                "place-name"
-              ).textContent = `${place.name} ${place.alias}`;
+              document.getElementById("place-name").textContent = `${place.name} ${place.alias}`;
               document.getElementById("floor-info").textContent = `${place.floor}`;
               document.getElementById("major-info").textContent = `${place.major}`;
 
-              if (place.imageURL) {
-                document.getElementById("place-image").src = place.imageURL;
-              } else {
-                document.getElementById("place-image").style.display =
-                  "High1.jpg"; // 이미지가 없을 경우 안 보이게 처리
-              }
+              // if (place.imageURL) {
+              //   document.getElementById("place-image").src = place.imageURL;
+              // } else {
+              //   document.getElementById("place-image").style.display =
+              //     "High1.jpg"; // 이미지가 없을 경우 안 보이게 처리
+              // }
+
+              // === 이미지 표시 ===
+              const aliasLower = place.alias.toLowerCase(); // 예: P → p
+              const imagePath = `/folder/${aliasLower}.jpg`;
+              const img = document.getElementById("place-image");
+              img.src = imagePath;
+              img.style.display = "block";
+              img.onerror = () => {
+                img.style.display = "none"; // 이미지 없을 경우 숨김
+              };
 
               document.getElementById("place-info").style.display = "block";
               document.getElementById("place-buttons").style.display = "none";
