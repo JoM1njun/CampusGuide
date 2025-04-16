@@ -636,10 +636,11 @@
 /* 데스크톱 (1025px 이상) */
 @media (min-width: 1025px) {
     .title {
-        display: block;
+        display: flex;
+        align-items: center;
+        justify-content: center;
         height: 60px;
         width: 100%;
-        align-items: center;
     }
 
     .title img {
