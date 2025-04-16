@@ -645,6 +645,7 @@
     .title img {
         height: 40px;
         padding-left: 1vw;
+        flex-shrink: 0; /* 이미지가 박스를 줄이지 않도록 설정 */
     }
 
     #map {
