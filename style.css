@@ -315,6 +315,9 @@
     .title {
         display: flex;
         position: relative;
+        height: 60px; /* 또는 min-height: 60px; */
+        align-items: center;
+        justify-content: center;
     }
 
     .title img {
