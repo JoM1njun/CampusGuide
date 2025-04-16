@@ -355,7 +355,8 @@
         display: flex;
         position: absolute;
         top: calc(var(--vh, 1vh) * 11);
-/*         right: 22vw; */
+        left: 50%;
+        transform: translateX(-50%);
         align-items: center;
         justify-content: center;
         width: 200px;
