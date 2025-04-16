@@ -317,6 +317,8 @@
         align-items: center;
         justify-content: center;
         /* 중앙 정렬 */
+        left: 50%;
+        transform: translateX(-50%);
     }
 
     .title img {
