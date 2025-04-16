@@ -643,7 +643,7 @@
     }
 
     .title img {
-        height: 40px;
+        height: 60px;
         padding-left: 1vw;
         flex-shrink: 0; /* 축소 방지 */
     }
@@ -759,7 +759,7 @@
     /* place 버튼들 한 메뉴에 넣어놓는 것 */
     #menu-button {
         position: absolute;
-        top: 2.2vh;
+        top: 2.3vh;
         right: 10px;
         width: 15px;
         height: 10px;
