@@ -2,7 +2,9 @@
 @media (max-width: 375px) {
     #map {
         width: 100%;
-        height: calc(100vh - 12vh);
+        align-items: center;
+        justify-content: center;
+        height: calc(100vh - 11vh);
         position: relative;
         /* margin: auto; */
     }
