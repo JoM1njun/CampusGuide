@@ -4,7 +4,7 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-        height: calc(100vh - 11vh);
+        height: calc(100vh - 10vh);
         position: relative;
         /* margin: auto; */
     }
