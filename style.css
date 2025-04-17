@@ -51,9 +51,11 @@
     .search-container {
         display: flex;
         position: absolute;
-        top: 13vh;
-        right: 20vw;
+        top: calc(var(--vh, 1vh) * 10);
+        left: 50%;
+        transform: translateX(-50%);
         align-items: center;
+        justify-content: center;
         width: 200px;
         background: white;
         border-radius: 25px;
