@@ -357,6 +357,10 @@
         outline: none;
     }
 
+    .button-container button:hover {
+        background-color: lightgray;
+    }
+
     .search-container {
         display: flex;
         position: absolute;
@@ -418,10 +422,6 @@
 
     .category-buttons button:hover {
         background-color: lightgrey;
-    }
-
-    .category-buttons button.active {
-        background: lightgrey;
     }
 
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
