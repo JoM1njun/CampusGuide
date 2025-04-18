@@ -3,7 +3,6 @@ let userMarker = [];
 let currentLocationMarker = null;
 let currentinfowindows = [];
 let infoWindows = []; // etc 정보창
-let locationFound = false;
 const mobile = window.innerWidth <= 1024;
 
 // 서버 연결 확인을 위한 부분 (없어도 됨)
