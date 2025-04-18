@@ -20,10 +20,6 @@ function showPlaceButtons() {
     // 정보창이 열려 있다면 장소 목록을 숨깁니다.
     placeButtons.style.display = "none";
   }
-
-  kakao.maps.event.addListener(map, "click", function () {
-    placeButtons.style.display = "none";
-  }
 }
 
 // place button 클릭 시 정보 표시
@@ -123,7 +119,6 @@ function setupMapClickEvent() {
     placeInfo.style.display = "none";
 
     isInfoVisible = false;
-    showPlaceButtons();
     console.log("Hidden");
   });
 }
