@@ -70,7 +70,7 @@ function searchLocation() {
                         <h4 style="
                         font-size: ${mobile ? "12px" : "18px"};
                         ">${place.name}</h4>
-                        <p>${place.etc}</p>
+                        <p>${place.floor} + "층" + " " + ${place.etc} </p>
                     </div>`;
 
               // 마커 클릭 시 정보 창 띄움
