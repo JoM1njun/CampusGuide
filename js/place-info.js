@@ -62,8 +62,8 @@ function getLocation(place) {
               document.getElementById("major-info").textContent = `${place.major}`;
 
               // === 이미지 표시 ===
-              const imageName = place.name.trim(); // 예: P → p
-              const imagePath = `place/${imageName}.jpg`;
+              const aliasLower = place.alias.toLowerCase(); // 예: P → p
+              const imagePath = `place/${aliasLower}.jpg`;
               const img = document.getElementById("place-image");
               img.src = imagePath;
               img.style.display = "block";
