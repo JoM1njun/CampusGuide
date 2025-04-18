@@ -3,6 +3,7 @@ let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
+let locationFound = false;
 
 // "현재 위치로 돌아가기" 버튼 숨김/보임 제어
 const recenterButton = document.getElementById("recent-button");
@@ -17,11 +18,11 @@ mapContainer.addEventListener("touchmove", () => {
 });
 
 mapContainer.addEventListener("touchend", () => {
-  if (isTouchDragging) {
+  if (isTouchDragging && locationFound) {
     console.log("드래그 감지됨!");
 
     isAutoCentering = false;
-    recenterButton.style.display = "block";
+    recenterButton.style.display = "block"; 
 
     clearTimeout(autoCenterTimeout);
     autoCenterTimeout = setTimeout(() => {
@@ -46,7 +47,7 @@ mapContainer.addEventListener("mousemove", () => {
 });
 
 mapContainer.addEventListener("mouseup", () => {
-  if (isDragging) {
+  if (isDragging && locationFound) {
     console.log("PC 드래그 감지됨!");
 
     isAutoCentering = false;
@@ -95,7 +96,6 @@ function getCurrentLocation() {
   let userDirection = 0; // 사용자의 시선 방향 저장
   let errorCount = 0; // 오류 카운트
   let errorCooldown = false; // 중복 alert 방지
-  let locationFound = false;
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
