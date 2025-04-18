@@ -548,7 +548,7 @@
         border-radius: 10px;
     }
 
-    #place-image {
+    #image-container img {
         width: 80%;
         height: 70%;
         border-radius: 10px;
@@ -904,9 +904,9 @@
         border-radius: 10px;
     }
 
-    #place-image {
+    #image-container img {
         width: 80%;
-        height: 60%;
+        height: 70%;
         border-radius: 10px;
     }
 
