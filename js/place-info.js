@@ -1,6 +1,6 @@
 let isInfoVisible = false;
 
-function normalizeNewlines(text) {
+function normalizeText(text) {
   if (!text || text.trim() === "" || text === "(null)") {
     return "정보 없음";
   }
@@ -22,8 +22,8 @@ console.log("Place Major: ", place.major);
 
 // 기존 코드에 적용
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("floor-info").innerHTML = normalizeNewlines(place.floor);
-  document.getElementById("major-info").innerHTML = normalizeNewlines(place.major);
+  document.getElementById("floor-info").innerHTML = normalizeText(place.floor);
+  document.getElementById("major-info").innerHTML = normalizeText(place.major);
 });
 
 // place button 클릭 시 정보 표시
