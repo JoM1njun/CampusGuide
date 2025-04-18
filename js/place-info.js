@@ -101,25 +101,3 @@ function getLocation(place) {
       });
   }
 }
-
-function setupMapClickEvent() {
-  if (!map) {
-    console.error("Map is not initialized yet.");
-    return;
-  }
-
-  kakao.maps.event.addListener(map, "click", function () {
-    console.log("Map Click");
-    
-    const placeMenu = document.getElementById("place-buttons");
-    const placeInfo = document.getElementById("place-info");
-
-    // 장소 목록과 정보창을 숨김
-    placeMenu.style.display = "none";
-    placeInfo.style.display = "none";
-
-    isInfoVisible = false;
-    console.log("Hidden");
-  });
-}
-
