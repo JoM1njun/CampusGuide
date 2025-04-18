@@ -1,5 +1,5 @@
-let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
-let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
+// let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
+// let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
@@ -84,14 +84,13 @@ mapContainer.addEventListener("touchend", () => {
   if (isTouchDragging && locationFound) {
     console.log("드래그 감지됨!");
 
-    isAutoCentering = false;
     recenterButton.style.display = "block"; 
 
-    clearTimeout(autoCenterTimeout);
-    autoCenterTimeout = setTimeout(() => {
-      isAutoCentering = true;
-      recenterButton.style.display = "none";
-    }, 10000);
+    // clearTimeout(autoCenterTimeout);
+    // autoCenterTimeout = setTimeout(() => {
+    //   isAutoCentering = true;
+    //   recenterButton.style.display = "none";
+    // }, 10000);
 
     // 버튼은 예를 들어 3초 후에 숨기기
     clearTimeout(buttonHideTimeout);
@@ -115,12 +114,6 @@ mapContainer.addEventListener("mouseup", () => {
 
     isAutoCentering = false;
     recenterButton.style.display = "block";
-
-    clearTimeout(autoCenterTimeout);
-    autoCenterTimeout = setTimeout(() => {
-      isAutoCentering = true;
-      recenterButton.style.display = "none";
-    }, 10000);
 
     // 버튼은 예를 들어 3초 후에 숨기기
     clearTimeout(buttonHideTimeout);
