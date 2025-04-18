@@ -17,7 +17,7 @@ window.getCurrentLocation = function () {
   let errorCooldown = false; // 중복 alert 방지
 
   if (navigator.geolocation) {
-    navigator.geolocation.watchPosition(
+    navigator.geolocation.getCurrentPosition(
       // 위치를 실시간으로 업데이트
       function (position) {
         let lat = position.coords.latitude; // 현재 위도
@@ -39,12 +39,6 @@ window.getCurrentLocation = function () {
           currentLocationMarker.setPosition(userLocation);
         }
 
-        let heading = position.coords.heading;
-
-        if (heading !== null) {
-          currentLocationMarker.setRotation(heading);
-        }
-
         if (window.innerWidth <= 768) {
           map.setLevel(3);
         } else {
@@ -59,25 +53,9 @@ window.getCurrentLocation = function () {
           locationFound = true;
           alert("현재 위치를 찾았습니다!");
         }
-        errorCount = 0;
-        errorCooldown = false;
       },
-      function (error) {
-        if (!errorCooldown) {
-          alert("위치 정보를 가져올 수 없습니다.");
-          errorCooldown = true;
-
-          // 10초 뒤에 다시 오류 알림 허용
-          setTimeout(() => {
-            errorCooldown = false;
-          }, 10000);
-        }
-
-        errorCount++;
-        if (errorCount >= 5) {
-          console.warn("지속적인 위치 오류 발생. 위치 추적 중단.");
-          navigator.geolocation.clearWatch(); // 위치 추적 중지
-        }
+      function () {
+        alert("위치 정보를 가져올 수 없습니다.");
       },
       {
         enableHighAccuracy: true, // 더 정확한 위치 정보 사용
