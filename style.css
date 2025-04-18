@@ -48,7 +48,7 @@
         outline: none;
     }
 
-    .button-continer button:hover {
+    .button-continer:hover {
         bachground-color: lightgrey;
     }
 
