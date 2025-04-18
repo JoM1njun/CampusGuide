@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
   // 지도 클릭 시 장소 목록을 숨기기
-  if (map) {
+  if (window.map) {
     kakao.maps.event.addListener(map, "click", function () {
       console.log("Map Click");
       // 장소 목록과 정보창을 숨깁니다.
