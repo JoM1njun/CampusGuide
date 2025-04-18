@@ -1,6 +1,5 @@
 let map, marker;
 let userMarker = [];
-let currentLocationMarker = null;
 let currentinfowindows = [];
 let infoWindows = []; // etc 정보창
 const mobile = window.innerWidth <= 1024;
