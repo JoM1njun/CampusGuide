@@ -25,7 +25,7 @@ function showPlaceButtons() {
 // place button 클릭 시 정보 표시
 function getLocation(place) {
   var redmarkersrc = "marker/red-marker.svg";
-  var imageSize = new kakao.maps.Size(75, 30); // 마커이미지의 크기
+  var imageSize = new kakao.maps.Size(80, 30); // 마커이미지의 크기
   var redmarkerImage = new kakao.maps.MarkerImage(redmarkersrc, imageSize);
 
   // 기존 마커와 infoWindow 제거
