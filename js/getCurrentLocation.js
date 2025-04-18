@@ -3,6 +3,7 @@ let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
+let locationFound = false;
 let currentLocationMarker = null;
 
 window.getCurrentLocation = function () {
