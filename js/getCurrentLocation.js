@@ -119,7 +119,7 @@ mapContainer.addEventListener("touchend", () => {
     clearTimeout(buttonHideTimeout);
     buttonHideTimeout = setTimeout(() => {
       recenterButton.style.display = "none";
-    }, 3000);
+    }, 1500);
   }
 });
 
