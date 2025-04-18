@@ -3,19 +3,18 @@ let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
+let locationFound = false;
+let currentLocationMarker = null;
 
-
-function getCurrentLocation() {
+window.getCurrentLocation = function () {
   console.log("위치 찾기 시작");
   var markersrc = "marker/current-marker.svg";
   var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
   var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
 
-  let currentLocationMarker = null;
   let userDirection = 0; // 사용자의 시선 방향 저장
   let errorCount = 0; // 오류 카운트
   let errorCooldown = false; // 중복 alert 방지
-  let locationFound = false;
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
