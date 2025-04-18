@@ -3,7 +3,7 @@ let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
 let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
-let locationFound = false;
+
 
 function getCurrentLocation() {
   console.log("위치 찾기 시작");
@@ -15,6 +15,7 @@ function getCurrentLocation() {
   let userDirection = 0; // 사용자의 시선 방향 저장
   let errorCount = 0; // 오류 카운트
   let errorCooldown = false; // 중복 alert 방지
+  let locationFound = false;
 
   if (navigator.geolocation) {
     navigator.geolocation.watchPosition(
