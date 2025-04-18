@@ -5,88 +5,6 @@ let isTouchDragging = false;
 let isDragging = false;
 let locationFound = false;
 
-// "현재 위치로 돌아가기" 버튼 숨김/보임 제어
-const recenterButton = document.getElementById("recent-button");
-const mapContainer = document.getElementById("map");
-
-mapContainer.addEventListener("touchstart", () => {
-  isTouchDragging = false;
-});
-
-mapContainer.addEventListener("touchmove", () => {
-  isTouchDragging = true;
-});
-
-mapContainer.addEventListener("touchend", () => {
-  if (isTouchDragging && locationFound) {
-    console.log("드래그 감지됨!");
-
-    isAutoCentering = false;
-    recenterButton.style.display = "block"; 
-
-    clearTimeout(autoCenterTimeout);
-    autoCenterTimeout = setTimeout(() => {
-      isAutoCentering = true;
-      recenterButton.style.display = "none";
-    }, 10000);
-
-    // 버튼은 예를 들어 3초 후에 숨기기
-    clearTimeout(buttonHideTimeout);
-    buttonHideTimeout = setTimeout(() => {
-      recenterButton.style.display = "none";
-    }, 3000);
-  }
-});
-
-mapContainer.addEventListener("mousedown", () => {
-  isDragging = false;
-});
-
-mapContainer.addEventListener("mousemove", () => {
-  isDragging = true;
-});
-
-mapContainer.addEventListener("mouseup", () => {
-  if (isDragging && locationFound) {
-    console.log("PC 드래그 감지됨!");
-
-    isAutoCentering = false;
-    recenterButton.style.display = "block";
-
-    clearTimeout(autoCenterTimeout);
-    autoCenterTimeout = setTimeout(() => {
-      isAutoCentering = true;
-      recenterButton.style.display = "none";
-    }, 10000);
-
-    // 버튼은 예를 들어 3초 후에 숨기기
-    clearTimeout(buttonHideTimeout);
-    buttonHideTimeout = setTimeout(() => {
-      recenterButton.style.display = "none";
-    }, 3000);
-  }
-});
-
-  // 줌인/아웃 시에도 자동 중심 끔
-kakao.maps.event.addListener(map, "zoom_changed", function () {
-  isAutoCentering = false;
-  recenterButton.style.display = "block";
-
-  clearTimeout(autoCenterTimeout);
-  autoCenterTimeout = setTimeout(() => {
-    isAutoCentering = true;
-    recenterButton.style.display = "none";
-  }, 10000);
-});
-
-// "현재 위치로 돌아가기" 버튼 클릭 이벤트
-document.getElementById("recent-button").addEventListener("click", function () {
-  if (currentLocationMarker) {
-    isAutoCentering = true; // 자동 중심 이동 활성화
-    map.setCenter(currentLocationMarker.getPosition()); // 현재 위치로 지도 중심 이동
-  }
-});
-
 function getCurrentLocation() {
   console.log("위치 찾기 시작");
   var markersrc = "marker/current-marker.svg";
@@ -171,3 +89,86 @@ function getCurrentLocation() {
     alert("이 브라우저에서는 위치 찾기를 지원하지 않습니다.");
   }
 }
+
+// "현재 위치로 돌아가기" 버튼 숨김/보임 제어
+const recenterButton = document.getElementById("recent-button");
+const mapContainer = document.getElementById("map");
+
+mapContainer.addEventListener("touchstart", () => {
+  isTouchDragging = false;
+});
+
+mapContainer.addEventListener("touchmove", () => {
+  isTouchDragging = true;
+});
+
+mapContainer.addEventListener("touchend", () => {
+  if (isTouchDragging && locationFound) {
+    console.log("드래그 감지됨!");
+
+    isAutoCentering = false;
+    recenterButton.style.display = "block"; 
+
+    clearTimeout(autoCenterTimeout);
+    autoCenterTimeout = setTimeout(() => {
+      isAutoCentering = true;
+      recenterButton.style.display = "none";
+    }, 10000);
+
+    // 버튼은 예를 들어 3초 후에 숨기기
+    clearTimeout(buttonHideTimeout);
+    buttonHideTimeout = setTimeout(() => {
+      recenterButton.style.display = "none";
+    }, 3000);
+  }
+});
+
+mapContainer.addEventListener("mousedown", () => {
+  isDragging = false;
+});
+
+mapContainer.addEventListener("mousemove", () => {
+  isDragging = true;
+});
+
+mapContainer.addEventListener("mouseup", () => {
+  if (isDragging && locationFound) {
+    console.log("PC 드래그 감지됨!");
+
+    isAutoCentering = false;
+    recenterButton.style.display = "block";
+
+    clearTimeout(autoCenterTimeout);
+    autoCenterTimeout = setTimeout(() => {
+      isAutoCentering = true;
+      recenterButton.style.display = "none";
+    }, 10000);
+
+    // 버튼은 예를 들어 3초 후에 숨기기
+    clearTimeout(buttonHideTimeout);
+    buttonHideTimeout = setTimeout(() => {
+      recenterButton.style.display = "none";
+    }, 3000);
+  }
+});
+
+  // 줌인/아웃 시에도 자동 중심 끔
+kakao.maps.event.addListener(map, "zoom_changed", function () {
+  isAutoCentering = false;
+  recenterButton.style.display = "block";
+
+  clearTimeout(autoCenterTimeout);
+  autoCenterTimeout = setTimeout(() => {
+    isAutoCentering = true;
+    recenterButton.style.display = "none";
+  }, 10000);
+});
+
+// "현재 위치로 돌아가기" 버튼 클릭 이벤트
+document.getElementById("recent-button").addEventListener("click", function () {
+  if (currentLocationMarker) {
+    isAutoCentering = true; // 자동 중심 이동 활성화
+    map.setCenter(currentLocationMarker.getPosition()); // 현재 위치로 지도 중심 이동
+  }
+});
+
