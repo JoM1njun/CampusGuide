@@ -19,15 +19,19 @@ document.addEventListener("DOMContentLoaded", function () {
       }
   });
   // 지도 클릭 시 장소 목록을 숨기기
-  kakao.maps.event.addListener(map, "click", function () {
-    console.log("Map Click");
-    // 장소 목록과 정보창을 숨깁니다.
-    placeMenu.style.display = "none";
-    placeinfo.style.display = "none";
+  if (map) {
+    kakao.maps.event.addListener(map, "click", function () {
+      console.log("Map Click");
+      // 장소 목록과 정보창을 숨깁니다.
+      placeMenu.style.display = "none";
+      placeinfo.style.display = "none";
 
-    // 정보창 상태 업데이트
-    isInfoVisible = false;
-    showPlaceButtons();
-    console.log("Hidden");
-  });
+      // 정보창 상태 업데이트
+      isInfoVisible = false;
+      showPlaceButtons();
+      console.log("Hidden");
+    });
+  } else {
+    console.error("Map is not initialized yet.");
+  }
 });
