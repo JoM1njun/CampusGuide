@@ -88,6 +88,7 @@ document.getElementById("recent-button").addEventListener("click", function () {
 });
 
 function getCurrentLocation() {
+  console.log("위치 찾기 시작");
   var markersrc = "marker/current-marker.svg";
   var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
   var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
@@ -137,8 +138,8 @@ function getCurrentLocation() {
         }
 
         if (!locationFound) {
-          alert("현재 위치를 찾았습니다!");
           locationFound = true;
+          alert("현재 위치를 찾았습니다!");
         }
         errorCount = 0;
         errorCooldown = false;
