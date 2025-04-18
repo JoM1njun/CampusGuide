@@ -12,6 +12,18 @@ function initMap() {
 
       console.log(map);
 
+      // 줌인/아웃 시에도 자동 중심 끔
+      kakao.maps.event.addListener(map, "zoom_changed", function () {
+        isAutoCentering = false;
+        recenterButton.style.display = "block";
+
+        clearTimeout(autoCenterTimeout);
+        autoCenterTimeout = setTimeout(() => {
+          isAutoCentering = true;
+          recenterButton.style.display = "none";
+        }, 10000);
+      });
+
       window.markerImage = new kakao.maps.MarkerImage(
         "marker/marker.svg",
         new kakao.maps.Size(75, 30)
