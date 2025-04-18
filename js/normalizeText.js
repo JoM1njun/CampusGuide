@@ -13,5 +13,7 @@ function normalizeNewlines(text) {
 }
 
 // 기존 코드에 적용
-document.getElementById("floor-info").innerText = normalizeNewlines(place.floor);
-document.getElementById("major-info").innerText = normalizeNewlines(place.major);
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("floor-info").innerText = normalizeNewlines(place.floor);
+  document.getElementById("major-info").innerText = normalizeNewlines(place.major);
+});
