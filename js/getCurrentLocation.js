@@ -1,5 +1,4 @@
-// let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
-// let autoCenterTimeout; // 일정 시간 지나면 자동 중심 이동
+let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
 let buttonHideTimeout;
 let isTouchDragging = false;
 let isDragging = false;
