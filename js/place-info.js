@@ -22,15 +22,11 @@ console.log("Place Major: ", place.major);
 
 // 기존 코드에 적용
 document.addEventListener("DOMContentLoaded", () => {
-  if (place && place.floor) {
-    console.log("Place Floor: ", place.floor);
     document.getElementById("floor-info").innerHTML = normalizeText(place.floor);
-  }
-  if (place && place.major) {
-    console.log("Place Major: ", place.major);
     document.getElementById("major-info").innerHTML = normalizeText(place.major);
   }
 });
+module.exports = normalizeText;
 
 // place button 클릭 시 정보 표시
 function getLocation(place) {
