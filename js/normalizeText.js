@@ -15,6 +15,9 @@ function normalizeNewlines(text) {
   return fixed.trim(); // 혹시 앞뒤 공백이 있을 경우 제거
 }
 
+console.log("Place Floor: ", place.floor);
+console.log("Place Major: ", place.major);
+
 // 기존 코드에 적용
 document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("floor-info").innerHTML = normalizeNewlines(place.floor);
