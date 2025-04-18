@@ -9,11 +9,14 @@ function normalizeNewlines(text) {
   // 줄바꿈이 여러 번 있을 때는 하나로 정리
   fixed = fixed.replace(/\n{2,}/g, "\n");
 
+  // \n을 <br> 태그로 변환하여 HTML로 줄바꿈 반영
+  fixed = fixed.replace(/\n/g, "<br>");
+
   return fixed.trim(); // 혹시 앞뒤 공백이 있을 경우 제거
 }
 
 // 기존 코드에 적용
 document.addEventListener("DOMContentLoaded", () => {
-  document.getElementById("floor-info").innerText = normalizeNewlines(place.floor);
-  document.getElementById("major-info").innerText = normalizeNewlines(place.major);
+  document.getElementById("floor-info").innerHTML = normalizeNewlines(place.floor);
+  document.getElementById("major-info").innerHTML = normalizeNewlines(place.major);
 });
