@@ -90,6 +90,18 @@ window.getCurrentLocation = function () {
   }
 }
 
+  // 줌인/아웃 시에도 자동 중심 끔
+kakao.maps.event.addListener(map, "zoom_changed", function () {
+  isAutoCentering = false;
+  recenterButton.style.display = "block";
+
+  clearTimeout(autoCenterTimeout);
+  autoCenterTimeout = setTimeout(() => {
+    isAutoCentering = true;
+    recenterButton.style.display = "none";
+  }, 10000);
+});
+
 // "현재 위치로 돌아가기" 버튼 숨김/보임 제어
 const recenterButton = document.getElementById("recent-button");
 const mapContainer = document.getElementById("map");
@@ -150,18 +162,6 @@ mapContainer.addEventListener("mouseup", () => {
       recenterButton.style.display = "none";
     }, 3000);
   }
-});
-
-  // 줌인/아웃 시에도 자동 중심 끔
-kakao.maps.event.addListener(map, "zoom_changed", function () {
-  isAutoCentering = false;
-  recenterButton.style.display = "block";
-
-  clearTimeout(autoCenterTimeout);
-  autoCenterTimeout = setTimeout(() => {
-    isAutoCentering = true;
-    recenterButton.style.display = "none";
-  }, 10000);
 });
 
 // "현재 위치로 돌아가기" 버튼 클릭 이벤트
