@@ -61,16 +61,9 @@ function getLocation(place) {
               document.getElementById("floor-info").textContent = `${place.floor}`;
               document.getElementById("major-info").textContent = `${place.major}`;
 
-              // if (place.imageURL) {
-              //   document.getElementById("place-image").src = place.imageURL;
-              // } else {
-              //   document.getElementById("place-image").style.display =
-              //     "High1.jpg"; // 이미지가 없을 경우 안 보이게 처리
-              // }
-
               // === 이미지 표시 ===
-              const aliasLower = place.alias.toLowerCase(); // 예: P → p
-              const imagePath = `/folder/${aliasLower}.jpg`;
+              const imageName = place.name.trim(); // 예: P → p
+              const imagePath = `/place/${imageName}.jpg`;
               const img = document.getElementById("place-image");
               img.src = imagePath;
               img.style.display = "block";
