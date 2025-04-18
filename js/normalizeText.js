@@ -1,4 +1,4 @@
-function normalizeText(text) {
+function normalizeNewlines(text) {
   if (!text || text.trim() === "" || text === "(null)") {
     return "정보 없음";
   }
@@ -13,5 +13,5 @@ function normalizeText(text) {
 }
 
 // 기존 코드에 적용
-document.getElementById("floor-info").innerText = normalizeText(place.floor);
-document.getElementById("major-info").innerText = normalizeText(place.major);
+document.getElementById("floor-info").innerText = normalizeNewlines(place.floor);
+document.getElementById("major-info").innerText = normalizeNewlines(place.major);
