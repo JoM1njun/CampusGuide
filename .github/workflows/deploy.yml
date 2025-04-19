@@ -20,7 +20,7 @@ jobs:
         uses: actions/configure-pages@v3
 
       - name: Upload static files
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v2
         with:
           path: .  # 현재 폴더 전체 배포
 
