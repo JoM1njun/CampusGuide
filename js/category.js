@@ -2,7 +2,7 @@ function searchPlaces(category) {
   var markersrc = "marker/marker.svg";
   var redmarkersrc = "marker/red-marker.svg";
   var imageSize = new kakao.maps.Size(75, 30); // 마커이미지의 크기
-ㅁ
+  
   var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
   var redmarkerImage = new kakao.maps.MarkerImage(redmarkersrc, imageSize);
   var activemarker = null;
