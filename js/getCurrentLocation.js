@@ -7,9 +7,9 @@ let currentLocationMarker = null;
 
 window.getCurrentLocation = function () {
   console.log("위치 찾기 시작");
-  var markersrc = "marker/current-marker.svg";
+  var currentmarkersrc = "marker/current-marker.svg";
   var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
-  var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
+  var markerImage = new kakao.maps.MarkerImage(currentmarkersrc, imageSize);
 
   let userDirection = 0; // 사용자의 시선 방향 저장
   let errorCount = 0; // 오류 카운트
