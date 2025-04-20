@@ -118,7 +118,7 @@ mapContainer.addEventListener("mouseup", () => {
     clearTimeout(buttonHideTimeout);
     buttonHideTimeout = setTimeout(() => {
       recenterButton.style.display = "none";
-    }, 1000);
+    }, 1500);
   }
 });
 
