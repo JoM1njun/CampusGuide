@@ -1,10 +1,10 @@
 function searchPlaces(category) {
-  var markersrc = "assets/marker/marker.svg";
-  var redmarkersrc = "assets/marker/red-marker.svg";
-  var imageSize = new kakao.maps.Size(75, 30); // 마커이미지의 크기
+  // var markersrc = "assets/marker/marker.svg";
+  // var redmarkersrc = "assets/marker/red-marker.svg";
+  // var imageSize = new kakao.maps.Size(75, 30); // 마커이미지의 크기
   
-  var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
-  var redmarkerImage = new kakao.maps.MarkerImage(redmarkersrc, imageSize);
+  // var markerImage = new kakao.maps.MarkerImage(markersrc, imageSize);
+  // var redmarkerImage = new kakao.maps.MarkerImage(redmarkersrc, imageSize);
   var activemarker = null;
   
   if (category) {
