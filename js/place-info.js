@@ -39,7 +39,7 @@ function getLocation(place) {
 
               // === 이미지 표시 ===
               const aliasLower = place.alias.toLowerCase(); // 예: P → p
-              const imagePath = `assest/place/${aliasLower}.jpg`;
+              const imagePath = `assets/place/${aliasLower}.jpg`;
               const img = document.getElementById("place-image");
               img.src = imagePath;
               img.style.display = "block";
