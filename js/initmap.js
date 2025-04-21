@@ -21,6 +21,8 @@ function initMap() {
         "assets/marker/red-marker.svg",
         new kakao.maps.Size(75, 30)
       );
+      window.markerImage = markerImage;
+      window.redmarkerImage = redmarkerImage;
     }
   } catch (error) {
     console.error("Error int initmap : ", error);
