@@ -39,9 +39,9 @@ window.getCurrentLocation = function () {
         }
 
         if (window.innerWidth <= 768) {
-          map.setLevel(3);
+          map.setLevel(4);
         } else {
-          map.setLevel(2);
+          map.setLevel(3);
         }
         // 지도 중심 이동
         if (isAutoCentering) {
