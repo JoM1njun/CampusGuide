@@ -9,7 +9,10 @@ window.getCurrentLocation = function () {
   console.log("위치 찾기 시작");
   var currentmarkersrc = "assets/marker/current-marker.svg";
   var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
-  var markerImage = new kakao.maps.MarkerImage(currentmarkersrc, imageSize);
+  var imageOffset = {
+    offset: new kakao.maps.Point(width / 2, height / 2),
+  }; // 좌표에 맞게 이미지 출력
+  var markerImage = new kakao.maps.MarkerImage(currentmarkersrc, imageSize, imageOffset);
 
   let userDirection = 0; // 사용자의 시선 방향 저장
   let errorCount = 0; // 오류 카운트
@@ -59,7 +62,7 @@ window.getCurrentLocation = function () {
       },
       {
         enableHighAccuracy: true, // 더 정확한 위치 정보 사용
-        maximumAge: 60000, // 캐시된 위치를 사용하지 않음
+        maximumAge: 0, // 캐시된 위치를 사용하지 않음
         timeout: 5000, // 5초동안 위치 데이터 가져옴
       }
     );
