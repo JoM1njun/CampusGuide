@@ -7,6 +7,7 @@ function initMap() {
         center: new kakao.maps.LatLng(36.320430029704, 127.36680988956), // 배재대 중앙 위치 / 초기 위치
         level: window.innerWidth <= 768 ? 4 : 3, // 줌 레벨 (값이 낮을수록 확대)
         draggable: true,
+        setZoomable: true,
       };
       map = new kakao.maps.Map(container, options);
 
