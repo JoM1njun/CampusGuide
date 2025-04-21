@@ -1,5 +1,5 @@
 let markerImage;
-let redmarkerImage
+let redmarkerImage;
 
 // 전역: 이미지 preload + MarkerImage 미리 생성
 ["marker.svg", "red-marker.svg"].forEach((img) => {
