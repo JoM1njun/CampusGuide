@@ -29,9 +29,9 @@ window.getCurrentLocation = function () {
           markerContent.style.transform = `rotate(${userDirection}deg)`;
           
           if (window.innerWidth <= 768) {
-          map.setLevel(4);
-        } else {
           map.setLevel(3);
+        } else {
+          map.setLevel(2);
         }
 
           currentLocationMarker = new kakao.maps.Marker({
