@@ -4,7 +4,7 @@
   preload.src = `assets/marker/${img}`;
 });
 
-window.onload = function () {
+kakao.maps.load(function () {
   const markerImage = new kakao.maps.MarkerImage(
     "assets/marker/marker.svg",
     new kakao.maps.Size(75, 30)
@@ -16,7 +16,7 @@ window.onload = function () {
   );
 
   initmap();
-};
+});
 
 
 // 초기 지도 화면 설정 및 infoWindow 닫기
