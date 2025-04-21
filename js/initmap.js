@@ -1,3 +1,6 @@
+let markerImage;
+let redmarkerImage
+
 // 전역: 이미지 preload + MarkerImage 미리 생성
 ["marker.svg", "red-marker.svg"].forEach((img) => {
   const preload = new Image();
@@ -5,17 +8,17 @@
 });
 
 kakao.maps.load(function () {
-  const markerImage = new kakao.maps.MarkerImage(
+  window.markerImage = new kakao.maps.MarkerImage(
     "assets/marker/marker.svg",
     new kakao.maps.Size(75, 30)
   );
 
-  const redmarkerImage = new kakao.maps.MarkerImage(
+  window.redmarkerImage = new kakao.maps.MarkerImage(
     "assets/marker/red-marker.svg",
     new kakao.maps.Size(75, 30)
   );
 
-  initmap();
+  initMap();
 });
 
 
@@ -32,9 +35,6 @@ function initMap() {
       map = new kakao.maps.Map(container, options);
 
       console.log(map);
-
-      window.markerImage = markerImage;
-      window.redmarkerImage = redmarkerImage;
     }
   } catch (error) {
     console.error("Error int initmap : ", error);
