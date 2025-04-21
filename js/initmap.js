@@ -1,3 +1,19 @@
+// 전역: 이미지 preload + MarkerImage 미리 생성
+["marker.svg", "red-marker.svg"].forEach((img) => {
+  const preload = new Image();
+  preload.src = `assets/marker/${img}`;
+});
+
+const markerImage = new kakao.maps.MarkerImage(
+  "assets/marker/marker.svg",
+  new kakao.maps.Size(75, 30)
+);
+
+const redmarkerImage = new kakao.maps.MarkerImage(
+  "assets/marker/red-marker.svg",
+  new kakao.maps.Size(75, 30)
+);
+
 // 초기 지도 화면 설정 및 infoWindow 닫기
 function initMap() {
   try {
@@ -12,14 +28,8 @@ function initMap() {
 
       console.log(map);
 
-      window.markerImage = new kakao.maps.MarkerImage(
-        "assets/marker/marker.svg",
-        new kakao.maps.Size(75, 30)
-      );
-      window.redmarkerImage = new kakao.maps.MarkerImage(
-        "assets/marker/red-marker.svg",
-        new kakao.maps.Size(75, 30)
-      );
+      window.markerImage = markerImage;
+      window.redmarkerImage = redmarkerImage;
     }
   } catch (error) {
     console.error("Error int initmap : ", error);
