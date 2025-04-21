@@ -8,12 +8,12 @@ let redmarkerImage;
 });
 
 kakao.maps.load(function () {
-  window.markerImage = new kakao.maps.MarkerImage(
+  markerImage = new kakao.maps.MarkerImage(
     "assets/marker/marker.svg",
     new kakao.maps.Size(75, 30)
   );
 
-  window.redmarkerImage = new kakao.maps.MarkerImage(
+  redmarkerImage = new kakao.maps.MarkerImage(
     "assets/marker/red-marker.svg",
     new kakao.maps.Size(75, 30)
   );
