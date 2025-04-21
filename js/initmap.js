@@ -4,15 +4,20 @@
   preload.src = `assets/marker/${img}`;
 });
 
-const markerImage = new kakao.maps.MarkerImage(
-  "assets/marker/marker.svg",
-  new kakao.maps.Size(75, 30)
-);
+window.onload = function () {
+  const markerImage = new kakao.maps.MarkerImage(
+    "assets/marker/marker.svg",
+    new kakao.maps.Size(75, 30)
+  );
 
-const redmarkerImage = new kakao.maps.MarkerImage(
-  "assets/marker/red-marker.svg",
-  new kakao.maps.Size(75, 30)
-);
+  const redmarkerImage = new kakao.maps.MarkerImage(
+    "assets/marker/red-marker.svg",
+    new kakao.maps.Size(75, 30)
+  );
+
+  initmap();
+};
+
 
 // 초기 지도 화면 설정 및 infoWindow 닫기
 function initMap() {
