@@ -27,6 +27,12 @@ window.getCurrentLocation = function () {
           const markerContent = document.createElement("div");
           markerContent.className = "custom-marker";
           markerContent.style.transform = `rotate(${userDirection}deg)`;
+          
+          if (window.innerWidth <= 768) {
+          map.setLevel(4);
+        } else {
+          map.setLevel(3);
+        }
 
           currentLocationMarker = new kakao.maps.Marker({
             map: map,
@@ -38,11 +44,6 @@ window.getCurrentLocation = function () {
           currentLocationMarker.setPosition(userLocation);
         }
 
-        if (window.innerWidth <= 768) {
-          map.setLevel(4);
-        } else {
-          map.setLevel(3);
-        }
         // 지도 중심 이동
         if (isAutoCentering) {
           map.setCenter(userLocation);
