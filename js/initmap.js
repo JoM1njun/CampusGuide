@@ -34,3 +34,11 @@ function initMap() {
   });
   setupMapClickEvent();
 }
+
+// 줌 레벨 변경 시 애니메이션을 부드럽게 적용
+kakao.maps.event.addListener(map, 'zoom_changed', function() {
+  const currentLevel = map.getLevel();
+  
+  // 줌 레벨에 따라 애니메이션을 부드럽게 처리
+  map.setLevel(currentLevel, { animate: true });
+});
