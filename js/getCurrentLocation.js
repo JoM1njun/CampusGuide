@@ -1,7 +1,7 @@
 let isAutoCentering = true; // 지속적인 지도 중심 이동 막기 위한 용도
-let buttonHideTimeout;
-let isTouchDragging = false;
-let isDragging = false;
+let buttonHideTimeout; // 드래그 멈추면 버튼을 숨기기 위한 용도 
+let isTouchDragging = false; // 모바일에서 드래그 구분을 위한 용도
+let isDragging = false; // 데스크탑에서 드래그 용도
 let locationFound = false;
 let currentLocationMarker = null;
 
@@ -20,7 +20,7 @@ window.getCurrentLocation = function () {
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(
-      // 위치를 실시간으로 업데이트
+      // 버튼 누르면 현재 위치 가져오기 (위치 권한 요청)
       function (position) {
         let lat = position.coords.latitude; // 현재 위도
         let lng = position.coords.longitude; // 현재 경도
