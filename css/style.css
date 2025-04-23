@@ -409,7 +409,7 @@
     .category-buttons {
         display: flex;
         position: absolute;
-        top: calc(var(--vh, 1vh) * 8);
+        top: calc(var(--vh, 1vh) * 9);
         left: 1.5vw;
         gap: 5px;
         width: 100%;
