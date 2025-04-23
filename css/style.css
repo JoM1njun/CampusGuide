@@ -510,7 +510,7 @@
         visibility: visible;
         opacity: 1;
         transform: translateX(0); /* 메뉴 열기 */
-        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s;
+        transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0;
     }
 
     #place-buttons button {
