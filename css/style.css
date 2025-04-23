@@ -472,7 +472,6 @@
     }
 
     #place-buttons {
-        display: none;
         position: absolute;
         top: calc(var(--vh, 1vh) * 30);
         right: 0px;
@@ -499,7 +498,12 @@
         /* 세로 스크롤 O */
         z-index: 4;
         scroll-behavior: smooth;
-        transform: translateX(0);
+
+        display: none;
+        transform: translateX(100%); /* 메뉴를 오른쪽에 숨기기 */
+        oapcity: 0;
+        visibility: hidden;
+        transition: transform 0.3s ease; /* 부드러운 열기/닫기 효과 */
     }
 
     #place-buttons button {
@@ -513,6 +517,15 @@
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
+    }
+
+    /* 메뉴가 보이도록 하는 클래스 */
+    #place-buttons.show {
+        display: block;
+        transform: translateX(0); /* 메뉴 열기 */
+        opacity: 1;
+        visibility: visible;
+        transition: transform 0.3s ease, opacity 0.3s ease;
     }
 
     #place-buttons button:hover {
