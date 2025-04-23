@@ -416,6 +416,7 @@
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
+        white-space: nowrap;
         z-index: 2;
     }
 
@@ -434,7 +435,7 @@
 
     .category-buttons img {
         width: 12px;
-        heigh: 12px
+        height: 12px;
         margin-right: 6px;
         align-items: center;
         justify-content: center;
@@ -787,7 +788,7 @@
 
     .category-buttons img {
         width: 16px;
-        heigh: 16px
+        height: 16px;
         margin-right: 8px;
         align-items: center;
         justify-content: center;
