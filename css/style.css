@@ -389,6 +389,8 @@
 /*         flex: 1; */
         border: none;
         outline: none;
+        align-items: center;
+        justify-content: center;
         width: calc(100% * 0.8125); /* 크기에 맞춰 공간도 줄이기 */
         padding: 0px;
         font-size: 16px;
