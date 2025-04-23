@@ -370,7 +370,7 @@
     }
 
     .search-container {
-        display: none;
+        display: flex;
         position: absolute;
         top: calc(var(--vh, 1vh) * 11);
         left: 50%;
@@ -472,7 +472,7 @@
     }
 
     #place-buttons {
-        display: flex;
+        display: none;
         position: absolute;
         top: calc(var(--vh, 1vh) * 30);
         right: 0px;
