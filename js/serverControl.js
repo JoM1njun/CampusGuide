@@ -1,17 +1,17 @@
 let loadingTimeout;
 
 // 각 기능 버튼에 따른 API 호출
-document.querySelector("#searchInput").addEventListener("click", () => {
-  button.addEventListener("click", () => {
-    const searchQuery = document.querySelector("#searchInput").value;  // 검색창에서 입력된 값
-    const apiEndpoint = "/api/db-status";  // data-api 속성에서 API 경로 가져오기
-    
-    if (searchQuery.trim()) {  // 검색어가 비어 있지 않으면
-      loadAPI(`${apiEndpoint}?q=${encodeURIComponent(searchQuery)}`);  // 검색어를 API에 쿼리로 전송
+document.querySelector("#searchInput").addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const searchQuery = event.target.value;
+    const apiEndpoint = "/api/db-status"; // 필요 시 data-api로 받아도 됨
+
+    if (searchQuery.trim()) {
+      loadAPI(`${apiEndpoint}?q=${encodeURIComponent(searchQuery)}`);
     } else {
       alert("검색어를 입력해주세요.");
     }
-  });
+  }
 });
 
 document.querySelectorAll(".category_place").forEach(button => {
