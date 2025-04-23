@@ -392,6 +392,7 @@
         padding: 0px;
         font-size: 13px;
         border-radius: 25px;
+        box-sizing: border-box;
         outline: none;
     }
 
