@@ -500,7 +500,7 @@
         scroll-behavior: smooth;
 
         visibility: hidden;
-        oapcity: 0;
+        opacity: 0;
         transform: translateX(100%); /* 메뉴를 오른쪽에 숨기기 */
         transition: transform 0.3s ease, opacity 0.3s ease, visibility 0s linear 0.3s; /* 부드러운 열기/닫기 효과 */
     }
