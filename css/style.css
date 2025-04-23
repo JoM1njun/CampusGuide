@@ -413,7 +413,7 @@
         top: calc(var(--vh, 1vh) * 9);
         left: 1.5vw;
         gap: 5px;
-        width: calc(100% - 1.5vw);
+        width: calc(100% - 2vw);
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
         scrollbar-width: none;
