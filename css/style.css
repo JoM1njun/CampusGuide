@@ -386,9 +386,10 @@
     }
 
     .search-container input {
-        flex: 1;
+/*         flex: 1; */
         border: none;
         outline: none;
+        width: calc(100% * 0.8125); /* 크기에 맞춰 공간도 줄이기 */
         padding: 0px;
         font-size: 16px;
         transform: scale(0.8125);
