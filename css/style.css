@@ -370,7 +370,7 @@
     }
 
     .search-container {
-        display: flex;
+        display: none;
         position: absolute;
         top: calc(var(--vh, 1vh) * 11);
         left: 50%;
