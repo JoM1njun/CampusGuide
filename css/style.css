@@ -413,7 +413,7 @@
         position: absolute;
         top: calc(var(--vh, 1vh) * 9);
 /*         left: 1.5vw; */
-        padding: 0 1.5vw;
+        padding-inline: 1.5vw;
         gap: 5px;
         width: 100%;
         overflow-x: auto;
