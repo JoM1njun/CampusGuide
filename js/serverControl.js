@@ -14,7 +14,6 @@ document.querySelectorAll("#searchInput").forEach(button => {
   });
 });
 
-
 document.querySelectorAll("category_place").forEach(button => {
   button.addEventListener("click", () => {
     const apiEndpoint = button.dataset.api;
