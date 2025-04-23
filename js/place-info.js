@@ -1,6 +1,4 @@
 let isInfoVisible = false;
-const menuButton = document.getElementById("menu-button");
-const menuPanel = document.getElementById("place-buttons");
 
 // place button 클릭 시 정보 표시
 function getLocation(place) {
@@ -79,7 +77,3 @@ function getLocation(place) {
       });
   }
 }
-
-menuButton.addEventListener("click", () => {
-  menuPanel.classList.toggle("show");
-});
