@@ -393,6 +393,7 @@
         padding: 0px;
         font-size: 16px;
         transform: scale(0.8125);
+        transform-origin: left center;
         border-radius: 25px;
         outline: none;
     }
