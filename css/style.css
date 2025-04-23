@@ -429,9 +429,9 @@
     }
 
     .category-buttons img {
-        width: 11px;
-        heigh: 11px
-        margin-right: 4px;
+        width: 12px;
+        heigh: 12px
+        margin-right: 6px;
         align-items: center;
         justify-content: center;
     }
@@ -774,7 +774,7 @@
     .category-buttons img {
         width: 16px;
         heigh: 16px
-        margin-right: 6px;
+        margin-right: 8px;
         align-items: center;
         justify-content: center;
     }
@@ -1062,6 +1062,11 @@ body {
 .info-window .coordinates {
     margin-top: 10px;
     color: #666;
+}
+
+#floor-info,
+#major-info :: -webkit-scrollbar {
+    display: none;
 }
 
 // 스타일 (CSS)에서 마커 회전 관련
