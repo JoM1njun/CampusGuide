@@ -34,11 +34,15 @@ function loadAPI(endpoint) {
 }
 
 // 각 기능 버튼에 따른 API 호출
-document.querySelector("#openMapButton").addEventListener("click", () => {
+document.querySelector(".place").addEventListener("click", () => {
   loadAPI('/api/places');
 });
 
-document.querySelector("#searchButton").addEventListener("click", function() {
-  const query = document.querySelector("#searchInput").value;
-  loadAPI(`/api/search?q=${query}`);
+document.querySelectorAll("category_place").forEach(button => {
+  button.addEventListener("click", () => {
+    const apiEndpoint = button.dataset.api;
+    const query = button.dataset.query; // 버튼별로 설정된 추가 데이터 추출
+    loadAPI(`${apiEndpoint}?q=${query}`); // API 호출 시 파라미터 포함
+  });
 });
+
