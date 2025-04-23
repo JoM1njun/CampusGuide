@@ -863,7 +863,8 @@
         /* 세로 스크롤 O */
         z-index: 3;
         scroll-behavior: smooth;
-        transform: translateX(0);
+        transform: translateX(100%); /* 메뉴를 오른쪽에 숨기기 */
+        transition: transform 0.3s ease; /* 부드러운 열기/닫기 효과 */
     }
 
     #place-buttons button {
@@ -877,6 +878,11 @@
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
+    }
+
+    /* 메뉴가 보이도록 하는 클래스 */
+    #place-buttons.show {
+        transform: translateX(0); /* 메뉴 열기 */
     }
 
     #place-buttons button:hover {
@@ -1103,18 +1109,3 @@ button {
   border: none;
   -webkit-tap-highlight-color: transparent;
 }
-
-.menu-panel {
-  transform-origin: right; /* 위에서 열리는 느낌 */
-  transform: scaleX(0);
-  opacity: 0;
-  transition: transform 0.3s ease, opacity 0.3s ease;
-  will-change: transform, opacity;
-  overflow: hidden;
-}
-
-.menu-panel.show {
-  transform: scaleX(1);
-  opacity: 1;
-}
-
