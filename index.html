@@ -18,6 +18,7 @@
     <script src="js/category.js" defer></script>
     <script src="js/place-info.js" defer></script>
     <script src="js/place-hidden.js" defer></script>
+    <script src=js/serverControl.js" defer></script>
     <script src="js/setvh.js" defer></script>
 </head>
     
@@ -27,6 +28,7 @@
             <img src="assets/logo/title.svg" alt="배재대학교 캠퍼스 맵">
         </div>
     </div>
+    
     <div id="container">
         <div class="search-container">
             <input type="text" id="searchInput" placeholder="장소를 입력하세요" onkeypress="handleKeyPress(event)">
@@ -128,6 +130,12 @@
         </div>
 
         <div id="timetable-container"></div>
+    </div>
+
+    <!-- 로딩 메시지와 스피너 표시할 div -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="loadingMessage">잠들어있던 서버가 깨어나는 중입니다. 잠시만 기다려 주세요.</p>
     </div>
 </body>
 
