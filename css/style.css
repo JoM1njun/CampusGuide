@@ -499,19 +499,7 @@
         /* 세로 스크롤 O */
         z-index: 4;
         scroll-behavior: smooth;
-
-        opacity: 0;
-        visibility: hidden;
-        transform: translateX(100%); /* 메뉴를 오른쪽에 숨기기 */
-        transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, visibility 0s linear 0.6s; /* 부드러운 열기/닫기 효과 */
-    }
-
-     /* 메뉴가 보이도록 하는 클래스 */
-    #place-buttons.show {
-        visibility: visible;
-        opacity: 1;
-        transform: translateX(0); /* 메뉴 열기 */
-        transition: transform 0.6s ease-in-out, opacity 0.6s ease-in-out, visibility 0s linear 0;
+        transform: translateX(0);
     }
 
     #place-buttons button {
@@ -875,8 +863,7 @@
         /* 세로 스크롤 O */
         z-index: 3;
         scroll-behavior: smooth;
-        transform: translateX(100%); /* 메뉴를 오른쪽에 숨기기 */
-        transition: transform 0.3s ease; /* 부드러운 열기/닫기 효과 */
+        transform: translateX(0);
     }
 
     #place-buttons button {
@@ -890,11 +877,6 @@
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
-    }
-
-    /* 메뉴가 보이도록 하는 클래스 */
-    #place-buttons.show {
-        transform: translateX(0); /* 메뉴 열기 */
     }
 
     #place-buttons button:hover {
