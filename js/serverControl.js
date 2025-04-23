@@ -1,10 +1,10 @@
 let loadingTimeout;
 
 // 각 기능 버튼에 따른 API 호출
-document.querySelectorAll("#searchInput").forEach(button => {
+document.querySelector("#searchInput").addEventListener("click", () => {
   button.addEventListener("click", () => {
     const searchQuery = document.querySelector("#searchInput").value;  // 검색창에서 입력된 값
-    const apiEndpoint = button.dataset.api;  // data-api 속성에서 API 경로 가져오기
+    const apiEndpoint = "/api/db-status";  // data-api 속성에서 API 경로 가져오기
     
     if (searchQuery.trim()) {  // 검색어가 비어 있지 않으면
       loadAPI(`${apiEndpoint}?q=${encodeURIComponent(searchQuery)}`);  // 검색어를 API에 쿼리로 전송
@@ -14,9 +14,9 @@ document.querySelectorAll("#searchInput").forEach(button => {
   });
 });
 
-document.querySelectorAll("category_place").forEach(button => {
+document.querySelectorAll(".category_place").forEach(button => {
   button.addEventListener("click", () => {
-    const apiEndpoint = button.dataset.api;
+    const apiEndpoint = "/api/db-status";
     const query = button.dataset.query; // 버튼별로 설정된 추가 데이터 추출
     loadAPI(`${apiEndpoint}?q=${query}`); // API 호출 시 파라미터 포함
   });
