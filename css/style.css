@@ -1103,3 +1103,18 @@ button {
   border: none;
   -webkit-tap-highlight-color: transparent;
 }
+
+.menu-panel {
+  transform-origin: right; /* 위에서 열리는 느낌 */
+  transform: scaleX(0);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+  overflow: hidden;
+}
+
+.menu-panel.show {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
