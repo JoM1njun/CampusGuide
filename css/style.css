@@ -423,6 +423,12 @@
         z-index: 2;
     }
 
+    .category-buttons::after {
+        content: "";
+        flex-shrink: 0; /* 스크롤할 수 있도록 추가 */
+        width: 1.5vw;  /* 여백 추가 */
+    }
+
     /* 카테고리 버튼 크기 및 모양 */
     .category-buttons button {
         background: white;
