@@ -85,18 +85,28 @@ async function wakeServerIfNeeded() {
     return false;
 }
 
+function showOverlay(visible) {
+  const overlay = document.getElementById("loadingOverlay");
+  overlay.style.display = visible ? "flex" : "none";
+}
+
 // 어떤 기능 버튼을 눌렀을 때
 document.querySelectorAll(".category_place").forEach(button => {
     button.addEventListener("click", async () => {
-        const isAwake = await wakeServerIfNeeded();
-        if (!isAwake) return;
+        showOverlay(true);
 
-        // 서버가 깨어났다면 이 아래에서 원하는 기능 호출
-        fetch("https://campusguide-back.onrender.com/api/db-status")
-            .then(res => res.json())
-            .then(data => {
-                console.log("데이터 응답:", data);
-                // 원하는 처리
-            });
+        const isAwake = await wakeServerIfNeeded();
+        if (!isAwake) {
+            showOverlay(false);
+            return;
+        }
+
+        const res = await fetch("https://campusguide-back.onrender.com/api/db-status");
+        const data = await res.json();
+
+        // 서버 응답 처리
+        console.log(data);
+
+        showOverlay(false); // 완료 후 숨기기
     });
 });
