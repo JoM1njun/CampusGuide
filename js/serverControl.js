@@ -55,9 +55,28 @@
 //     });
 // }
 
+function showOverlay(visible) {
+  const overlay = document.getElementById("loadingOverlay");
+  overlay.style.display = visible ? "flex" : "none";
+}
+
 async function wakeServerIfNeeded() {
     const maxRetries = 10;
     let attempts = 0;
+
+    // 서버 상태가 이미 깨어있는지 먼저 확인
+    try {
+        const res = await fetch("https://campusguide-back.onrender.com/ping");
+        if (res.ok) {
+            const result = await res.json();
+            if (result.status === "alive") {
+                // 이미 서버가 깨어 있으면 바로 true 반환
+                return true;
+            }
+        }
+    } catch (e) {
+        // 네트워크 오류가 발생하면 서버가 잠들어 있을 가능성 있음
+    }
 
     while (attempts < maxRetries) {
         try {
@@ -66,7 +85,7 @@ async function wakeServerIfNeeded() {
             if (res.ok) {
                 const result = await res.json();
                 if (result.status === "alive") {
-                    // 서버가 깨어있으면 종료
+                    // 서버가 깨어 있으면 종료
                     return true;
                 }
             }
@@ -75,7 +94,7 @@ async function wakeServerIfNeeded() {
         }
 
         if (attempts === 0) {
-            alert("잠 들어있던 서버가 깨어나는 중입니다. 잠시만 기다려주세요.");
+            showOverlay(true); // 서버 깨우는 중 오버레이 표시
         }
 
         await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
@@ -83,11 +102,6 @@ async function wakeServerIfNeeded() {
     }
 
     return false;
-}
-
-function showOverlay(visible) {
-  const overlay = document.getElementById("loadingOverlay");
-  overlay.style.display = visible ? "flex" : "none";
 }
 
 // 어떤 기능 버튼을 눌렀을 때
