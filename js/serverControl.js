@@ -54,6 +54,7 @@
 //       }
 //     });
 // }
+let isServerWaking = false;
 
 function showOverlay(visible) {
   const overlay = document.getElementById("loadingOverlay");
@@ -61,6 +62,10 @@ function showOverlay(visible) {
 }
 
 async function wakeServerIfNeeded() {
+    if (isServerWaking)
+        return false;
+    isServerWakimg = true;
+
     const maxRetries = 10;
     let attempts = 0;
 
@@ -71,6 +76,7 @@ async function wakeServerIfNeeded() {
             const result = await res.json();
             if (result.status === "alive") {
                 // 이미 서버가 깨어 있으면 바로 true 반환
+                isServerWaking = false;
                 return true;
             }
         }
@@ -86,6 +92,7 @@ async function wakeServerIfNeeded() {
                 const result = await res.json();
                 if (result.status === "alive") {
                     // 서버가 깨어 있으면 종료
+                    isServerWaking = false;
                     return true;
                 }
             }
@@ -101,6 +108,7 @@ async function wakeServerIfNeeded() {
         attempts++;
     }
 
+    isServerWaking = false;
     return false;
 }
 
@@ -124,4 +132,27 @@ document.querySelectorAll(".category_place").forEach(button => {
                 // 추가 처리
             });
     });
+});
+
+// 엔터 키 입력 시 처리
+document.querySelector("#searchInput").addEventListener("keydown", async (event) => {
+    if (event.key === "Enter") { // 엔터 키가 눌렸을 때
+        const isAwake = await wakeServerIfNeeded();
+        if (!isAwake) {
+            showOverlay(false); // 서버가 깨어나지 않으면 오버레이 숨기기
+            return;
+        }
+
+        isServerWaking = false; // 서버가 깨어나면 플래그를 되돌림
+        showOverlay(false); // 오버레이 숨기기
+
+        // 검색 기능 실행
+        const searchTerm = document.querySelector("#searchInput").value;
+        fetch(`/api/db-status?query=${searchTerm}`)
+            .then(res => res.json())
+            .then(data => {
+                console.log("검색 결과:", data);
+                // 검색 결과 처리
+            });
+    }
 });
