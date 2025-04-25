@@ -101,12 +101,13 @@ document.querySelectorAll(".category_place").forEach(button => {
             return;
         }
 
-        const res = await fetch("https://campusguide-back.onrender.com/api/db-status");
-        const data = await res.json();
-
-        // 서버 응답 처리
-        console.log(data);
-
-        showOverlay(false); // 완료 후 숨기기
+        // 서버가 깨어난 후 원하는 작업 처리
+        showOverlay(false); // 오버레이 숨기기
+        fetch("/api/db-status") 
+            .then(res => res.json())
+            .then(data => {
+                console.log("서버 응답 데이터:", data);
+                // 추가 처리
+            });
     });
 });
