@@ -103,7 +103,7 @@ document.querySelectorAll(".category_place").forEach(button => {
 
         // 서버가 깨어난 후 원하는 작업 처리
         showOverlay(false); // 오버레이 숨기기
-        fetch("/api/db-status") 
+        fetch("https://campusguide-back.onrender.com/api/db-status") 
             .then(res => res.json())
             .then(data => {
                 console.log("서버 응답 데이터:", data);
