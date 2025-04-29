@@ -68,10 +68,10 @@ function searchLocation() {
               let content = `
                     <div class="info-window">
                         <h4 style="
-                        font-size: ${mobile ? "12px" : "14px"};
+                        font-size: ${mobile ? "12px" : "15px"};
                         ">${place.name}</h4>
                         <p style="
-                        font-size: ${mobile ? "10px" : "12px"};
+                        font-size: ${mobile ? "10px" : "13px"};
                         ">${place.etc} </p>
                     </div>`;
 
