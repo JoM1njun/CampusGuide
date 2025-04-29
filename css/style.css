@@ -638,6 +638,7 @@
         padding: 10px;
         font-size: 11px;
         font-family: Arial, sans-serif;
+        white-space: normal;
     }
 
     .info-window h4 {
