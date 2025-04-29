@@ -1053,8 +1053,19 @@
 
     .info-window h4 {
         color: #0073e6;
-        font-size: 18px;
+        font-size: 16px;
         margin: 0;
+    }
+
+    .info-window p {
+        color: #555;
+        font-size: 14px;
+    }
+
+    .info-window img {
+        width: 100px;
+        height: 100px;
+        border-radius: 8px;
     }
 
     .info-window .timetable-container {
@@ -1187,16 +1198,6 @@ body {
     min-height: 10px;
     display: flex;
     align-items: center;
-}
-
-.info-window p {
-    color: #555;
-}
-
-.info-window img {
-    width: 100px;
-    height: 100px;
-    border-radius: 8px;
 }
 
 .info-window .coordinates {
