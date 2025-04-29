@@ -628,8 +628,10 @@
 
     .info-window {
         background-color: white;
-        width: 140px;
-        height: 80px;
+        min-width: 100px;
+        max-width: 140px;
+        min-height: 40px;
+        max-height: 80px;
         border-radius: 15px;
         padding: 10px;
         font-size: 11px;
