@@ -34,8 +34,8 @@ function getLocation(place) {
           if (places && places.length > 0) {
             places.forEach((place, index) => {
               document.getElementById("place-name").textContent = `${place.name} ${place.alias}`;
-              document.getElementById("floor-info").textContent = `${place.floor}`;
-              document.getElementById("major-info").textContent = `${place.major}`;
+              document.getElementById("floor-info").innerHTML = `${place.floor}`;
+              document.getElementById("major-info").innerHTML = `${place.major}`;
 
               // === 이미지 표시 ===
               const aliasLower = place.alias.toLowerCase(); // 예: P → p
@@ -74,6 +74,7 @@ function getLocation(place) {
       })
       .catch((err) => {
         console.error(`[${place}] API 호출 오류`, err);
+        alert("정보를 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.");
       });
   }
 }
