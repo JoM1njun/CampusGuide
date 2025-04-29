@@ -138,7 +138,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: calc(var(--vh, 1vh) * 12);
+        top: calc(var(--vh, 1vh) * 11);
         right: 10px;
         width: 7px;
         height: 2px;
