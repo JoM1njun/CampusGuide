@@ -1047,24 +1047,18 @@
         max-height: 100px;
         border-radius: 15px;
         padding: 10px;
+        font-size: 11px;
         font-family: Arial, sans-serif;
     }
 
     .info-window h4 {
         color: #0073e6;
-        font-size: 14px;
+        font-size: 12px;
         margin: 0;
     }
 
     .info-window p {
-        color: #555;
-        font-size: 12px;
-    }
-
-    .info-window img {
-        width: 100px;
-        height: 100px;
-        border-radius: 8px;
+        font-size: 10px;
     }
 
     .info-window .timetable-container {
