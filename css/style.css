@@ -293,9 +293,9 @@
     .info-window {
         background-color: white;
         min-width: 100px;
-        max-width: 140px;
+        max-width: 150px;
         min-height: 40px;
-        max-height: 80px;
+        max-height: 90px;
         border-radius: 15px;
         padding: 10px;
         font-family: Arial, sans-serif;
@@ -631,9 +631,9 @@
     .info-window {
         background-color: white;
         min-width: 100px;
-        max-width: 140px;
+        max-width: 150px;
         min-height: 40px;
-        max-height: 80px;
+        max-height: 90px;
         border-radius: 15px;
         padding: 10px;
         font-size: 11px;
