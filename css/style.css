@@ -123,6 +123,14 @@
         transition: background-color 0.3s ease;
     }
 
+    .category-buttons img {
+        width: 12px;
+        height: 12px;
+        margin-right: 5px;
+        align-items: center;
+        justify-content: center;
+    }
+
     .category-buttons button:hover {
         background-color: lightgrey;
     }
@@ -130,7 +138,7 @@
     /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
     #menu-button {
         position: absolute;
-        top: calc(var(--vh, 1vh) * 17);
+        top: calc(var(--vh, 1vh) * 15);
         right: 10px;
         width: 7px;
         height: 2px;
@@ -693,6 +701,46 @@
 
     #recent-button:hover {
         background-color: rgba(201, 201, 201, 0.6);
+    }
+
+    /* 로딩 오버레이 (화면을 가리는 투명 배경) */
+    .loading-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5); /* 투명한 검정 배경 */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        visibility: hidden; /* 기본적으로 숨김 */
+        z-index: 1000;
+    }
+
+    /* 로딩 스피너 */
+    .spinner {
+        border: 4px solid #f3f3f3; /* 밝은 회색 */
+        border-top: 4px solid #3498db; /* 파란색 */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    /* 스피너 회전 애니메이션 */
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* 로딩 메시지 스타일 */
+    #loadingMessage {
+        color: white;
+        font-size: 16px;
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
     }
 }
 
