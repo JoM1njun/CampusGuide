@@ -50,10 +50,10 @@ function searchPlaces(category) {
             let content = `
                     <div class="info-window">
                         <h4 style="
-                        font-size: ${mobile ? "12px" : "18px"};
+                        font-size: ${mobile ? "12px" : "16px"};
                         ">${place.name}</h4>
                         <p style="
-                        font-size: ${mobile ? "10px" : "16px"};
+                        font-size: ${mobile ? "10px" : "14px"};
                         ">${place.etc} </p>
                     </div>`;
 
