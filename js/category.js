@@ -49,8 +49,12 @@ function searchPlaces(category) {
 
             let content = `
                     <div class="info-window">
-                        <h4>${place.name}</h4>
-                        <p>${place.etc}</p>
+                        <h4 style="
+                        font-size: ${mobile ? "12px" : "18px"};
+                        ">${place.name}</h4>
+                        <p style="
+                        font-size: ${mobile ? "10px" : "16px"};
+                        ">${place.etc} </p>
                     </div>`;
 
             let infoWindow = new kakao.maps.InfoWindow({
