@@ -92,10 +92,10 @@
     .category-buttons {
         display: flex;
         position: absolute;
-        top: calc(var(--vh, 1vh) * 9);
+        top: calc(var(--vh, 1vh) * 10);
 /*         left: 1.5vw; */
         padding-inline: 1.5vw;
-        gap: 5px;
+        gap: 3px;
         width: 100%;
         overflow-x: auto;
         -webkit-overflow-scrolling: touch;
@@ -171,7 +171,7 @@
         /* 각 버튼 사이의 공간 */
         width: 50vw;
         /* vw = 현재 화면의 너비 */
-        height: calc(100vh - 270px);
+        height: calc(100vh - 220px);
         max-width: 450px;
         /* 버튼들의 최대 너비 설정 */
         justify-content: flex-start;
