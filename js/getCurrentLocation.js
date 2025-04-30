@@ -55,6 +55,7 @@ window.getCurrentLocation = function () {
 
         if (!locationFound) {
           locationFound = true;
+          map.setCenter(userLocation);
           alert("현재 위치를 찾았습니다!");
         }
       },
