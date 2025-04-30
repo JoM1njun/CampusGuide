@@ -189,6 +189,8 @@
         z-index: 4;
         scroll-behavior: smooth;
         transform: translateX(0);
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
     }
 
     #place-buttons button {
@@ -607,6 +609,8 @@
         z-index: 4;
         scroll-behavior: smooth;
         transform: translateX(0);
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
     }
 
     #place-buttons button {
