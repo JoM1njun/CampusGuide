@@ -28,7 +28,7 @@
         right: 3vw;
         display: flex;
         align-items: center;
-        width: 28px;
+        width: 27px;
         height: 27px;
         background: white;
         /* 둥근 버튼 */
@@ -44,8 +44,7 @@
         cursor: pointer;
         font-size: 9px;
         margin-top: 4px;
-        padding: 0px;
-        align-items: center;
+        padding: 2px;
         outline: none;
     }
 
