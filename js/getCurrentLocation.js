@@ -9,7 +9,7 @@ let currentLocationMarker = null;
 window.getCurrentLocation = function () {
   console.log("위치 찾기 시작");
   var currentmarkersrc = "assets/marker/current-marker.svg";
-  var imageSize = new kakao.maps.Size(70, 30); // 마커이미지의 크기
+  var imageSize = new kakao.maps.Size(60, 20); // 마커이미지의 크기
   var imageOffset = {
     offset: new kakao.maps.Point(35, 15),
   }; // 좌표에 맞게 이미지 출력
