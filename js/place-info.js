@@ -78,3 +78,19 @@ function getLocation(place) {
       });
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    const placeButtons = document.getElementById("place-buttons");
+
+    placeButtons.addEventListener("touchstart", (e) => {
+        e.stopPropagation();
+    }, { passive: true });
+
+    placeButtons.addEventListener("touchmove", (e) => {
+        e.stopPropagation();
+    }, { passive: true });
+
+    placeButtons.addEventListener("touchend", (e) => {
+        e.stopPropagation();
+    }, { passive: true });
+});
