@@ -3,6 +3,7 @@ let buttonHideTimeout; // 드래그 멈추면 버튼을 숨기기 위한 용도
 let isTouchDragging = false; // 모바일에서 드래그 구분을 위한 용도
 let isDragging = false; // 데스크탑에서 드래그 용도
 let locationFound = false;
+let followMode = true;
 let currentLocationMarker = null;
 
 window.getCurrentLocation = function () {
@@ -19,7 +20,7 @@ window.getCurrentLocation = function () {
   let errorCooldown = false; // 중복 alert 방지
 
   if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(
+    navigator.geolocation.watchPosition(
       // 버튼 누르면 현재 위치 가져오기 (위치 권한 요청)
       function (position) {
         let lat = position.coords.latitude; // 현재 위도
@@ -27,16 +28,16 @@ window.getCurrentLocation = function () {
         let userLocation = new kakao.maps.LatLng(lat, lng);
 
         if (!currentLocationMarker) {
+          if (window.innerWidth <= 768) {
+            map.setLevel(3);
+          } else {
+            map.setLevel(2);
+          }
+          
           const markerContent = document.createElement("div");
           markerContent.className = "custom-marker";
           markerContent.style.transform = `rotate(${userDirection}deg)`;
           
-          if (window.innerWidth <= 768) {
-          map.setLevel(3);
-        } else {
-          map.setLevel(2);
-        }
-
           currentLocationMarker = new kakao.maps.Marker({
             map: map,
             position: userLocation,
@@ -48,7 +49,7 @@ window.getCurrentLocation = function () {
         }
 
         // 지도 중심 이동
-        if (isAutoCentering) {
+        if (followMode) {
           map.setCenter(userLocation);
         }
 
@@ -57,8 +58,14 @@ window.getCurrentLocation = function () {
           alert("현재 위치를 찾았습니다!");
         }
       },
-      function () {
-        alert("위치 정보를 가져올 수 없습니다.");
+      function (err) {
+        if (!errorCooldown) {
+          console.warn("위치 정보를 가져올 수 없습니다.", err);
+          errorCooldown = true;
+          setTimeout(() => {
+            errorCooldown = false;
+          }, 10000); // 10초에 한 번만 경고 표시
+        }
       },
       {
         enableHighAccuracy: true, // 더 정확한 위치 정보 사용
@@ -77,6 +84,7 @@ const mapContainer = document.getElementById("map");
 
 mapContainer.addEventListener("touchstart", () => {
   isTouchDragging = false;
+  followMode = false;
 });
 
 mapContainer.addEventListener("touchmove", () => {
@@ -89,12 +97,6 @@ mapContainer.addEventListener("touchend", () => {
 
     recenterButton.style.display = "block"; 
 
-    // clearTimeout(autoCenterTimeout);
-    // autoCenterTimeout = setTimeout(() => {
-    //   isAutoCentering = true;
-    //   recenterButton.style.display = "none";
-    // }, 10000);
-
     // 버튼은 예를 들어 3초 후에 숨기기
     clearTimeout(buttonHideTimeout);
     buttonHideTimeout = setTimeout(() => {
@@ -105,6 +107,7 @@ mapContainer.addEventListener("touchend", () => {
 
 mapContainer.addEventListener("mousedown", () => {
   isDragging = false;
+  followMode = false;
 });
 
 mapContainer.addEventListener("mousemove", () => {
