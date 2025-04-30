@@ -253,7 +253,13 @@
         font-size: 15px;
         overflow-y: auto;
         scroll-behavior: smooth;
+        scrollbar-height: none;
         white-space: pre-line;
+    }
+
+    #floor-info::-webkit-scrollbar,
+    #major-info::-webkit-scrollbar {
+        display: none;
     }
 
     #image-container {
