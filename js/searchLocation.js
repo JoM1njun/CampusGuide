@@ -257,7 +257,7 @@ function displayTimetable(timetable, container) {
   }
 }
 
-function ToggleButton(toggle-button, place-buttons) {
+function ToggleButton(toggle-button, place-buttons, menuwidth = '25vw') {
   const toggleBtn = document.getElementById("toggle-button");
   const placeButtons = document.getElementById("place-buttons");
   let isOpen = false;
@@ -270,6 +270,6 @@ function ToggleButton(toggle-button, place-buttons) {
     toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
     
     // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
-    toggleBtn.style.right = isOpen ? "50vw" : "0";
+    toggleBtn.style.right = isOpen ? menuwidth : "0";
   });
 }
