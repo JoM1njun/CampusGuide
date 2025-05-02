@@ -589,7 +589,8 @@
     #place-buttons {
         display: none;
         position: absolute;
-        top: calc(var(--vh, 1vh) * 30);
+/*         top: calc(var(--vh, 1vh) * 30); */
+        top: 0px;
         right: 0px;
         background: white;
         /* 버튼 배경을 흰색으로 유지 */
