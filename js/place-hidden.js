@@ -94,3 +94,7 @@ function ToggleButton(toggle-button, place-buttons, menuwidth = '25vw') {
     toggleBtn.style.right = isOpen ? menuwidth : "0";
   });
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+    setupToggleMenu("#toggle-menu", "#place-buttons");
+  });
