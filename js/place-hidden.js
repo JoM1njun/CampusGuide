@@ -12,6 +12,13 @@ function closeMenu() {
   isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
 }
 
+function openMenu() {
+  placeButtons.classList.add("active");
+  toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
+  toggleBtn.style.right = "26.5vw"; // 메뉴가 열리면 위치 이동
+  isOpen = true; // 메뉴 열림 상태
+}
+
 function setupMapClickEvent() {
   if (!map) {
     console.error("Map is not initialized yet.");
@@ -25,16 +32,11 @@ function setupMapClickEvent() {
 }
   
 toggleBtn.addEventListener("click", () => {
-  closeMenu();
-  
-  isOpen = !isOpen;
-  placeButtons.classList.toggle("active");
-
-  // 버튼 방향 바꾸기
-  toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
-    
-  // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
-  toggleBtn.style.right = isOpen ? "26.5vw" : "0";
+  if (isOpen) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
 });
 
 // 문서 클릭 시 외부 클릭 감지 → 메뉴/정보창 닫기
