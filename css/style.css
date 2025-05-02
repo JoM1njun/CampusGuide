@@ -197,23 +197,22 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         overflow-y: auto;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
-        margin-top: 20px;
+        margin-top: calc(var(--vh, 1vh) * 11);
     }
 
     #place-buttons button {
         background: white;
         width: 100%;
-        height: 40px;
+        height: 50px;
         border: 1px solid #ddd;
         border-radius: 25px;
-        /* 버튼의 모서리를 둥글게 만드는 용도 */
         padding: 8px 20px;
-        font-size: 13px;
+        font-size: 15px;
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
@@ -636,7 +635,7 @@
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 15px;
         overflow-y: auto;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
@@ -647,7 +646,7 @@
     #place-buttons button {
         background: white;
         width: 100%;
-        height: 40px;
+        height: 50px;
         border: 1px solid #ddd;
         border-radius: 25px;
         padding: 8px 20px;
@@ -1051,14 +1050,26 @@
         transform: translateX(0);
     }
 
+    .scroll-buttons {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        margin-top: calc(var(--vh, 1vh) * 11);
+    }
+
     #place-buttons button {
         background: white;
-        height: 15vh;
+        width: 100%;
+        height: 50px;
         border: 1px solid #ddd;
         border-radius: 25px;
-        /* 버튼의 모서리를 둥글게 만드는 용도 */
         padding: 8px 20px;
-        font-size: 18px;
+        font-size: 15px;
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
