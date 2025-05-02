@@ -1,32 +1,32 @@
-// place button의 목록을 숨기고, 보이기 위함
-document.addEventListener("DOMContentLoaded", function () {
-  const menuButton = document.getElementById("menu-button");
-  const placeMenu = document.getElementById("place-buttons");
-  const placeinfo = document.getElementById("place-info");
+// // place button의 목록을 숨기고, 보이기 위함
+// document.addEventListener("DOMContentLoaded", function () {
+//   const menuButton = document.getElementById("menu-button");
+//   const placeMenu = document.getElementById("place-buttons");
+//   const placeinfo = document.getElementById("place-info");
 
-  placeMenu.classList.add("hidden");
-  placeinfo.classList.add("hidden");
+//   placeMenu.classList.add("hidden");
+//   placeinfo.classList.add("hidden");
 
-  menuButton.addEventListener("click", () => {
-    if (placeMenu.style.display === "none" || placeMenu.style.display === "") {
-        // 장소 목록 보이기
-        placeMenu.style.display = "flex";
-        placeinfo.style.display = "none"; // 정보창은 숨기기
-        isInfoVisible = false;
-      } else {
-        // 장소 목록 숨기기
-        placeMenu.style.display = "none";
-      }
-  });
+//   menuButton.addEventListener("click", () => {
+//     if (placeMenu.style.display === "none" || placeMenu.style.display === "") {
+//         // 장소 목록 보이기
+//         placeMenu.style.display = "flex";
+//         placeinfo.style.display = "none"; // 정보창은 숨기기
+//         isInfoVisible = false;
+//       } else {
+//         // 장소 목록 숨기기
+//         placeMenu.style.display = "none";
+//       }
+//   });
 
   document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.getElementById("toggle-button");
-  const placeButtons = document.getElementById("place-buttons");
-  let isOpen = false;
+    const placeButtons = document.getElementById("place-buttons");
+    let isOpen = false;
 
-  toggleBtn.addEventListener("click", () => {
-    isOpen = !isOpen;
-    placeButtons.classList.toggle("active");
+    toggleBtn.addEventListener("click", () => {
+      isOpen = !isOpen;
+      placeButtons.classList.toggle("active");
 
     // 버튼 방향 바꾸기
     toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
