@@ -615,7 +615,7 @@
         width: 50vw;
         /* vw = 현재 화면의 너비 */
 /*         height: calc(100vh - 38vh); */
-        height: calc(var(--vh, 1vh) * 100)
+        height: calc(var(--vh, 1vh) * 100);
         max-width: 450px;
         /* 버튼들의 최대 너비 설정 */
         justify-content: flex-start;
@@ -640,6 +640,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
+        padding-bottom: 20px;
         margin-top: calc(var(--vh, 1vh) * 1);
     }
 
