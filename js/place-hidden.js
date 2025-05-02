@@ -4,6 +4,14 @@ const toggleBtn = document.getElementById("toggle-button");
 const placeButtons = document.getElementById("place-buttons");
 let isOpen = false;
 
+function closeMenu() {
+  placeButtons.classList.remove("active");
+  placeInfo.style.display = "none";
+  toggleBtn.style.right = "0";
+  toggleBtn.innerHTML = "&lt;";
+  isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
+}
+
 function setupMapClickEvent() {
   if (!map) {
     console.error("Map is not initialized yet.");
@@ -13,11 +21,7 @@ function setupMapClickEvent() {
   kakao.maps.event.addListener(map, "click", function () {
     console.log("✅ 지도 클릭됨!");
 
-    placeButtons.classList.remove("active");
-    placeInfo.style.display = "none";
-    toggleBtn.style.right = "0";
-    toggleBtn.innerHTML = "&lt;";
-    isOpen = false;
+    closeMenu();
   });
 }
   
@@ -39,13 +43,11 @@ document.addEventListener("click", function (event) {
   const isClickInsideButton = toggleBtn.contains(event.target);
 
   if (!isClickInsideMenu && !isClickInsideInfo && !isClickInsideButton) {
-    placeButtons.classList.remove("active");
-    placeInfo.style.display = "none";
-    toggleBtn.style.right = "0";
-    toggleBtn.innerHTML = "&lt;";
-    isOpen = false;
+    closeMenu();
   }
 });
+
+setupMapClickEvent();
   
   // 지도 클릭 시 장소 목록을 숨기기
   // if (map) {
