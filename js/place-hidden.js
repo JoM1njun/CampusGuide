@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // 메뉴와 정보창 숨기기
       placeButtons.classList.remove("active");
-      placeInfo.style.display = "none"; // 정보창 숨기기
+      placeinfo.style.display = "none"; // 정보창 숨기기
       toggleBtn.style.right = "0"; // 버튼 위치 초기화
     });
   } else {
