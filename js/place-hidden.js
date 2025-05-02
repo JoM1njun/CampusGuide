@@ -96,5 +96,5 @@ function ToggleButton(toggle-button, place-buttons, menuwidth = '25vw') {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    setupToggleMenu("#toggle-menu", "#place-buttons");
+    ToggleButton("#toggle-menu", "#place-buttons");
   });
