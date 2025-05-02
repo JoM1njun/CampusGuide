@@ -188,9 +188,34 @@
         /* 세로 스크롤 O */
         z-index: 4;
         scroll-behavior: smooth;
-        transform: translateX(0);
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-y;
+        transform: translateX(100);
+        transition: transform 0.3s ease;
+    }
+
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
+    /* 토글 버튼 - 오른쪽 중앙 고정 */
+    #toggle-button {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 15;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 10px 0 0 10px;
+        padding: 15px 10px;
+        font-size: 15px;
+        cursor: pointer;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+    }
+
+    #toggle-button:hover {
+        background-color: lightgrey;
     }
 
     .scroll-buttons {
@@ -647,7 +672,34 @@
         /* 세로 스크롤 O */
         z-index: 4;
         scroll-behavior: smooth;
-        transform: translateX(0);
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
+    /* 토글 버튼 - 오른쪽 중앙 고정 */
+    #toggle-button {
+        position: fixed;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        z-index: 15;
+        background-color: white;
+        border: 1px solid #ccc;
+        border-right: none;
+        border-radius: 10px 0 0 10px;
+        padding: 15px 10px;
+        font-size: 15px;
+        cursor: pointer;
+        box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
+        transition: right 0.3s ease;
+    }
+
+    #toggle-button:hover {
+        background-color: lightgrey;
     }
 
     .scroll-buttons {
