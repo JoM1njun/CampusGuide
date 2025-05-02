@@ -1,5 +1,5 @@
 const menuButton = document.getElementById("menu-button");
-const placeinfo = document.getElementById("place-info");
+const placeInfo = document.getElementById("place-info");
 const toggleBtn = document.getElementById("toggle-button");
 const placeButtons = document.getElementById("place-buttons");
 let isOpen = false;
@@ -14,7 +14,7 @@ function setupMapClickEvent() {
     console.log("✅ 지도 클릭됨!");
 
     placeButtons.classList.remove("active");
-    placeinfo.style.display = "none";
+    placeInfo.style.display = "none";
     toggleBtn.style.right = "0";
     toggleBtn.innerHTML = "&lt;";
     isOpen = false;
@@ -40,7 +40,7 @@ document.addEventListener("click", function (event) {
 
   if (!isClickInsideMenu && !isClickInsideInfo && !isClickInsideButton) {
     placeButtons.classList.remove("active");
-    placeinfo.style.display = "none";
+    placeInfo.style.display = "none";
     toggleBtn.style.right = "0";
     toggleBtn.innerHTML = "&lt;";
     isOpen = false;
