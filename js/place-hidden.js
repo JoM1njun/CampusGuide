@@ -40,7 +40,7 @@ document.addEventListener("click", function (event) {
 
   if (!isClickInsideMenu && !isClickInsideInfo && !isClickInsideButton) {
     placeButtons.classList.remove("active");
-    placeInfo.style.display = "none";
+    placeinfo.style.display = "none";
     toggleBtn.style.right = "0";
     toggleBtn.innerHTML = "&lt;";
     isOpen = false;
