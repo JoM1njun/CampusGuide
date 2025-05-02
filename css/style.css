@@ -1058,6 +1058,7 @@
 
     /* 오른쪽의 각 장소 버튼 */
     #place-buttons {
+        display: block;
         position: absolute;
         top: 105px;
         right: 0px;
