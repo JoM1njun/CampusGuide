@@ -660,6 +660,23 @@
         background-color: lightgrey;
     }
 
+    .logo-buttons {
+        display: flex;
+        gap: 15px; /* 버튼 사이 간격 */
+        padding: 10px;
+        justify-content: flex-start; /* 왼쪽 정렬, center도 가능 */
+    }
+
+    .logo-buttons a img {
+        width: 25px;
+        height: 25px;
+        transition: transform 0.2s ease;
+    }
+    
+    .logo-buttons a:hover img {
+        filter: brightness(0) invert(1);
+    }
+
     #place-info {
         position: fixed;
         top: calc(var(--vh, 1vh) * 30);
