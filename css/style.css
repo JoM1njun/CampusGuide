@@ -193,9 +193,22 @@
         touch-action: pan-y;
     }
 
+    .scroll-button {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        margin-top: 20px;
+    }
+
     #place-buttons button {
         background: white;
-        height: 15vh;
+        width: 100%;
+        height: 40px;
         border: 1px solid #ddd;
         border-radius: 25px;
         /* 버튼의 모서리를 둥글게 만드는 용도 */
@@ -617,15 +630,13 @@
         z-index: 4;
         scroll-behavior: smooth;
         transform: translateX(0);
-        -webkit-overflow-scrolling: touch;
-        touch-action: pan-y;
     }
 
     .scroll-button {
         flex: 1;
         display: flex;
         flex-direction: column;
-        gap: 10px;
+        gap: 20px;
         overflow-y: auto;
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
@@ -636,7 +647,7 @@
     #place-buttons button {
         background: white;
         width: 100%;
-        height: 50px;
+        height: 40px;
         border: 1px solid #ddd;
         border-radius: 25px;
         padding: 8px 20px;
