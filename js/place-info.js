@@ -25,12 +25,13 @@ function getLocation(place) {
       .then((response) => response.json())
       .then((data) => {
         console.log("Received : ", data);
-        const places = data.places;
-        console.log("Places : ", places);
 
         if (data.error) {
           alert(data.error);
+          return;
         } else {
+          const places = data.places;
+          console.log("Places : ", places);
           if (places && places.length > 0) {
             places.forEach((place, index) => {
               document.getElementById("place-name").textContent = `${place.name} ${place.alias}`;
