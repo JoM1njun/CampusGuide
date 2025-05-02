@@ -622,6 +622,7 @@
     }
 
     #place-buttons button {
+        top: calc(var(--vh, 1vh) * 30);
         background: white;
         height: 15vh;
         border: 1px solid #ddd;
