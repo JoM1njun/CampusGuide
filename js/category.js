@@ -54,7 +54,10 @@ function searchPlaces(category) {
                         ">${place.name}</h4>
                         <p style="
                         font-size: ${mobile ? "10px" : "13px"};
-                        ">${place.etc} </p>
+                        ">
+                        운영시간 : ${place.hours} <br>
+                        전화번호 : <a href="tel:${place.phone.replace(/-/g, ' ')}"> ${place.phone} </a><br>
+                        위치 : ${place.location} </p>
                     </div>`;
 
             let infoWindow = new kakao.maps.InfoWindow({
