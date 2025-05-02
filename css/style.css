@@ -202,7 +202,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
-        margin-top: calc(var(--vh, 1vh) * 11);
+        margin-top: calc(var(--vh, 1vh) * 1);
     }
 
     #place-buttons button {
@@ -214,7 +214,7 @@
         padding: 8px 20px;
         font-size: 14px;
         cursor: pointer;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
     }
 
@@ -615,7 +615,7 @@
         width: 50vw;
         /* vw = 현재 화면의 너비 */
 /*         height: calc(100vh - 38vh); */
-        height: 90%;
+        height: 100%;
         max-width: 450px;
         /* 버튼들의 최대 너비 설정 */
         justify-content: flex-start;
@@ -652,7 +652,7 @@
         padding: 8px 20px;
         font-size: 15px;
         cursor: pointer;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
     }
 
@@ -1086,7 +1086,7 @@
         padding: 8px 20px;
         font-size: 17px;
         cursor: pointer;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
     }
 
