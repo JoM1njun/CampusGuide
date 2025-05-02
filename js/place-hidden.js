@@ -14,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
     
     // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
-    toggleBtn.style.right = isOpen ? "26vw" : "0";
+    toggleBtn.style.right = isOpen ? "26.5vw" : "0";
   });
   // 지도 클릭 시 장소 목록과 정보창을 숨깁니다.
   if (map) {
