@@ -1058,7 +1058,6 @@
 
     /* 오른쪽의 각 장소 버튼 */
     #place-buttons {
-        display: none;
         position: absolute;
         top: 105px;
         right: 0px;
@@ -1088,7 +1087,6 @@
     }
 
     #place-buttons.active {
-        display: block;
         transform: translateX(0); /* 화면 안으로 슬라이드 */
     }
 
