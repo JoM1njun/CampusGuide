@@ -1111,7 +1111,7 @@
     /* 오른쪽의 각 장소 버튼 */
     #place-buttons {
         display: block;
-        position: absolute;
+        position: fixed;
         top: 105px;
         right: 0px;
         background: white;
