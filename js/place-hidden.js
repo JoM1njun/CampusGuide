@@ -19,7 +19,7 @@
 //       }
 //   });
 
-  document.addEventListener("DOMContentLoaded", function () => {
+  document.addEventListener("DOMContentLoaded", () => {
     const toggleBtn = document.getElementById("toggle-button");
     const placeButtons = document.getElementById("place-buttons");
     let isOpen = false;
