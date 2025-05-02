@@ -1108,8 +1108,8 @@
         transition: transform 0.2s ease;
     }
     
-    .logo-buttons:hover {
-        background-color: lightgrey;
+    .logo-buttons img:hover {
+        filter: grayscale(100%) brightness(1.2);
         /* filter: brightness(0.6) invert(1.2); */
     }
 
