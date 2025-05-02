@@ -202,6 +202,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
+        padding-bottom: 20px;
         margin-top: calc(var(--vh, 1vh) * 1);
     }
 
@@ -220,6 +221,24 @@
 
     #place-buttons button:hover {
         background-color: lightgray;
+    }
+
+    .logo-buttons {
+        display: flex;
+        gap: 15px; /* 버튼 사이 간격 */
+        padding: 10px;
+        justify-content: flex-start; /* 왼쪽 정렬, center도 가능 */
+    }
+
+    .logo-buttons a img {
+        width: 25px;
+        height: 25px;
+        transition: transform 0.2s ease;
+    }
+    
+    .logo-buttons:hover {
+        background-color: lightgrey;
+        /* filter: brightness(0.6) invert(1.2); */
     }
 
     #place-info {
