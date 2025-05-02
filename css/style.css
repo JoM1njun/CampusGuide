@@ -1108,8 +1108,9 @@
         transition: transform 0.2s ease;
     }
     
-    .logo-buttons a:hover img {
-        filter: brightness(0.6) invert(1.2);
+    .logo-buttons:hover {
+        background-color: lightgrey;
+        /* filter: brightness(0.6) invert(1.2); */
     }
 
     #place-info {
