@@ -34,7 +34,7 @@ toggleBtn.addEventListener("click", () => {
   toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
     
   // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
-  toggleBtn.style.right = isOpen ? "27vw" : "0";
+  toggleBtn.style.right = isOpen ? "26.5vw" : "0";
 });
 
 // 문서 클릭 시 외부 클릭 감지 → 메뉴/정보창 닫기
