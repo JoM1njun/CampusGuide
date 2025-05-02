@@ -18,6 +18,22 @@ document.addEventListener("DOMContentLoaded", function () {
         placeMenu.style.display = "none";
       }
   });
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const toggleBtn = document.getElementById("toggle-button");
+  const placeButtons = document.getElementById("place-buttons");
+  let isOpen = false;
+
+  toggleBtn.addEventListener("click", () => {
+    isOpen = !isOpen;
+    placeButtons.classList.toggle("active");
+
+    // 버튼 방향 바꾸기
+    toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
+    
+    // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
+    toggleBtn.style.right = isOpen ? "25vw" : "0";
+  });
   
   // 지도 클릭 시 장소 목록을 숨기기
   // if (map) {
@@ -77,24 +93,3 @@ function setupMapClickEvent() {
     console.log("Hidden");
   });
 }
-
-function ToggleButton(toggle-button, place-buttons, menuwidth = '25vw') {
-  const toggleBtn = document.getElementById("toggle-button");
-  const placeButtons = document.getElementById("place-buttons");
-  let isOpen = false;
-
-  toggleBtn.addEventListener("click", () => {
-    isOpen = !isOpen;
-    placeButtons.classList.toggle("active");
-
-    // 버튼 방향 바꾸기
-    toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
-    
-    // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
-    toggleBtn.style.right = isOpen ? menuwidth : "0";
-  });
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    ToggleButton("#toggle-menu", "#place-buttons");
-  });
