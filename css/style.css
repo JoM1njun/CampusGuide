@@ -640,7 +640,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
-        margin-top: calc(var(--vh, 1vh) * 3);
+        margin-top: calc(var(--vh, 1vh) * 1);
     }
 
     #place-buttons button {
@@ -962,6 +962,7 @@
         font-size: 18px;
         padding: 8px;
         outline: none;
+        margin-top: calc(var(--vh, 1vh) * 1);
     }
 
     /* 카테고리 (편의점 등등) 버튼 */
