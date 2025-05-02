@@ -1,32 +1,14 @@
-// // place button의 목록을 숨기고, 보이기 위함
-// document.addEventListener("DOMContentLoaded", function () {
-//   const menuButton = document.getElementById("menu-button");
-//   const placeMenu = document.getElementById("place-buttons");
-//   const placeinfo = document.getElementById("place-info");
-
-//   placeMenu.classList.add("hidden");
-//   placeinfo.classList.add("hidden");
-
-//   menuButton.addEventListener("click", () => {
-//     if (placeMenu.style.display === "none" || placeMenu.style.display === "") {
-//         // 장소 목록 보이기
-//         placeMenu.style.display = "flex";
-//         placeinfo.style.display = "none"; // 정보창은 숨기기
-//         isInfoVisible = false;
-//       } else {
-//         // 장소 목록 숨기기
-//         placeMenu.style.display = "none";
-//       }
-//   });
-
-  document.addEventListener("DOMContentLoaded", () => {
-    const toggleBtn = document.getElementById("toggle-button");
-    const placeButtons = document.getElementById("place-buttons");
-    let isOpen = false;
-
-    toggleBtn.addEventListener("click", () => {
-      isOpen = !isOpen;
-      placeButtons.classList.toggle("active");
+// place button의 목록을 숨기고, 보이기 위함
+document.addEventListener("DOMContentLoaded", function () {
+  const menuButton = document.getElementById("menu-button");
+  const placeinfo = document.getElementById("place-info");
+  const toggleBtn = document.getElementById("toggle-button");
+  const placeButtons = document.getElementById("place-buttons");
+  let isOpen = false;
+  
+  toggleBtn.addEventListener("click", () => {
+    isOpen = !isOpen;
+    placeButtons.classList.toggle("active");
 
     // 버튼 방향 바꾸기
     toggleBtn.innerHTML = isOpen ? "&gt;" : "&lt;";
@@ -34,6 +16,36 @@
     // 버튼 위치 이동 (메뉴가 열리면 왼쪽으로 밀기)
     toggleBtn.style.right = isOpen ? "25vw" : "0";
   });
+  // 지도 클릭 시 장소 목록과 정보창을 숨깁니다.
+  if (map) {
+    kakao.maps.event.addListener(map, "click", function () {
+      console.log("Map Click");
+
+      // 메뉴와 정보창 숨기기
+      placeButtons.classList.remove("active");
+      placeInfo.style.display = "none"; // 정보창 숨기기
+      toggleBtn.style.right = "0"; // 버튼 위치 초기화
+    });
+  } else {
+    console.error("Map is not initialized yet.");
+  }
+
+  // 메뉴와 정보창 클릭 시 메뉴와 정보창 숨기기
+  document.addEventListener("click", function (event) {
+    const isClickInsideMenu = placeButtons.contains(event.target);
+    const isClickInsideInfo = placeInfo.contains(event.target);
+    const isClickInsideButton = toggleBtn.contains(event.target);
+    
+    // 메뉴와 정보창 외부를 클릭한 경우에만 메뉴와 정보창 숨김
+    if (!isClickInsideMenu && !isClickInsideInfo && !isClickInsideButton) {
+      // 메뉴와 정보창 숨기기
+      placeButtons.classList.remove("active");
+      placeInfo.style.display = "none"; // 정보창 숨기기
+      toggleBtn.style.right = "0"; // 버튼 위치 초기화
+    }
+  });
+});
+
   
   // 지도 클릭 시 장소 목록을 숨기기
   // if (map) {
@@ -51,7 +63,7 @@
   // } else {
   //   console.error("Map is not initialized yet.");
   // }
-});
+  // });
 
 // 장소 정보창을 닫을 때 호출되는 함수
 function closeInfo() {
@@ -61,35 +73,35 @@ function closeInfo() {
   showPlaceButtons();
 }
 
-// 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
-function showPlaceButtons() {
-  const placeButtons = document.getElementById("place-buttons");
-  if (!isInfoVisible) {
-    // 정보창이 보이지 않으면 장소 목록을 표시
-    placeButtons.style.display = "flex";
-  } else {
-    // 정보창이 열려 있다면 장소 목록을 숨깁니다.
-    placeButtons.style.display = "none";
-  }
-}
+// // 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
+// function showPlaceButtons() {
+//   const placeButtons = document.getElementById("place-buttons");
+//   if (!isInfoVisible) {
+//     // 정보창이 보이지 않으면 장소 목록을 표시
+//     placeButtons.style.display = "flex";
+//   } else {
+//     // 정보창이 열려 있다면 장소 목록을 숨깁니다.
+//     placeButtons.style.display = "none";
+//   }
+// }
 
-function setupMapClickEvent() {
-  if (!map) {
-    console.error("Map is not initialized yet.");
-    return;
-  }
+// function setupMapClickEvent() {
+//   if (!map) {
+//     console.error("Map is not initialized yet.");
+//     return;
+//   }
 
-  kakao.maps.event.addListener(map, "click", function () {
-    console.log("Map Click");
+//   kakao.maps.event.addListener(map, "click", function () {
+//     console.log("Map Click");
     
-    const placeMenu = document.getElementById("place-buttons");
-    const placeInfo = document.getElementById("place-info");
+//     const placeMenu = document.getElementById("place-buttons");
+//     const placeInfo = document.getElementById("place-info");
 
-    // 장소 목록과 정보창을 숨김
-    placeMenu.style.display = "none";
-    placeInfo.style.display = "none";
+//     // 장소 목록과 정보창을 숨김
+//     placeMenu.style.display = "none";
+//     placeInfo.style.display = "none";
 
-    isInfoVisible = false;
-    console.log("Hidden");
-  });
-}
+//     isInfoVisible = false;
+//     console.log("Hidden");
+//   });
+// }
