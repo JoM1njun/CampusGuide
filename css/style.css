@@ -1059,17 +1059,16 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
-        margin-top: calc(var(--vh, 1vh) * 11);
     }
 
     #place-buttons button {
         background: white;
         width: 100%;
-        height: 50px;
+        height: 60px;
         border: 1px solid #ddd;
         border-radius: 25px;
         padding: 8px 20px;
-        font-size: 15px;
+        font-size: 17px;
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         transition: background-color 0.3s ease;
