@@ -1108,7 +1108,7 @@
         transition: right 0.3s ease;
     }
 
-    #toggle-button button:hover {
+    #toggle-button:hover {
         background-color: lightgrey;
     }
 
@@ -1137,7 +1137,7 @@
         transition: background-color 0.3s ease;
     }
 
-    #place-buttons button:hover {
+    #place-buttons butto:hover {
         background: lightgray;
     }
 
