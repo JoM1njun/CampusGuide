@@ -650,23 +650,6 @@
         transform: translateX(0);
     }
 
-    #open-menu {
-        position: fixed;
-        top: 20px;
-        left: 20px;
-        z-index: 15;
-        font-size: 24px;
-    }
-
-    #close-menu {
-        align-self: flex-end;
-        font-size: 24px;
-        background: none;
-        border: none;
-        cursor: pointer;
-        margin-bottom: 10px;
-    }
-
     .scroll-buttons {
         flex: 1;
         display: flex;
@@ -1100,7 +1083,28 @@
         /* 세로 스크롤 O */
         z-index: 3;
         scroll-behavior: smooth;
-        transform: translateX(0);
+        transform: translateX(100%);
+    }
+
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
+    #open-menu {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        z-index: 15;
+        font-size: 24px;
+    }
+
+    #close-menu {
+        align-self: flex-end;
+        font-size: 24px;
+        background: none;
+        border: none;
+        cursor: pointer;
+        margin-bottom: 10px;
     }
 
     .scroll-buttons {
