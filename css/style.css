@@ -1087,6 +1087,7 @@
     }
 
     #place-buttons.active {
+        display: block;
         transform: translateX(0); /* 화면 안으로 슬라이드 */
     }
 
