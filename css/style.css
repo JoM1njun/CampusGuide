@@ -621,7 +621,7 @@
         touch-action: pan-y;
     }
 
-    #place-buttons button {
+    #place-buttons .scroll-button {
         margin-top: 50px;
         background: white;
         height: 15vh;
@@ -635,7 +635,7 @@
         transition: background-color 0.3s ease;
     }
 
-    #place-buttons button:hover {
+    #place-buttons .scroll-button:hover {
         background-color: lightgrey;
     }
 
