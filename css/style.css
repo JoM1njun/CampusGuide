@@ -622,12 +622,22 @@
     }
 
     .scroll-button {
-        margin-top: 50px;
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        overflow-y: auto;
+        scroll-behavior: smooth;
+        -webkit-overflow-scrolling: touch;
+        touch-action: pan-y;
+        margin-top: 20px;
+    }
+
+    #place-buttons button {
         background: white;
         height: 15vh;
         border: 1px solid #ddd;
         border-radius: 25px;
-        /* 버튼의 모서리를 둥글게 만드는 용도 */
         padding: 8px 20px;
         font-size: 15px;
         cursor: pointer;
@@ -635,7 +645,7 @@
         transition: background-color 0.3s ease;
     }
 
-    .scroll-button:hover {
+    #place-buttons button:hover {
         background-color: lightgrey;
     }
 
