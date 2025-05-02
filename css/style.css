@@ -1075,6 +1075,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
+        margin-top: calc(var(--vh, 1vh) * 1);
     }
 
     #place-buttons button {
