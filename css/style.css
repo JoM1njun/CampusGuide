@@ -1180,13 +1180,13 @@
         border: 1px solid #ddd;
         border-radius: 25px;
         padding: 8px 20px;
-        font-size: 17px;
+        font-size: 20px;
         cursor: pointer;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
         transition: background-color 0.3s ease;
     }
 
-    #place-buttons butto:hover {
+    #place-buttons button:hover {
         background: lightgray;
     }
 
