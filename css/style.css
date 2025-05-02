@@ -640,7 +640,7 @@
         scroll-behavior: smooth;
         -webkit-overflow-scrolling: touch;
         touch-action: pan-y;
-        margin-top: calc(var(--vh, 1vh) * 5);
+        margin-top: calc(var(--vh, 1vh) * 3);
     }
 
     #place-buttons button {
@@ -674,7 +674,7 @@
     }
     
     .logo-buttons a:hover img {
-        filter: brightness(0) invert(1);
+        filter: brightness(0.6) invert(1.2);
     }
 
     #place-info {
@@ -1107,7 +1107,7 @@
     }
     
     .logo-buttons a:hover img {
-        filter: brightness(0) invert(1);
+        filter: brightness(0.6) invert(1.2);
     }
 
     #place-info {
