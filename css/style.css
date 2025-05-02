@@ -1139,10 +1139,6 @@
         transition: transform 0.3s ease;
     }
 
-    #place-buttons.active {
-        transform: translateX(0); /* 화면 안으로 슬라이드 */
-    }
-
     /* 토글 버튼 - 오른쪽 중앙 고정 */
     #toggle-button {
         position: fixed;
@@ -1194,6 +1190,10 @@
         background: lightgray;
     }
 
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
     .logo-buttons {
         display: flex;
         gap: 15px; /* 버튼 사이 간격 */
@@ -1221,7 +1221,7 @@
         border-radius: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 4;
-        width: 70%;
+        width: 25vw;
         height: 83%;
         max-width: 500px;
         display: none;
