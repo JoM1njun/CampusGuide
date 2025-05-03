@@ -83,17 +83,17 @@ function closeInfo() {
   showPlaceButtons();
 }
 
-// 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
-function showPlaceButtons() {
-  const placeButtons = document.getElementById("place-buttons");
-  if (!isInfoVisible) {
-    // 정보창이 보이지 않으면 장소 목록을 표시
-    placeButtons.style.display = "flex";
-  } else {
-    // 정보창이 열려 있다면 장소 목록을 숨깁니다.
-    placeButtons.style.display = "none";
-  }
-}
+// // 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
+// function showPlaceButtons() {
+//   const placeButtons = document.getElementById("place-buttons");
+//   if (!isInfoVisible) {
+//     // 정보창이 보이지 않으면 장소 목록을 표시
+//     placeButtons.style.display = "flex";
+//   } else {
+//     // 정보창이 열려 있다면 장소 목록을 숨깁니다.
+//     placeButtons.style.display = "none";
+//   }
+// }
 
 // function setupMapClickEvent() {
 //   if (!map) {
