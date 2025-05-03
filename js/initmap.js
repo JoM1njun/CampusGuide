@@ -42,4 +42,5 @@ function initMap() {
   kakao.maps.event.addListener(map, "click", function () {
     infoWindows.forEach((iw) => iw.close());
   });
+  setupMapClickEvent();
 }
