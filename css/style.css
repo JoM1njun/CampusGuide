@@ -701,7 +701,12 @@
         font-size: 15px;
         cursor: pointer;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
+        transition: 0.3s ease;
+    }
+
+    /* 버튼이 활성화되었을 때 */
+    #toggle-button.active {
+        transform: translateX(-50vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
     }
 
     #toggle-button:hover {
