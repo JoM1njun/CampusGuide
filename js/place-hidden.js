@@ -17,7 +17,7 @@ function openMenu() {
   toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
   // 화면 너비가 768px 이하이면 모바일로 간주
   if (window.innerWidth <= 768) {
-    toggleBtn.style.right = "67vw"; // 모바일용 위치
+    toggleBtn.style.right = "55vw"; // 모바일용 위치
   } else {
     toggleBtn.style.right = "26.5vw"; // 데스크탑용 위치
   }
