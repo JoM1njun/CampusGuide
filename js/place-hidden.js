@@ -5,20 +5,20 @@ const placeButtons = document.getElementById("place-buttons");
 let isOpen = false;
 
 function closeMenu() {
-  placeButtons.style.display = "none";
+  placeButtons.classList.remove("active");
   toggleBtn.style.right = "0";
   toggleBtn.innerHTML = "&lt;";
   isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
   
   if (isInfoVisible) {
     // 정보창이 열려 있으면 닫히면서 메뉴 다시 보이게
-    placeButtons.style.display = "block";
+    placeButtons.classList.add("active");
     //placeButtons.classList.remove("hidden-by-info");
   }
 }
 
 function openMenu() {
-  placeButtons.style.display = "block";
+  placeButtons.classList.add("active");
   toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
   // 화면 너비가 768px 이하이면 모바일로 간주
   if (window.innerWidth <= 768) {
@@ -68,7 +68,7 @@ function openInfo() {
   isInfoVisible = true;
 
   // 메뉴는 숨기기
-  placeButtons.style.display = "none";
+  placeButtons.classList.remove("active");
   //placeButtons.classList.add("hidden-by-info");
 }
 
@@ -77,13 +77,13 @@ function closeInfo() {
   placeInfo.style.display = "none"; // 창을 숨깁니다.
   isInfoVisible = false; // 정보창이 닫혔으므로 상태를 false로 설정
   // 메뉴 목록 다시 보이게
-  placeButtons.style.display = "block";
+  //placeButtons.style.display = "block";
   //placeButtons.classList.remove("hidden-by-info");
 
   if (isOpen) {
     // 메뉴가 열려 있다면 다시 보여줌
-    placeButtons.style.display = "block";
-    //placeButtons.classList.add("active");
+    //placeButtons.style.display = "block";
+    placeButtons.classList.add("active");
   }
 }
 
@@ -91,10 +91,10 @@ function closeInfo() {
 function showPlaceButtons() {
   if (!isInfoVisible) {
     // 정보창이 보이지 않으면 장소 목록을 표시
-    placeButtons.style.display = "block";
+    placeButtons.classList.add("active");
   } else {
     // 정보창이 열려 있다면 장소 목록을 숨깁니다.
-    placeButtons.style.display = "none";
+    placeButtons.classList.remove("active");
     //placeButtons.classList.remove("hidden-by-info");
   }
 }
