@@ -739,6 +739,7 @@
     }
 
     #place-buttons.hidden-by-info {
+        display: none;
         visibility: hidden;
         pointer-events: none;
     }
