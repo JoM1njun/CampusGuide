@@ -81,6 +81,14 @@ function closeInfo() {
   //placeButtons.classList.remove("hidden-by-info");
 }
 
+// place-buttons의 각 버튼 클릭 시 정보창 열기
+placeButtons.addEventListener("click", (event) => {
+  const placeId = event.target.dataset.placeId; // 버튼에 데이터 속성에 장소 ID를 추가했다고 가정
+  if (placeId) {
+    openInfo(placeId);
+  }
+});
+
 // 문서 클릭 시 외부 클릭 감지 → 메뉴/정보창 닫기
 document.addEventListener("click", function (event) {
   const isClickInsideMenu = placeButtons.contains(event.target);
