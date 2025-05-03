@@ -1105,7 +1105,7 @@
         justify-content: flex-start;
         padding: 15px;
         /* 버튼과 지도 사이 여백 */
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0);
         /* 버튼 영역에 그림자 추가 */
         border-radius: 10px;
         overflow-y: auto;
