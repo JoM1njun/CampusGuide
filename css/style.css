@@ -1266,6 +1266,7 @@
         display: none;
         overflow-y: auto;
         scroll-behavior: smooth;
+        pointer-events: none;
         transform: translateX(100);
         transition: opacity 0.3s ease, transform 0.3s ease;
     }
