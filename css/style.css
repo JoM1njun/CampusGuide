@@ -764,6 +764,7 @@
 
     #place-info {
         position: fixed;
+        opacity: 0;
         top: calc(var(--vh, 1vh) * 30);
         right: 0px;
         background-color: white;
@@ -777,6 +778,16 @@
         display: none;
         overflow-y: auto;
         scroll-behavior: smooth;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* 보여질 때 적용할 클래스 */
+    #place-info.visible {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
     }
 
     #place-info .close-btn {
