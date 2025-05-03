@@ -57,7 +57,7 @@ toggleBtn.addEventListener("click", () => {
 setupMapClickEvent();
 
 function openInfo() {
-  placeInfo.style.display = "block";
+  placeInfo.classList.add("visible");
   isInfoVisible = true;
 
   // 메뉴는 숨기기
@@ -73,7 +73,7 @@ function closeInfo() {
   }
   // openMenu();
   
-  placeInfo.style.display = "none"; // 창을 숨깁니다.
+  placeInfo.classList.remove("visible"); // 창을 숨깁니다.
   isInfoVisible = false; // 정보창이 닫혔으므로 상태를 false로 설정
   // 메뉴 목록 다시 보이게
   //placeButtons.style.display = "block";
