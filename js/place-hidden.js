@@ -12,7 +12,8 @@ function closeMenu() {
   
   if (isInfoVisible) {
     // 정보창이 열려 있으면 닫히면서 메뉴 다시 보이게
-    placeButtons.classList.add("active");
+    closeInfo();
+    // placeButtons.classList.add("active");
     //placeButtons.classList.remove("hidden-by-info");
   }
 }
@@ -45,7 +46,7 @@ function setupMapClickEvent() {
 }
   
 toggleBtn.addEventListener("click", () => {
-  if (placeButtons.classList.contains("active")) {
+  if (isOpen) {
     closeMenu();
   } else {
     openMenu();
@@ -65,11 +66,11 @@ function openInfo() {
 
 // 장소 정보창을 닫을 때 호출되는 함수
 function closeInfo() {
-  // if (isOpen) {
-  //   // 메뉴가 열려 있지 않으면 다시 보여줌
-  //   openMenu();
-  // }
-  openMenu();
+  if (!isOpen) {
+    // 메뉴가 열려 있지 않으면 다시 보여줌
+    openMenu();
+  }
+  // openMenu();
   
   placeInfo.style.display = "none"; // 창을 숨깁니다.
   isInfoVisible = false; // 정보창이 닫혔으므로 상태를 false로 설정
