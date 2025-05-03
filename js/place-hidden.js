@@ -50,7 +50,7 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-//setupMapClickEvent();
+setupMapClickEvent();
 
 function openInfo() {
   placeInfo.style.display = "block";
