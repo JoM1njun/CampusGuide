@@ -682,6 +682,7 @@
 
     /* 토글 버튼 - 오른쪽 중앙 고정 */
     #toggle-button {
+        display: block;
         position: fixed;
         top: 50%;
         right: 0;
