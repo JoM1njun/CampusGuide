@@ -13,6 +13,7 @@ function closeMenu() {
 
 function openMenu() {
   placeButtons.classList.add("active");
+  placeButtons.classList.remove("hidden-by-info");
   toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
   // 화면 너비가 768px 이하이면 모바일로 간주
   if (window.innerWidth <= 768) {
