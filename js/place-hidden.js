@@ -6,10 +6,25 @@ let isOpen = false;
 
 function closeMenu() {
   placeButtons.classList.remove("active");
-  placeInfo.style.display = "none";
   toggleBtn.style.right = "0";
   toggleBtn.innerHTML = "&lt;";
   isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
+}
+
+function closeInfo() {
+  placeInfo.style.display = "none";
+  isInfoVisible = false;
+
+  // 메뉴 목록 다시 보이게
+  placeButtons.classList.remove("hidden-by-info");
+}
+
+function openInfo() {
+  placeInfo.style.display = "none";
+  isInfoVisible = true;
+
+  // 메뉴는 숨기기
+  placeButtons.classList.add("hidden-by-info");
 }
 
 function openMenu() {
@@ -33,6 +48,7 @@ function setupMapClickEvent() {
   kakao.maps.event.addListener(map, "click", function () {
     console.log("✅ 지도 클릭됨!");
     closeMenu();
+    closeInfo();
   });
 }
   
@@ -83,17 +99,16 @@ function closeInfo() {
   showPlaceButtons();
 }
 
-// // 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
-// function showPlaceButtons() {
-//   const placeButtons = document.getElementById("place-buttons");
-//   if (!isInfoVisible) {
-//     // 정보창이 보이지 않으면 장소 목록을 표시
-//     placeButtons.style.display = "flex";
-//   } else {
-//     // 정보창이 열려 있다면 장소 목록을 숨깁니다.
-//     placeButtons.style.display = "none";
-//   }
-// }
+// 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
+function showPlaceButtons() {
+  if (!isInfoVisible) {
+    // 정보창이 보이지 않으면 장소 목록을 표시
+    placeButtons.classList.add("hidden-by-info");
+  } else {
+    // 정보창이 열려 있다면 장소 목록을 숨깁니다.
+    placeButtons.classList.remove("hidden-by-info");
+  }
+}
 
 // function setupMapClickEvent() {
 //   if (!map) {
