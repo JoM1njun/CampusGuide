@@ -50,17 +50,6 @@ toggleBtn.addEventListener("click", () => {
   }
 });
 
-// 문서 클릭 시 외부 클릭 감지 → 메뉴/정보창 닫기
-document.addEventListener("click", function (event) {
-  const isClickInsideMenu = placeButtons.contains(event.target);
-  const isClickInsideInfo = placeInfo.contains(event.target);
-  const isClickInsideButton = toggleBtn.contains(event.target);
-
-  if (!isClickInsideMenu && !isClickInsideInfo && !isClickInsideButton) {
-    closeMenu();
-  }
-});
-
 //setupMapClickEvent();
 
 function openInfo() {
@@ -83,7 +72,7 @@ function closeInfo() {
   if (isOpen) {
     // 메뉴가 열려 있다면 다시 보여줌
     //placeButtons.style.display = "block";
-    placeButtons.classList.add("active");
+    openMenu();
   }
 }
 
@@ -98,6 +87,17 @@ function showPlaceButtons() {
     //placeButtons.classList.remove("hidden-by-info");
   }
 }
+
+// 문서 클릭 시 외부 클릭 감지 → 메뉴/정보창 닫기
+document.addEventListener("click", function (event) {
+  const isClickInsideMenu = placeButtons.contains(event.target);
+  const isClickInsideInfo = placeInfo.contains(event.target);
+  const isClickInsideButton = toggleBtn.contains(event.target);
+
+  if (!isClickInsideMenu && !isClickInsideInfo && !isClickInsideButton) {
+    closeMenu();
+  }
+});
   
   // 지도 클릭 시 장소 목록을 숨기기
   // if (map) {
