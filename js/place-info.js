@@ -69,7 +69,6 @@ function getLocation(place) {
               });
             });
             isInfoVisible = true;
-            showPlaceButtons();
           }
         }
       })
