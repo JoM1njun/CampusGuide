@@ -1238,7 +1238,7 @@
         border-radius: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 5;
-        width: 25vw;
+        width: 30vw;
         height: 83%;
         max-width: 500px;
         display: none;
@@ -1294,7 +1294,7 @@
     }
 
     #image-container img {
-        width: 80%;
+        width: 90%;
         height: 70%;
         border-radius: 10px;
     }
