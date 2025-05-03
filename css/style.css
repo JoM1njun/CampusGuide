@@ -706,7 +706,7 @@
 
     /* 버튼이 활성화되었을 때 */
     #toggle-button.active {
-        transform: translateX(-50vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
+        transform: translateX(-57vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
     }
 
     #toggle-button:hover {
@@ -1168,6 +1168,7 @@
 
     /* 토글 버튼 - 오른쪽 중앙 고정 */
     #toggle-button {
+        display: block;
         position: fixed;
         top: 50%;
         right: 0;
@@ -1177,11 +1178,16 @@
         border: 1px solid #ccc;
         border-right: none;
         border-radius: 10px 0 0 10px;
-        padding: 15px 10px;
-        font-size: 20px;
+        padding: 15px 8px;
+        font-size: 15px;
         cursor: pointer;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
+        transition: 0.3s ease;
+    }
+
+    /* 버튼이 활성화되었을 때 */
+    #toggle-button.active {
+        transform: translateX(-26.5vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
     }
 
     #toggle-button:hover {
