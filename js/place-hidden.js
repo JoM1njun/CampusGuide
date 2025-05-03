@@ -67,7 +67,7 @@ function openInfo() {
 
 // 장소 정보창을 닫을 때 호출되는 함수
 function closeInfo() {
-  if (!isOpen) {
+  if (!isOpen || placeButtons.style.display === "none") {
     // 메뉴가 열려 있지 않으면 다시 보여줌
     openMenu();
   }
