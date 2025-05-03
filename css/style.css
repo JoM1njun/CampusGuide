@@ -192,22 +192,33 @@
         transition: transform 0.3s ease;
     }
 
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
     /* 토글 버튼 - 오른쪽 중앙 고정 */
     #toggle-button {
+        display: block;
         position: fixed;
         top: 50%;
         right: 0;
         transform: translateY(-50%);
-        z-index: 15;
+        z-index: 5;
         background-color: white;
         border: 1px solid #ccc;
         border-right: none;
         border-radius: 10px 0 0 10px;
-        padding: 15px 10px;
+        padding: 15px 8px;
         font-size: 15px;
+        font-weight: bold;
         cursor: pointer;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
-        transition: right 0.3s ease;
+        transition: 0.3s ease;
+    }
+
+    /* 버튼이 활성화되었을 때 */
+    #toggle-button.active {
+        transform: translateX(-57vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
     }
 
     #toggle-button:hover {
@@ -244,10 +255,6 @@
         background-color: lightgray;
     }
 
-    #place-buttons.active {
-        transform: translateX(0); /* 화면 안으로 슬라이드 */
-    }
-
     #place-buttons.hidden-by-info {
         visibility: hidden;
         pointer-events: none;
@@ -273,19 +280,29 @@
 
     #place-info {
         position: fixed;
-        top: 28vh;
+        opacity: 0;
+        top: calc(var(--vh, 1vh) * 30);
         right: 0px;
         background-color: white;
-        padding: 20px;
+        padding: 15px;
         border-radius: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-        z-index: 4;
-        width: 75%;
+        z-index: 10;
+        width: 60vw;
         height: 65%;
         max-width: 500px;
-        display: none;
         overflow-y: auto;
         scroll-behavior: smooth;
+        pointer-events: none;
+        transform: translateX(100%);
+        transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+
+    /* 보여질 때 적용할 클래스 */
+    #place-info.active {
+        opacity: 1;
+        transform: translateX(0);
+        pointer-events: auto;
     }
 
     #place-info .close-btn {
@@ -678,6 +695,7 @@
         border-radius: 10px 0 0 10px;
         padding: 15px 8px;
         font-size: 15px;
+        font-weight: bold;
         cursor: pointer;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         transition: 0.3s ease;
@@ -1130,6 +1148,7 @@
         border-radius: 10px 0 0 10px;
         padding: 15px 8px;
         font-size: 15px;
+        font-weight: bold;
         cursor: pointer;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
         transition: 0.3s ease;
