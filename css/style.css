@@ -1012,10 +1012,10 @@
     .search-container {
         position: absolute;
         top: 2vh;
-        right: 80px;
+        right: 50px;
         display: flex;
         align-items: center;
-        width: 400px;
+        width: 350px;
         background: white;
         border-radius: 25px;
         padding: 5px 10px;
