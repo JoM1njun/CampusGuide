@@ -79,18 +79,6 @@ function closeInfo() {
   //placeButtons.classList.remove("hidden-by-info");
 }
 
-// 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
-function showPlaceButtons() {
-  if (!isInfoVisible) {
-    // 정보창이 보이지 않으면 장소 목록을 표시
-    placeButtons.classList.add("active");
-  } else {
-    // 정보창이 열려 있다면 장소 목록을 숨깁니다.
-    placeButtons.classList.remove("active");
-    //placeButtons.classList.remove("hidden-by-info");
-  }
-}
-
 // 문서 클릭 시 외부 클릭 감지 → 메뉴/정보창 닫기
 document.addEventListener("click", function (event) {
   const isClickInsideMenu = placeButtons.contains(event.target);
@@ -101,6 +89,18 @@ document.addEventListener("click", function (event) {
     closeMenu();
   }
 });
+
+// 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
+// function showPlaceButtons() {
+//   if (!isInfoVisible) {
+//     // 정보창이 보이지 않으면 장소 목록을 표시
+//     placeButtons.classList.add("active");
+//   } else {
+//     // 정보창이 열려 있다면 장소 목록을 숨깁니다.
+//     placeButtons.classList.remove("active");
+//     //placeButtons.classList.remove("hidden-by-info");
+//   }
+// }
   
   // 지도 클릭 시 장소 목록을 숨기기
   // if (map) {
