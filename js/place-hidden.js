@@ -15,7 +15,12 @@ function closeMenu() {
 function openMenu() {
   placeButtons.classList.add("active");
   toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
-  toggleBtn.style.right = "26.5vw"; // 메뉴가 열리면 위치 이동
+  // 화면 너비가 768px 이하이면 모바일로 간주
+  if (window.innerWidth <= 768) {
+    toggleBtn.style.right = "51.5vw"; // 모바일용 위치
+  } else {
+    toggleBtn.style.right = "26.5vw"; // 데스크탑용 위치
+  }
   isOpen = true; // 메뉴 열림 상태
 }
 
