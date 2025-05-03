@@ -37,7 +37,7 @@ function setupMapClickEvent() {
 }
   
 toggleBtn.addEventListener("click", () => {
-  if (isOpen) {
+  if (placeButtons.classList.contains("active")) {
     closeMenu();
   } else {
     openMenu();
