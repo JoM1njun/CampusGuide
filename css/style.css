@@ -775,7 +775,6 @@
         width: 60vw;
         height: 65%;
         max-width: 500px;
-        display: none;
         overflow-y: auto;
         scroll-behavior: smooth;
         pointer-events: none;
