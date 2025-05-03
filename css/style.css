@@ -192,10 +192,6 @@
         transition: transform 0.3s ease;
     }
 
-    #place-buttons.active {
-        transform: translateX(0); /* 화면 안으로 슬라이드 */
-    }
-
     /* 토글 버튼 - 오른쪽 중앙 고정 */
     #toggle-button {
         position: fixed;
@@ -246,6 +242,15 @@
 
     #place-buttons button:hover {
         background-color: lightgray;
+    }
+
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
+    #place-buttons.hidden-by-info {
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .logo-buttons {
@@ -676,10 +681,6 @@
         transition: transform 0.3s ease;
     }
 
-    #place-buttons.active {
-        transform: translateX(0); /* 화면 안으로 슬라이드 */
-    }
-
     /* 토글 버튼 - 오른쪽 중앙 고정 */
     #toggle-button {
         display: block;
@@ -731,6 +732,15 @@
 
     #place-buttons button:hover {
         background-color: lightgrey;
+    }
+
+    #place-buttons.active {
+        transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
+    #place-buttons.hidden-by-info {
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .logo-buttons {
@@ -1193,6 +1203,11 @@
 
     #place-buttons.active {
         transform: translateX(0); /* 화면 안으로 슬라이드 */
+    }
+
+    #place-buttons.hidden-by-info {
+        visibility: hidden;
+        pointer-events: none;
     }
 
     .logo-buttons {
