@@ -38,7 +38,9 @@ function setupMapClickEvent() {
   kakao.maps.event.addListener(map, "click", function () {
     console.log("✅ 지도 클릭됨!");
     closeMenu();
-    closeInfo();
+    if (isInfoVisible) {
+      closeInfo();
+    }
   });
 }
   
