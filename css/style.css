@@ -626,27 +626,6 @@
         background: lightgrey;
     }
 
-    /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
-    #menu-button {
-        position: absolute;
-        top: calc(var(--vh, 1vh) * 11);
-        right: 2vw;
-        width: 6px;
-        height: 1px;
-        background: white;
-        border: 1px solid white;
-        padding: 20px 20px;
-        border-radius: 25px;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        cursor: pointer;
-        z-index: 3;
-        transition: background-color 0.3s ease;
-        user-select: none;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
     #place-buttons {
         display: block;
         position: fixed;
@@ -1036,7 +1015,7 @@
         right: 80px;
         display: flex;
         align-items: center;
-        width: 300px;
+        width: 400px;
         background: white;
         border-radius: 25px;
         padding: 5px 10px;
@@ -1104,35 +1083,6 @@
 
     .category-buttons button.active {
         background: lightgrey;
-    }
-
-    /* place 버튼들 한 메뉴에 넣어놓는 것 */
-    #menu-button {
-        position: absolute;
-        top: 2.3vh;
-        right: 10px;
-        width: 15px;
-        height: 10px;
-        background: white;
-        border: 1px solid white;
-        padding: 20px 20px;
-        border-radius: 25px;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        cursor: pointer;
-        z-index: 3;
-        transition: background-color 0.3s ease;
-        user-select: none;
-    }
-
-    #menu-button:hover {
-        background: lightgrey;
-    }
-
-    #menu-button span {
-        font-size: 25px;
-        font-weight: bold;
     }
 
     /* 오른쪽의 각 장소 버튼 */
