@@ -57,6 +57,7 @@ toggleBtn.addEventListener("click", () => {
 setupMapClickEvent();
 
 function openInfo() {
+  placeInfo.style.display = "block";
   placeInfo.classList.add("active");
   isInfoVisible = true;
 
