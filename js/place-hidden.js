@@ -68,11 +68,15 @@ function openInfo() {
 
 // 장소 정보창을 닫을 때 호출되는 함수
 function closeInfo() {
-  const placeInfo = document.getElementById("place-info");
   placeInfo.style.display = "none"; // 창을 숨깁니다.
   isInfoVisible = false; // 정보창이 닫혔으므로 상태를 false로 설정
   // 메뉴 목록 다시 보이게
   placeButtons.classList.remove("hidden-by-info");
+
+  if (isOpen) {
+    // 메뉴가 열려 있다면 다시 보여줌
+    placeButtons.classList.add("active");
+  }
 }
 
 // 메뉴 버튼 클릭 시 장소 목록을 표시하고 정보창 상태 확인
