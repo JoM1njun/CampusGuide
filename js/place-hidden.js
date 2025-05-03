@@ -6,6 +6,7 @@ let isOpen = false;
 
 function closeMenu() {
   placeButtons.classList.remove("active");
+  toggleBtn.classList.remove("active");
   toggleBtn.style.right = "0";
   toggleBtn.innerHTML = "&lt;";
   isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
@@ -21,6 +22,7 @@ function closeMenu() {
 function openMenu() {
   placeButtons.style.display = "block";
   placeButtons.classList.add("active");
+  toggleBtn.classList.add("active");
   toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
   // 화면 너비가 768px 이하이면 모바일로 간주
   if (window.innerWidth <= 768) {
