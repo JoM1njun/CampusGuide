@@ -9,6 +9,11 @@ function closeMenu() {
   toggleBtn.style.right = "0";
   toggleBtn.innerHTML = "&lt;";
   isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
+  
+  if (isInfoVisible) {
+    // 정보창이 열려 있으면 닫히면서 메뉴 다시 보이게
+    placeButtons.classList.remove("hidden-by-info");
+  }
 }
 
 function openMenu() {
@@ -56,7 +61,7 @@ document.addEventListener("click", function (event) {
   }
 });
 
-setupMapClickEvent();
+//setupMapClickEvent();
 
 function openInfo() {
   placeInfo.style.display = "block";
