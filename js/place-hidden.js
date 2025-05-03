@@ -43,7 +43,7 @@ function setupMapClickEvent() {
 }
   
 toggleBtn.addEventListener("click", () => {
-  if (placeButtons.style.display === "block") {
+  if (placeButtons.classList.contains("active")) {
     closeMenu();
   } else {
     openMenu();
