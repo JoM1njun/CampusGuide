@@ -139,31 +139,10 @@
         background-color: lightgrey;
     }
 
-    /* 모바일 메뉴 버튼 클릭 시 active는 되지만, 다시 색 복구 안됨*/
-    #menu-button {
-        position: absolute;
-        top: calc(var(--vh, 1vh) * 11);
-        right: 10px;
-        width: 7px;
-        height: 2px;
-        background: white;
-        border: 1px solid white;
-        padding: 20px 20px;
-        border-radius: 25px;
-        align-items: center;
-        justify-content: center;
-        display: flex;
-        cursor: pointer;
-        z-index: 3;
-        transition: background-color 0.3s ease;
-        user-select: none;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
-    }
-
     #place-buttons {
         display: block;
         position: fixed;
-        top: 28vh;
+        top: 0px;
         right: 0px;
         background: white;
         /* 버튼 배경을 흰색으로 유지 */
@@ -176,19 +155,19 @@
         width: 50vw;
         /* vw = 현재 화면의 너비 */
         height: calc(var(--vh, 1vh) * 100);
-        max-width: 450px;
+        max-width: 60vw;
         /* 버튼들의 최대 너비 설정 */
         justify-content: flex-start;
         padding: 15px;
         /* 버튼과 지도 사이 여백 */
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0);
         /* 버튼 영역에 그림자 추가 */
         border-radius: 10px;
         overflow-y: auto;
         /* 세로 스크롤 O */
-        z-index: 15;
+        z-index: 5;
         scroll-behavior: smooth;
-        transform: translateX(100);
+        transform: translateX(100%);
         transition: transform 0.3s ease;
     }
 
@@ -662,7 +641,7 @@
         justify-content: flex-start;
         padding: 15px;
         /* 버튼과 지도 사이 여백 */
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0);
         /* 버튼 영역에 그림자 추가 */
         border-radius: 10px;
         overflow-y: auto;
@@ -764,7 +743,7 @@
         background-color: white;
         padding: 15px;
         border-radius: 10px;
-        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0);
+        box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 10;
         width: 60vw;
         height: 85%;
