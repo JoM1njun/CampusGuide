@@ -54,17 +54,14 @@
 //       }
 //     });
 // }
-let isServerWaking = false;
 
-function showOverlay(visible) {
-  const overlay = document.getElementById("loadingOverlay");
-  overlay.style.display = visible ? "flex" : "none";
-}
+let isServerWaking = false;
 
 async function wakeServerIfNeeded() {
     if (isServerWaking)
         return false;
-    isServerWakimg = true;
+    
+    isServerWaking = true;
 
     const maxRetries = 10;
     let attempts = 0;
@@ -84,6 +81,7 @@ async function wakeServerIfNeeded() {
         // 네트워크 오류가 발생하면 서버가 잠들어 있을 가능성 있음
     }
 
+    // 서버를 깨우는 중
     while (attempts < maxRetries) {
         try {
             const res = await fetch("https://campusguide-back.onrender.com/ping");
@@ -100,10 +98,12 @@ async function wakeServerIfNeeded() {
             // 실패할 경우 무시하고 retry
         }
 
+        // 첫 번째 시도에서 오버레이를 표시
         if (attempts === 0) {
             showOverlay(true); // 서버 깨우는 중 오버레이 표시
         }
 
+        // 2초 대기 후 재시도
         await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
         attempts++;
     }
@@ -112,47 +112,70 @@ async function wakeServerIfNeeded() {
     return false;
 }
 
+// 로딩 오버레이를 표시하거나 숨기는 함수
+function showOverlay(show) {
+    const overlay = document.getElementById("loadingOverlay");
+    if (show) {
+        overlay.style.display = "flex";  // 오버레이 표시
+    } else {
+        overlay.style.display = "none";  // 오버레이 숨기기
+    }
+}
+
+
 // 어떤 기능 버튼을 눌렀을 때
 document.querySelectorAll(".category_place").forEach(button => {
     button.addEventListener("click", async () => {
-        showOverlay(true);
+      showOverlay(true);
 
-        const isAwake = await wakeServerIfNeeded();
-        if (!isAwake) {
-            showOverlay(false);
-            return;
-        }
+      const isAwake = await wakeServerIfNeeded();
+      if (!isAwake) {
+        showOverlay(false);
+        alert("서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.");
+        return;
+      }
 
-        // 서버가 깨어난 후 원하는 작업 처리
-        showOverlay(false); // 오버레이 숨기기
-        fetch("https://campusguide-back.onrender.com/api/db-status") 
-            .then(res => res.json())
-            .then(data => {
-                console.log("서버 응답 데이터:", data);
-                // 추가 처리
-            });
+      // 서버가 깨어난 후 원하는 작업 처리
+      fetch("https://campusguide-back.onrender.com/api/db-status") 
+        .then(res => res.json())
+        .then(data => {
+            console.log("서버 응답 데이터:", data);
+            // 추가 처리
+        })
+        .catch(e => {
+            console.error("DB 상태 조회 실패:", e);
+            alert("서버에서 데이터를 가져오는 데 실패했습니다.");
+        })
+        .finally(() => showOverlay(false));
     });
 });
 
 // 엔터 키 입력 시 처리
 document.querySelector("#searchInput").addEventListener("keydown", async (event) => {
     if (event.key === "Enter") { // 엔터 키가 눌렸을 때
-        const isAwake = await wakeServerIfNeeded();
-        if (!isAwake) {
-            showOverlay(false); // 서버가 깨어나지 않으면 오버레이 숨기기
-            return;
-        }
+      showOverlay(true);
+      
+      const isAwake = await wakeServerIfNeeded();
+      if (!isAwake) {
+        showOverlay(false); // 서버가 깨어나지 않으면 오버레이 숨기기
+        alert("서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.");
+        return;
+      }
 
-        isServerWaking = false; // 서버가 깨어나면 플래그를 되돌림
-        showOverlay(false); // 오버레이 숨기기
+      isServerWaking = false; // 서버가 깨어나면 플래그를 되돌림
+      showOverlay(false); // 오버레이 숨기기
 
         // 검색 기능 실행
-        const searchTerm = document.querySelector("#searchInput").value;
-        fetch(`/api/db-status?query=${searchTerm}`)
-            .then(res => res.json())
-            .then(data => {
-                console.log("검색 결과:", data);
-                // 검색 결과 처리
-            });
+      const searchTerm = document.querySelector("#searchInput").value;
+      fetch(`/api/db-status?query=${searchTerm}`)
+          .then(res => res.json())
+          .then(data => {
+              console.log("검색 결과:", data);
+              // 검색 결과 처리
+          })
+          .catch(e => {
+              console.error("검색 실패:", e);
+              alert("검색에 실패했습니다. 다시 시도해 주세요.");
+          });
     }
 });
