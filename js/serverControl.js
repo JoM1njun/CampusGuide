@@ -63,9 +63,6 @@ async function wakeServerIfNeeded() {
     
     isServerWaking = true;
 
-    const maxRetries = 10;
-    let attempts = 0;
-
     // 서버 상태가 이미 깨어있는지 먼저 확인
     try {
         const res = await fetch("https://campusguide-back.onrender.com/ping");
@@ -83,6 +80,8 @@ async function wakeServerIfNeeded() {
 
     showOverlay(true);
 
+    const maxRetries = 10;
+    let attempts = 0;
     // 서버를 깨우는 중
     while (attempts < maxRetries) {
         try {
