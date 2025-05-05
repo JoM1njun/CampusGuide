@@ -3,9 +3,10 @@ function setVhUnit() {
   document.documentElement.style.setProperty('--vh', `${vh}px`);
 }
 
+setVhUnit();
+
 // DOM이 준비된 후 실행되도록!
 window.addEventListener('load', () => {
-  setVhUnit();
   window.addEventListener('resize', setVhUnit);
   window.addEventListener('orientationchange', setVhUnit);
 });
