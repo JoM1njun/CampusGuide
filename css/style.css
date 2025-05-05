@@ -445,6 +445,7 @@
         justify-content: center;
         align-items: center;
         visibility: hidden; /* 기본적으로 숨김 */
+        gap: 10px;
         z-index: 1000;
     }
 
@@ -1364,6 +1365,7 @@
         background: rgba(0, 0, 0, 0.5); /* 투명한 검정 배경 */
         justify-content: center;
         align-items: center;
+        gap: 15px;
         z-index: 1000;
     }
 
