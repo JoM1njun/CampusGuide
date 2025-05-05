@@ -122,7 +122,6 @@ function showOverlay(show) {
     }
 }
 
-
 // 어떤 기능 버튼을 눌렀을 때
 document.querySelectorAll(".category_place").forEach(button => {
     button.addEventListener("click", async () => {
@@ -136,17 +135,23 @@ document.querySelectorAll(".category_place").forEach(button => {
       }
 
       // 서버가 깨어난 후 원하는 작업 처리
-      fetch("https://campusguide-back.onrender.com/api/db-status") 
-        .then(res => res.json())
-        .then(data => {
+        try {
+            const res = await fetch("https://campusguide-back.onrender.com/api/db-status");
+
+            if (!res.ok) {
+                throw new Error("DB 상태 조회 실패");
+            }
+
+            const data = await res.json();
             console.log("서버 응답 데이터:", data);
             // 추가 처리
-        })
-        .catch(e => {
+        } catch (e) {
             console.error("DB 상태 조회 실패:", e);
             alert("서버에서 데이터를 가져오는 데 실패했습니다.");
-        })
-        .finally(() => showOverlay(false));
+        } finally {
+            // 작업이 끝나면 오버레이 숨기기
+            showOverlay(false);
+        }
     });
 });
 
@@ -155,27 +160,34 @@ document.querySelector("#searchInput").addEventListener("keydown", async (event)
     if (event.key === "Enter") { // 엔터 키가 눌렸을 때
       showOverlay(true);
       
-      const isAwake = await wakeServerIfNeeded();
-      if (!isAwake) {
-        showOverlay(false); // 서버가 깨어나지 않으면 오버레이 숨기기
-        alert("서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.");
-        return;
-      }
+        try {
+            const isAwake = await wakeServerIfNeeded();
+            if (!isAwake) {
+                showOverlay(false); // 서버가 깨어나지 않으면 오버레이 숨기기
+                alert("서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.");
+                return;
+            }
 
-      isServerWaking = false; // 서버가 깨어나면 플래그를 되돌림
-      showOverlay(false); // 오버레이 숨기기
+            isServerWaking = false; // 서버가 깨어나면 플래그를 되돌림
+            showOverlay(false); // 오버레이 숨기기
 
-        // 검색 기능 실행
-      const searchTerm = document.querySelector("#searchInput").value;
-      fetch(`/api/db-status?query=${searchTerm}`)
-          .then(res => res.json())
-          .then(data => {
-              console.log("검색 결과:", data);
-              // 검색 결과 처리
-          })
-          .catch(e => {
-              console.error("검색 실패:", e);
-              alert("검색에 실패했습니다. 다시 시도해 주세요.");
-          });
+            // 검색 기능 실행
+            const searchTerm = document.querySelector("#searchInput").value;
+            const res = await fetch(`/api/db-status?query=${searchTerm}`);
+
+            if (!res.ok) {
+                throw new Error("검색 요청 실패");
+            }
+
+            const data = await res.json();
+            console.log("검색 결과:", data);
+            // 검색 결과 처리
+        } catch (e) {
+            console.error("검색 실패:", e);
+            alert("검색에 실패했습니다. 다시 시도해 주세요.");
+        } finally {
+            // 에러가 발생해도 오버레이를 숨기기
+            showOverlay(false);
+        }
     }
 });
