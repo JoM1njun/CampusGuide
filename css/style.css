@@ -152,7 +152,7 @@
         /* column row */
         gap: 15px;
         /* 각 버튼 사이의 공간 */
-        width: 50vw;
+        width: calc(var(--vh, 1vh) * 50);;
         /* vw = 현재 화면의 너비 */
         height: calc(var(--vh, 1vh) * 100);
         max-width: 60vw;
@@ -263,7 +263,7 @@
         border-radius: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0);
         z-index: 10;
-        width: 60vw;
+        width: calc(var(--vh, 1vh) * 60);;
         height: 85%;
         max-width: 500px;
         overflow-y: auto;
@@ -632,7 +632,7 @@
         /* column row */
         gap: 15px;
         /* 각 버튼 사이의 공간 */
-        width: 50vw;
+        width: calc(var(--vh, 1vh) * 50);
         /* vw = 현재 화면의 너비 */
 /*         height: calc(100vh - 38vh); */
         height: calc(var(--vh, 1vh) * 100);
@@ -745,7 +745,7 @@
         border-radius: 10px;
         box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 10;
-        width: 60vw;
+        width: calc(var(--vh, 1vh) * 60);
         height: 85%;
         max-width: 500px;
         overflow-y: auto;
@@ -910,10 +910,9 @@
         width: 100%;
         height: 100%;
         background: rgba(0, 0, 0, 0.5); /* 투명한 검정 배경 */
-        display: flex;
+        display: none;
         justify-content: center;
         align-items: center;
-        visibility: hidden; /* 기본적으로 숨김 */
         z-index: 1000;
     }
 
@@ -1001,7 +1000,7 @@
     .search-container {
         position: absolute;
         top: 2vh;
-        right: 50px;
+        right: 40px;
         display: flex;
         align-items: center;
         width: 350px;
