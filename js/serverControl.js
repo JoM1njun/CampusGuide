@@ -124,7 +124,6 @@ function showOverlay(show) {
 // 어떤 기능 버튼을 눌렀을 때
 document.querySelectorAll(".category_place").forEach(button => {
     button.addEventListener("click", async () => {
-      showOverlay(true);
 
       const isAwake = await wakeServerIfNeeded();
       if (!isAwake) {
@@ -157,7 +156,6 @@ document.querySelectorAll(".category_place").forEach(button => {
 // 엔터 키 입력 시 처리
 document.querySelector("#searchInput").addEventListener("keydown", async (event) => {
     if (event.key === "Enter") { // 엔터 키가 눌렸을 때
-      showOverlay(true);
       
         try {
             const isAwake = await wakeServerIfNeeded();
