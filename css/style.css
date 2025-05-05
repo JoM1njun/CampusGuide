@@ -248,7 +248,7 @@
         transition: transform 0.2s ease;
     }
     
-    .logo-buttons:hover {
+    .logo-buttons img:hover {
         background-color: lightgrey;
         /* filter: brightness(0.6) invert(1.2); */
     }
@@ -730,7 +730,7 @@
         transition: transform 0.2s ease;
     }
     
-    .logo-buttons:hover {
+    .logo-buttons img:hover {
         background-color: lightgrey;
         /* filter: brightness(0.6) invert(1.2); */
     }
