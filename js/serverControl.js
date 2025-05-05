@@ -81,6 +81,8 @@ async function wakeServerIfNeeded() {
         // 네트워크 오류가 발생하면 서버가 잠들어 있을 가능성 있음
     }
 
+    showOverlay(true);
+
     // 서버를 깨우는 중
     while (attempts < maxRetries) {
         try {
@@ -91,16 +93,12 @@ async function wakeServerIfNeeded() {
                 if (result.status === "alive") {
                     // 서버가 깨어 있으면 종료
                     isServerWaking = false;
+                    showOverlay(false);
                     return true;
                 }
             }
         } catch (e) {
             // 실패할 경우 무시하고 retry
-        }
-
-        // 첫 번째 시도에서 오버레이를 표시
-        if (attempts === 0) {
-            showOverlay(true); // 서버 깨우는 중 오버레이 표시
         }
 
         // 2초 대기 후 재시도
@@ -109,6 +107,7 @@ async function wakeServerIfNeeded() {
     }
 
     isServerWaking = false;
+    showOverlay(false);
     return false;
 }
 
