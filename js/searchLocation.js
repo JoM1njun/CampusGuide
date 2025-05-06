@@ -92,14 +92,16 @@ function searchLocation() {
               kakao.maps.event.addListener(searchMarker, "click", function () {
                 infoWindows.forEach((iw) => iw.close());
                 infoWindow.open(map, searchMarker);
+                
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
-                if (redmarkerImage) {
-                  marker.setImage(redmarkerImage);
-                }
+                // if (redmarkerImage) {
+                //   marker.setImage(redmarkerImage);
+                // }
+                // activemarker = marker;
                 // searchMarker.setImage(redmarkerImage); // 마커 클릭 시 빨간색으로 변경
-                activemarker = marker;
+                activemarker.setImage(redmarkerImage);
 
                 if (window.innerWidth <= 768) {
                   map.setLevel(3);
