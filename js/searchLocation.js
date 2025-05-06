@@ -51,6 +51,7 @@ function searchLocation() {
               map: map,
               image: markerImage,
               clickable: true,
+              zIndex: 1,
             });
 
             if (isBusstop) {
