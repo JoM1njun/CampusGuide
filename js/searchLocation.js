@@ -95,7 +95,7 @@ function searchLocation() {
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
-                if (!activemarker) {
+                if (redmarkerImage) {
                   marker.setImage(redmarkerImage);
                 }
                 // searchMarker.setImage(redmarkerImage); // 마커 클릭 시 빨간색으로 변경
