@@ -95,7 +95,7 @@ function searchLocation() {
               userMarker.push({
                 marker: searchMarker,
                 //infoWindow: infoWindow,
-                customOverlay: customOverlay,
+                customOverlay: customInfoWindow,
               });
 
               kakao.maps.event.addListener(searchMarker, "click", function () {
