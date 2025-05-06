@@ -99,8 +99,8 @@ function searchLocation() {
               });
 
               kakao.maps.event.addListener(searchMarker, "click", function () {
-                infoWindows.forEach((iw) => iw.close());
-                customOverlay.open(map, searchMarker);
+                CustomOverlay.forEach((iw) => iw.close());
+                CustomOverlay.open(map, searchMarker);
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
