@@ -76,12 +76,12 @@ function searchLocation() {
                     </div>`;
 
               // 마커 클릭 시 정보 창 띄움
-              // let infoWindow = new kakao.maps.InfoWindow({
-              //   content: content, // 마커 클릭 시 표시할 내용
-              //   zIndex: 1, // zIndex로 창의 순서를 설정
-              // });
+              let infoWindow = new kakao.maps.InfoWindow({
+                content: content, // 마커 클릭 시 표시할 내용
+                zIndex: 1, // zIndex로 창의 순서를 설정
+              });
 
-              // infoWindows.push(infoWindow);
+              infoWindows.push(infoWindow);
 
               const customInfoWindow = new kakao.maps.CustomOverlay({
                 content: customContent,
@@ -91,14 +91,12 @@ function searchLocation() {
 
               userMarker.push({
                 marker: searchMarker,
-                //infoWindow: infoWindow,
-                customOverlay: customInfoWindow,
+                infoWindow: infoWindow,
               });
 
               kakao.maps.event.addListener(searchMarker, "click", function () {
                 infoWindows.forEach((iw) => iw.close());
                 infoWindows.open(map, searchMarker);
-                customInfoWindow.setMap(map);
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
