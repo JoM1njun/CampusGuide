@@ -19,7 +19,7 @@ function searchLocation() {
           if (obj.infoWindow) {
             obj.infoWindow.close();
           }
-          if (obj.marker) {
+          if (obj.marker && obj.marker !== searchMarker) {
             obj.marker.setMap(null);
           }
         });
