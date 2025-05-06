@@ -172,7 +172,9 @@ document.querySelector("#searchInput").addEventListener("keydown", async (event)
             const res = await fetch(`/api/db-status?query=${searchTerm}`);
 
             if (!res.ok) {
-                throw new Error("검색 요청 실패");
+                console.warn("서버 응답 오류:", res.status);
+                // 필요하다면 여기서만 경고 표시
+                return;
             }
 
             const data = await res.json();
@@ -180,7 +182,9 @@ document.querySelector("#searchInput").addEventListener("keydown", async (event)
             // 검색 결과 처리
         } catch (e) {
             console.error("검색 실패:", e);
-            alert("검색에 실패했습니다. 다시 시도해 주세요.");
+            if (!(e instanceof TypeError)) {
+                alert("검색에 실패했습니다. 다시 시도해 주세요.");
+            }
         } finally {
             // 에러가 발생해도 오버레이를 숨기기
             showOverlay(false);
