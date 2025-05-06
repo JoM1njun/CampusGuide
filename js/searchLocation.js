@@ -100,7 +100,7 @@ function searchLocation() {
 
               kakao.maps.event.addListener(searchMarker, "click", function () {
                 infoWindows.forEach((iw) => iw.close());
-                infoWindow.open(map, searchMarker);
+                customOverlay.open(map, searchMarker);
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
