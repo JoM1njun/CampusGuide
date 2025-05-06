@@ -19,7 +19,7 @@ function searchLocation() {
           if (obj.infoWindow) {
             obj.infoWindow.close();
           }
-          if (obj.marker && obj.marker !== searchMarker) {
+          if (obj.marker) {
             obj.marker.setMap(null);
           }
         });
@@ -45,7 +45,7 @@ function searchLocation() {
             let isBusstop =
               place.alias === "BUS" || place.name === "버스정류장";
 
-            let searchMarker = new kakao.maps.Marker({
+            const searchMarker = new kakao.maps.Marker({
               // 새로운 마커 추가
               position: placeLocation,
               map: map,
