@@ -153,10 +153,10 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
         }
         if (obj.marker) {
           obj.marker.setImage(markerImage);
-          // obj.marker.setMap(null);
-          // return false;
+          obj.marker.setMap(null);
+          return false;
         }
-        //return true;
+        return true;
       });
 
       marker.setImage(redmarkerImage);
