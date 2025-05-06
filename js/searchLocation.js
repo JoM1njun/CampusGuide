@@ -115,6 +115,7 @@ function searchLocation() {
               activemarker = null;
             }
             infoWindows.forEach((iw) => iw.close());
+            infoWindows = [];
           });
         } else {
           alert("장소를 찾을 수 없습니다.");
