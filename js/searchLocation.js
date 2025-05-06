@@ -90,7 +90,7 @@ function searchLocation() {
 
               kakao.maps.event.addListener(searchMarker, "click", function () {
                 infoWindows.forEach((iw) => iw.close());
-                infoWindows.open(map, searchMarker);
+                infoWindow.open(map, searchMarker);
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
