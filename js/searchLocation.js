@@ -96,10 +96,10 @@ function searchLocation() {
                   activemarker.setImage(markerImage);
                 }
                 if (!activemarker) {
-                  activemarker.setImage(redmarkerImage);
+                  marker.setImage(redmarkerImage);
                 }
                 // searchMarker.setImage(redmarkerImage); // 마커 클릭 시 빨간색으로 변경
-                // activemarker = searchMarker;
+                activemarker = marker;
 
                 if (window.innerWidth <= 768) {
                   map.setLevel(3);
