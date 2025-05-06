@@ -63,7 +63,7 @@ function searchLocation() {
                 ); // 정류장 ID로 시간표 가져오기
                 console.log("Alias : ", place.alias);
               });
-              userMarker.push({marker: searchMarker, infoWindows: null});
+              userMarker.push({marker: searchMarker, infoWindow: null});
             } else {
               let content = `
                     <div class="info-window">
