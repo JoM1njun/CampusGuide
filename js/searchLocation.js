@@ -167,17 +167,16 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
       if (Array.isArray(data.timetable) && data.timetable.length > 0) {
         const container = document.createElement("div");
         container.className = "info-window";
-        container.style.width = mobile ? "150px" : "250px";
-        container.style.height = mobile ? "120px" : "150px";
-        container.style.padding = "10px";
-        container.style.fontSize = mobile ? "11px" : "14px";
-        container.style.backgroundColor = "white";
-        container.style.borderRadius = "10px";
-        container.style.boxShadow = "2px 2px 5px rgba(0,0,0,0.2)";
+        // container.style.width = mobile ? "150px" : "250px";
+        // container.style.height = mobile ? "120px" : "150px";
+        // container.style.padding = "10px";
+        // container.style.fontSize = mobile ? "11px" : "14px";
+        // container.style.backgroundColor = "white";
+        // container.style.borderRadius = "10px";
+        // container.style.boxShadow = "2px 2px 5px rgba(0,0,0,0.2)";
 
         const title = document.createElement("h4");
         title.textContent = `${placeInfo.name} ${placeInfo.alias}`;
-        title.style.fontSize = mobile ? "12px" : "18px";
 
         const label = document.createElement("strong");
         label.textContent = "🕒 612번 시간표 (배재대 > 동신과학고)";
