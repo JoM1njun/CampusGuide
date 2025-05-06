@@ -54,7 +54,7 @@
 
     .search-container {
         display: flex;
-        position: absolute;
+        position: fixed;
         top: calc(var(--vh, 1vh) * 11);
         left: 50%;
         transform: translateX(-50%);
@@ -74,7 +74,6 @@
         outline: none;
         padding: 3px;
         font-size: 13px;
-        border-radius: 25px;
         outline: none;
     }
 
@@ -530,7 +529,7 @@
 
     .search-container {
         display: flex;
-        position: absolute;
+        position: fixed;
         top: calc(var(--vh, 1vh) * 11);
         left: 50%;
         transform: translateX(-50%);
