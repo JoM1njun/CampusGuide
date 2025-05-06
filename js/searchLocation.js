@@ -89,10 +89,6 @@ function searchLocation() {
                 zIndex: 1
               });
 
-              infoWindows.push(customInfoWindow);
-              // CustomOverlay를 지도에 표시
-              //customInfoWindow.setMap(map);
-
               userMarker.push({
                 marker: searchMarker,
                 //infoWindow: infoWindow,
@@ -102,6 +98,7 @@ function searchLocation() {
               kakao.maps.event.addListener(searchMarker, "click", function () {
                 infoWindows.forEach((iw) => iw.close());
                 infoWindows.open(map, searchMarker);
+                customInfoWindow.setMap(map);
                 if (activemarker) {
                   activemarker.setImage(markerImage);
                 }
