@@ -109,7 +109,7 @@ function searchLocation() {
           });
           // 지도 클릭 시 모든 마커를 파란색으로 변경
           kakao.maps.event.addListener(map, "click", function () {
-            if (activemarker) {
+            if (activemarker && activemarker !== searchMarker) {
               activemarker.setImage(markerImage);
               activemarker = null;
             }
