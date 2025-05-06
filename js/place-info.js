@@ -34,7 +34,7 @@ function getLocation(place) {
           console.log("Places : ", places);
           if (places && places.length > 0) {
             places.forEach((place, index) => {
-              document.getElementById("place-name").textContent = `${place.name} ${place.alias}`;
+              document.getElementById("place-name").textContent = `${place.name}`;
               document.getElementById("floor-info").innerHTML = `${place.floor}`;
               document.getElementById("major-info").innerHTML = `${place.major}`;
 
