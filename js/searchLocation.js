@@ -83,12 +83,6 @@ function searchLocation() {
 
               infoWindows.push(infoWindow);
 
-              const customInfoWindow = new kakao.maps.CustomOverlay({
-                content: customContent,
-                position: placeLocation,
-                zIndex: 1
-              });
-
               userMarker.push({
                 marker: searchMarker,
                 infoWindow: infoWindow,
