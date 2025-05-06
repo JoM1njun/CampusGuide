@@ -553,7 +553,7 @@
         border-radius: 25px;
         box-sizing: border-box;
         outline: none;
-        transform: translateX(2px);
+        transform: translateX(5px);
     }
 
     /* 검색 버튼 */
