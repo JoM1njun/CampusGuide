@@ -146,19 +146,21 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
       if (activemarker) {
         activemarker.setImage(markerImage);
       }
-      marker.setImage(redmarkerImage);
-      activemarker = marker;
 
       userMarker.forEach((obj) => {
         if (obj.infoWindow) {
           obj.infoWindow.close();
         }
-        // if (obj.marker && obj.marker !== marker) {
-        //   obj.marker.setMap(null);
-        //   return false;
-        // }
-        // return true;
+        if (obj.marker) {
+          obj.marker.setImage(markerImage);
+          // obj.marker.setMap(null);
+          // return false;
+        }
+        //return true;
       });
+
+      marker.setImage(redmarkerImage);
+      activemarker = marker;
 
       infoWindows.forEach((iw) => iw.close());
       infoWindows = [];
