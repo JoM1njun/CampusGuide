@@ -146,9 +146,7 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
       if (activemarker) {
         activemarker.setImage(markerImage);
       }
-      if (redmarkerImage) {
-        marker.setImage(redmarkerImage);
-      }
+      marker.setImage(redmarkerImage);
       activemarker = marker;
 
       userMarker.forEach((obj) => {
@@ -168,13 +166,6 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
       if (Array.isArray(data.timetable) && data.timetable.length > 0) {
         const container = document.createElement("div");
         container.className = "info-window";
-        // container.style.width = mobile ? "150px" : "250px";
-        // container.style.height = mobile ? "120px" : "150px";
-        // container.style.padding = "10px";
-        // container.style.fontSize = mobile ? "11px" : "14px";
-        // container.style.backgroundColor = "white";
-        // container.style.borderRadius = "10px";
-        // container.style.boxShadow = "2px 2px 5px rgba(0,0,0,0.2)";
 
         const title = document.createElement("h4");
         title.textContent = `${placeInfo.name} ${placeInfo.alias}`;
