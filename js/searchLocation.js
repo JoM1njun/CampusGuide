@@ -76,16 +76,26 @@ function searchLocation() {
                     </div>`;
 
               // 마커 클릭 시 정보 창 띄움
-              let infoWindow = new kakao.maps.InfoWindow({
-                content: content, // 마커 클릭 시 표시할 내용
-                zIndex: 1, // zIndex로 창의 순서를 설정
+              // let infoWindow = new kakao.maps.InfoWindow({
+              //   content: content, // 마커 클릭 시 표시할 내용
+              //   zIndex: 1, // zIndex로 창의 순서를 설정
+              // });
+
+              // infoWindows.push(infoWindow);
+
+              const customInfoWindow = new kakao.maps.CustomOverlay({
+                content: customContent,
+                position: placeLocation,
+                zIndex: 1
               });
 
-              infoWindows.push(infoWindow);
+              // CustomOverlay를 지도에 표시
+              customInfoWindow.setMap(map);
 
               userMarker.push({
                 marker: searchMarker,
-                infoWindow: infoWindow,
+                //infoWindow: infoWindow,
+                customOverlay: customOverlay,
               });
 
               kakao.maps.event.addListener(searchMarker, "click", function () {
