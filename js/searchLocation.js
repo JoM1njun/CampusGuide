@@ -56,13 +56,6 @@ function searchLocation() {
 
             if (isBusstop) {
               kakao.maps.event.addListener(searchMarker, "click", function () {
-                if (activemarker) {
-                  activemarker.setImage(markerImage);
-                }
-
-                searchMarker.setImage(redmarkerImage);
-                activemarker = searchMarker;
-                
                 fetchBusTimetable(
                   place.alias,
                   searchMarker,
@@ -155,21 +148,18 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
     .then((data) => {
       console.log("Time : ", data.timetable);
 
-      if (activemarker) {
-        activemarker.setImage(markerImage);
-      }
-
       userMarker.forEach((obj) => {
         if (obj.infoWindow) {
           obj.infoWindow.close();
         }
         if (obj.marker) {
-          obj.marker.setImage(markerImage);
           obj.marker.setMap(null);
-          return false;
         }
-        return true;
       });
+      
+      if (activemarker) {
+        activemarker.setImage(markerImage);
+      }
 
       marker.setImage(redmarkerImage);
       activemarker = marker;
