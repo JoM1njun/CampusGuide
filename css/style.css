@@ -1299,18 +1299,18 @@
 
     .info-window h4 {
         color: #0073e6;
-        font-size: 12px;
+        font-size: 13px;
         margin: 0;
         font-family: Arial, sans-serif;
     }
 
     .info-window p {
-        font-size: 10px;
+        font-size: 12px;
         font-family: Arial, sans-serif;
     }
 
     .info-window strong {
-        font-size: 10px;
+        font-size: 11px;
         font-family: Arial, sans-serif;
     }
 
