@@ -56,6 +56,13 @@ function searchLocation() {
 
             if (isBusstop) {
               kakao.maps.event.addListener(searchMarker, "click", function () {
+                if (activemarker) {
+                  activemarker.setImage(markerImage);
+                }
+
+                searchMarker.setImage(redmarkerImage);
+                activemarker = searchMarker;
+                
                 fetchBusTimetable(
                   place.alias,
                   searchMarker,
