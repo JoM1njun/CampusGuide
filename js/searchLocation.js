@@ -177,7 +177,7 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
 
         let infoWindow = new kakao.maps.InfoWindow({
           content: container,
-          position: marker.getPosition(),
+          // position: marker.getPosition(),
           zIndex: 3,
         });
 
