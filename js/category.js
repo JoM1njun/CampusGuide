@@ -50,10 +50,10 @@ function searchPlaces(category) {
             let content = `
                     <div class="info-window">
                         <h4 style="
-                        font-size: ${mobile ? "12px" : "15px"};
+                        font-size: ${mobile ? "12px" : "14px"};
                         ">${place.name}</h4>
                         <p style="
-                        font-size: ${mobile ? "10px" : "13px"};
+                        font-size: ${mobile ? "10px" : "12px"};
                         ">
                         운영시간 : ${place.hours} <br>
                         전화번호 : ${place.phone ? `<a href="tel:${place.phone.replace(/-/g, ' ')}">${place.phone}</a>` : "정보 없음"}<br>
