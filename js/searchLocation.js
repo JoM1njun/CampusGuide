@@ -228,6 +228,7 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
         infoWindow.open(map, marker);
 
         displayTimetable(data.timetable, timetableContainer); // 시간표 UI 표시
+        infoWindow.setContent(container); 
       } else {
         console.error("시간표 데이터를 불러오지 못했습니다.");
       }
