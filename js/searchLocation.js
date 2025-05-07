@@ -6,7 +6,6 @@ function searchLocation() {
   if (input) {
     let url =
       "https://campusguide-back.onrender.com/api/db-status?query=" + encodeURIComponent(input);
-    console.log("URL : ", url);
 
     fetch(url)
       .then((response) => response.json())
@@ -62,7 +61,7 @@ function searchLocation() {
                   placeLocation,
                   place
                 ); // 정류장 ID로 시간표 가져오기
-                console.log("Alias : ", place.alias);
+                // console.log("Alias : ", place.alias);
               });
               userMarker.push({marker: searchMarker, infoWindow: null});
             } else {
@@ -138,12 +137,9 @@ function handleKeyPress(event) {
 
 // 🚍 버스 정류장 시간표 불러오기 함수
 function fetchBusTimetable(stopId, marker, location, placeInfo) {
-  console.log("Stop : ", stopId);
   fetch(`https://campusguide-back.onrender.com/api/bus-time?station=${stopId}`)
     .then((response) => response.json())
     .then((data) => {
-      console.log("Time : ", data.timetable);
-
       if (activemarker) {
         activemarker.setImage(markerImage);
       }
@@ -171,7 +167,6 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
 
         const label = document.createElement("strong");
         label.textContent = "🕒 612번 시간표 (배재대 > 동신과학고)";
-        // title.style.fontSize = mobile ? "11px" : "16px";
 
         const timetableContainer = document.createElement("div");
         timetableContainer.className = "timetable-container";
@@ -185,8 +180,6 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
           position: marker.getPosition(),
           zIndex: 3,
         });
-        console.log("Location : ", location); // kakao.maps.LatLng 인지 확인
-        console.log("container innerHTML: ", container.innerHTML);
 
         // const now = new Date();
         // const nowMinutes = now.getHours() * 60 + now.getMinutes();
