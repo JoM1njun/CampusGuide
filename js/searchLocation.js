@@ -148,6 +148,13 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
     .then((data) => {
       console.log("Time : ", data.timetable);
 
+      if (activemarker) {
+        activemarker.setImage(markerImage);
+      }
+
+      marker.setImage(redmarkerImage);
+      activemarker = marker;
+      
       userMarker.forEach((obj) => {
         if (obj.infoWindow) {
           obj.infoWindow.close();
@@ -156,13 +163,6 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
           obj.marker.setMap(null);
         }
       });
-      
-      if (activemarker) {
-        activemarker.setImage(markerImage);
-      }
-
-      marker.setImage(redmarkerImage);
-      activemarker = marker;
 
       infoWindows.forEach((iw) => iw.close());
       infoWindows = [];
@@ -235,9 +235,8 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
         // });
 
         infoWindows.forEach((iw) => iw.close());
-        infoWindows = [];
+        infoWindows = [infoWindow];
         
-        infoWindows.push(infoWindow);
         infoWindow.open(map, marker);
 
         displayTimetable(data.timetable, timetableContainer); // 시간표 UI 표시
