@@ -147,7 +147,6 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
       if (activemarker) {
         activemarker.setImage(markerImage);
       }
-
       marker.setImage(redmarkerImage);
       activemarker = marker;
       
@@ -183,7 +182,7 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
 
         let infoWindow = new kakao.maps.InfoWindow({
           content: container,
-          position: location,
+          position: marker.getPosition(),
           zIndex: 3,
         });
         console.log("Location : ", location); // kakao.maps.LatLng 인지 확인
