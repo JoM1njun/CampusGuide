@@ -236,9 +236,9 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
 
         infoWindows.forEach((iw) => iw.close());
         infoWindows = [];
-
-        infoWindow.open(map, marker);
+        
         infoWindows.push(infoWindow);
+        infoWindow.open(map, marker);
 
         displayTimetable(data.timetable, timetableContainer); // 시간표 UI 표시
       } else {
