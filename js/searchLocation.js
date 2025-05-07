@@ -75,7 +75,6 @@ function searchLocation() {
               let infoWindow = new kakao.maps.InfoWindow({
                 content: content, // 마커 클릭 시 표시할 내용
                 zIndex: 1, // zIndex로 창의 순서를 설정
-                removable: true,
               });
 
               infoWindows.push(infoWindow);
@@ -180,7 +179,6 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
           content: container,
           position: marker.getPosition(),
           zIndex: 3,
-          removable: true,
         });
 
         // const now = new Date();
