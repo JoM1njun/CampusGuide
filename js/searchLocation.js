@@ -176,7 +176,7 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
 
         const label = document.createElement("strong");
         label.textContent = "🕒 612번 시간표 (배재대 > 동신과학고)";
-        title.style.fontSize = mobile ? "11px" : "17px";
+        title.style.fontSize = mobile ? "11px" : "16px";
 
         const timetableContainer = document.createElement("div");
         timetableContainer.className = "timetable-container";
