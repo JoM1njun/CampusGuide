@@ -1288,18 +1288,18 @@
         max-height: 140px;
         border-radius: 15px;
         padding: 10px;
-        font-size: 11px;
-        font-family: Arial, sans-serif;
     }
 
     .info-window h4 {
         color: #0073e6;
-        font-size: 12px;
+        font-size: 11px;
         margin: 0;
+        font-family: Arial, sans-serif;
     }
 
     .info-window p {
         font-size: 10px;
+        font-family: Arial, sans-serif;
     }
 
     .info-window .timetable-container {
