@@ -168,69 +168,69 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
       infoWindows = [];
 
       if (Array.isArray(data.timetable) && data.timetable.length > 0) {
-        // const container = document.createElement("div");
-        // container.className = "info-window";
+        const container = document.createElement("div");
+        container.className = "info-window";
 
-        // const title = document.createElement("h4");
-        // title.textContent = `${placeInfo.name} ${placeInfo.alias}`;
+        const title = document.createElement("h4");
+        title.textContent = `${placeInfo.name} ${placeInfo.alias}`;
 
-        // const label = document.createElement("strong");
-        // label.textContent = "🕒 612번 시간표 (배재대 > 동신과학고)";
-        // title.style.fontSize = mobile ? "11px" : "17px";
+        const label = document.createElement("strong");
+        label.textContent = "🕒 612번 시간표 (배재대 > 동신과학고)";
+        title.style.fontSize = mobile ? "11px" : "17px";
 
-        // const timetableContainer = document.createElement("div");
-        // timetableContainer.className = "timetable-container";
+        const timetableContainer = document.createElement("div");
+        timetableContainer.className = "timetable-container";
 
-        // container.appendChild(title);
-        // container.appendChild(label);
-        // container.appendChild(timetableContainer);
+        container.appendChild(title);
+        container.appendChild(label);
+        container.appendChild(timetableContainer);
 
-        // let infoWindow = new kakao.maps.InfoWindow({
-        //   content: container,
-        //   position: location,
-        //   zIndex: 1,
-        // });
-
-        const now = new Date();
-        const nowMinutes = now.getHours() * 60 + now.getMinutes();
-
-        let highlightTime = null;
-        let closestDiff = Infinity;
-
-        data.timetable.forEach((t) => {
-          const [h, m] = t.departure_time.split(":").map(Number);
-          const totalMinutes = h * 60 + m;
-          const diff = totalMinutes - nowMinutes;
-
-          if (diff >= 0 && diff < closestDiff) {
-            closestDiff = diff;
-            highlightTime = t.departure_time;
-          }
-        });
-
-        const timetableHTML = data.timetable
-          .map((t) => {
-            const isHighlight = t.departure_time === highlightTime;
-            return `<div class="timetable-entry${isHighlight ? " highlight" : ""}" ${
-              isHighlight ? 'id="highlight-time"' : ""
-            }>${t.departure_time}</div>`;
-          })
-          .join("");
-
-        const content = `
-        <div class="info-window">
-        <h4 style="font-size: ${mobile ? "11px" : "17px"};">${placeInfo.name} ${placeInfo.alias}</h4>
-        <strong>🕒 612번 시간표 (배재대 > 동신과학고)</strong>
-        <div class="timetable-container" style="display: flex; flex-direction: column; gap: 6px;">${timetableHTML}
-        </div>
-        </div>
-        `;
-
-        const infoWindow = new kakao.maps.InfoWindow({
-          content: content,
+        let infoWindow = new kakao.maps.InfoWindow({
+          content: container,
           position: location,
           zIndex: 3,
         });
+
+        // const now = new Date();
+        // const nowMinutes = now.getHours() * 60 + now.getMinutes();
+
+        // let highlightTime = null;
+        // let closestDiff = Infinity;
+
+        // data.timetable.forEach((t) => {
+        //   const [h, m] = t.departure_time.split(":").map(Number);
+        //   const totalMinutes = h * 60 + m;
+        //   const diff = totalMinutes - nowMinutes;
+
+        //   if (diff >= 0 && diff < closestDiff) {
+        //     closestDiff = diff;
+        //     highlightTime = t.departure_time;
+        //   }
+        // });
+
+        // const timetableHTML = data.timetable
+        //   .map((t) => {
+        //     const isHighlight = t.departure_time === highlightTime;
+        //     return `<div class="timetable-entry${isHighlight ? " highlight" : ""}" ${
+        //       isHighlight ? 'id="highlight-time"' : ""
+        //     }>${t.departure_time}</div>`;
+        //   })
+        //   .join("");
+
+        // const content = `
+        // <div class="info-window">
+        // <h4 style="font-size: ${mobile ? "11px" : "17px"};">${placeInfo.name} ${placeInfo.alias}</h4>
+        // <strong>🕒 612번 시간표 (배재대 > 동신과학고)</strong>
+        // <div class="timetable-container" style="display: flex; flex-direction: column; gap: 6px;">${timetableHTML}
+        // </div>
+        // </div>
+        // `;
+
+        // const infoWindow = new kakao.maps.InfoWindow({
+        //   content: content,
+        //   position: location,
+        //   zIndex: 3,
+        // });
 
         infoWindows.forEach((iw) => iw.close());
         infoWindows = [infoWindow];
