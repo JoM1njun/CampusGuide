@@ -1288,17 +1288,19 @@
         max-height: 140px;
         border-radius: 15px;
         padding: 10px;
+        font-size: 11px;
+        white-space: normal;
     }
 
     .info-window h4 {
         color: #0073e6;
-        font-size: 9px;
+        font-size: 10px;
         margin: 0;
         font-family: Arial, sans-serif;
     }
 
     .info-window p {
-        font-size: 7px;
+        font-size: 8px;
         font-family: Arial, sans-serif;
     }
 
