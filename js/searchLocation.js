@@ -190,6 +190,8 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
           position: location,
           zIndex: 3,
         });
+        console.log("Location : ", location); // kakao.maps.LatLng 인지 확인
+        console.log("container innerHTML: ", container.innerHTML);
 
         // const now = new Date();
         // const nowMinutes = now.getHours() * 60 + now.getMinutes();
@@ -233,9 +235,10 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
         // });
 
         infoWindows.forEach((iw) => iw.close());
-        infoWindows = [infoWindow];
+        infoWindows = [];
 
         infoWindow.open(map, marker);
+        infoWindows.push(infoWindow);
 
         displayTimetable(data.timetable, timetableContainer); // 시간표 UI 표시
       } else {
