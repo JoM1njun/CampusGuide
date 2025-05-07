@@ -68,12 +68,8 @@ function searchLocation() {
             } else {
               let content = `
                     <div class="info-window">
-                        <h4 style="
-                        font-size: ${mobile ? "12px" : "15px"};
-                        ">${place.name}</h4>
-                        <p style="
-                        font-size: ${mobile ? "10px" : "13px"};
-                        ">${place.etc} </p>
+                        <h4>${place.name}</h4>
+                        <p>${place.etc} </p>
                     </div>`;
 
               // 마커 클릭 시 정보 창 띄움
@@ -176,7 +172,7 @@ function fetchBusTimetable(stopId, marker, location, placeInfo) {
 
         const label = document.createElement("strong");
         label.textContent = "🕒 612번 시간표 (배재대 > 동신과학고)";
-        title.style.fontSize = mobile ? "11px" : "16px";
+        // title.style.fontSize = mobile ? "11px" : "16px";
 
         const timetableContainer = document.createElement("div");
         timetableContainer.className = "timetable-container";
