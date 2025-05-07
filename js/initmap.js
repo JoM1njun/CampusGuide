@@ -14,12 +14,14 @@ function initMap() {
 
       let markerImage = new kakao.maps.MarkerImage(
         "assets/marker/marker.svg",
-        new kakao.maps.Size(75, 30)
+        new kakao.maps.Size(75, 30),
+        new kakao.maps.Point(38, 30)
       );
 
       let redmarkerImage = new kakao.maps.MarkerImage(
         "assets/marker/red-marker.svg",
-        new kakao.maps.Size(75, 30)
+        new kakao.maps.Size(75, 30),
+        new kakao.maps.Point(38, 30)
       );
       window.markerImage = markerImage;
       window.redmarkerImage = redmarkerImage;
