@@ -854,6 +854,12 @@
         padding-top: 5px;
         overflow-y: auto;
         scroll-behavior: smooth;
+        scrollbar-height: none;
+        white-space: pre-line;
+    }
+
+    .info-window .timetable-container::-webkit-scrollbar {
+        display: none;
     }
 
     .timetable-entry {
@@ -1294,7 +1300,7 @@
 
     .info-window h4 {
         color: #0073e6;
-        font-size: 10px;
+        font-size: 9px;
         margin: 0;
         font-family: Arial, sans-serif;
     }
@@ -1309,12 +1315,18 @@
         flex-direction: column;
         max-height: 100px;
         font-size: 13px;
-        gap: 6px;
+        gap: 5px;
         margin-top: 5px;
         border-top: 1px solid #eee;
         padding-top: 5px;
         overflow-y: auto;
         scroll-behavior: smooth;
+        scrollbar-height: none;
+        white-space: pre-line;
+    }
+
+    .info-window .timetable-container::-webkit-scrollbar {
+        display: none;
     }
 
     .timetable-entry {
