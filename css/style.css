@@ -1149,7 +1149,7 @@
 
     /* 버튼이 활성화되었을 때 */
     #toggle-button.active {
-        transform: translateX(-27vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
+        transform: translateX(-26.5vw);  /* 메뉴가 열리면 버튼이 왼쪽으로 이동 */
     }
 
     #toggle-button:hover {
