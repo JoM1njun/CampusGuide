@@ -55,13 +55,13 @@ function searchPlaces(category) {
               kakao.maps.event.addListener(searchMarker, "click", function () {
                 fetchBusTimetable(
                   place.alias,
-                  searchMarker,
+                  Marker,
                   placeLocation,
                   place
                 ); // 정류장 ID로 시간표 가져오기
                 // console.log("Alias : ", place.alias);
               });
-              userMarker.push({ marker: searchMarker, infoWindow: null });
+              userMarker.push({ marker: Marker, infoWindow: null });
             } else {
               let content = `
                     <div class="info-window">
