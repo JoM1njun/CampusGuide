@@ -52,7 +52,7 @@ function searchPlaces(category) {
             });
 
             if (isBusstop) {
-              kakao.maps.event.addListener(searchMarker, "click", function () {
+              kakao.maps.event.addListener(Marker, "click", function () {
                 fetchBusTimetable(
                   place.alias,
                   Marker,
