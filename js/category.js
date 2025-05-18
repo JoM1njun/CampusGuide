@@ -95,29 +95,30 @@ function searchPlaces(category) {
                 marker: Marker,
                 infoWindow: infoWindow,
               });
+
+              // 마커 클릭 시 기존 열린 창 닫고 해당 창 열기
+              kakao.maps.event.addListener(Marker, "click", function () {
+                // 모든 마커의 infoWindow 닫기
+                infoWindows.forEach((iw) => iw.close());
+
+                // 클릭한 마커의 infoWindow 열기
+                infoWindow.open(map, Marker);
+
+                if (activemarker) {
+                  activemarker.setImage(markerImage);
+                }
+                Marker.setImage(redmarkerImage);
+                activemarker = Marker;
+
+                if (window.innerWidth <= 768) {
+                  map.setLevel(3);
+                } else {
+                  map.setLevel(2);
+                }
+                map.panTo(Marker.getPosition());
+              });
             }
-
-            // 마커 클릭 시 기존 열린 창 닫고 해당 창 열기
-            kakao.maps.event.addListener(Marker, "click", function () {
-              // 모든 마커의 infoWindow 닫기
-              infoWindows.forEach((iw) => iw.close());
-
-              // 클릭한 마커의 infoWindow 열기
-              infoWindow.open(map, Marker);
-
-              if (activemarker) {
-                activemarker.setImage(markerImage);
-              }
-              Marker.setImage(redmarkerImage);
-              activemarker = Marker;
-
-              if (window.innerWidth <= 768) {
-                map.setLevel(3);
-              } else {
-                map.setLevel(2);
-              }
-              map.panTo(Marker.getPosition());
-            });
+            map.panTo(Marker.getPosition());
           });
           // 지도 클릭 시 모든 마커를 파란색으로 변경
           kakao.maps.event.addListener(map, "click", function () {
