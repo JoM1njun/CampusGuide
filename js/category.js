@@ -1,9 +1,10 @@
 function searchPlaces(category) {
   var activemarker = null;
-  
+
   if (category) {
     fetch(
-      `https://campusguide-back.onrender.com/api/db-status?query=` + encodeURIComponent(category)
+      `https://campusguide-back.onrender.com/api/db-status?query=` +
+        encodeURIComponent(category)
     )
       .then((response) => response.json())
       .then((data) => {
@@ -40,6 +41,9 @@ function searchPlaces(category) {
               place.longitude
             );
 
+            let isBusstop =
+              place.alias === "BUS" || place.name === "버스정류장";
+
             let Marker = new kakao.maps.Marker({
               position: placeLocation,
               map: map,
@@ -47,7 +51,19 @@ function searchPlaces(category) {
               clickable: true,
             });
 
-            let content = `
+            if (isBusstop) {
+              kakao.maps.event.addListener(searchMarker, "click", function () {
+                fetchBusTimetable(
+                  place.alias,
+                  searchMarker,
+                  placeLocation,
+                  place
+                ); // 정류장 ID로 시간표 가져오기
+                // console.log("Alias : ", place.alias);
+              });
+              userMarker.push({ marker: searchMarker, infoWindow: null });
+            } else {
+              let content = `
                     <div class="info-window">
                         <h4 style="
                         font-size: ${mobile ? "12px" : "14px"};
@@ -56,22 +72,30 @@ function searchPlaces(category) {
                         font-size: ${mobile ? "10px" : "12px"};
                         ">
                         운영시간 : ${place.hours} <br>
-                        전화번호 : ${place.phone ? `<a href="tel:${place.phone.replace(/-/g, ' ')}">${place.phone}</a>` : "정보 없음"}<br>
+                        전화번호 : ${
+                          place.phone
+                            ? `<a href="tel:${place.phone.replace(
+                                /-/g,
+                                " "
+                              )}">${place.phone}</a>`
+                            : "정보 없음"
+                        }<br>
                         위치 : ${place.location} </p>
                     </div>`;
 
-            let infoWindow = new kakao.maps.InfoWindow({
-              content: content,
-              zIndex: 1,
-            });
+              let infoWindow = new kakao.maps.InfoWindow({
+                content: content,
+                zIndex: 1,
+              });
 
-            Marker.infoWindow = infoWindow;
-            infoWindows.push(infoWindow);
+              Marker.infoWindow = infoWindow;
+              infoWindows.push(infoWindow);
 
-            userMarker.push({
+              userMarker.push({
                 marker: Marker,
                 infoWindow: infoWindow,
               });
+            }
 
             // 마커 클릭 시 기존 열린 창 닫고 해당 창 열기
             kakao.maps.event.addListener(Marker, "click", function () {
