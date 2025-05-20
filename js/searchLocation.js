@@ -2,7 +2,7 @@ let activemarker = null;
 
 function searchLocation() {
   let input = document.getElementById("searchInput").value;
-
+  
   if (input) {
     let url =
       "https://campusguide-back.onrender.com/api/db-status?query=" + encodeURIComponent(input);
@@ -48,6 +48,7 @@ function searchLocation() {
             const categoryTypes = ["카페", "프린터", "편의점", "ATM"];
             
             let category = categoryNames.includes(place.name) || categoryTypes.includes(place.type);
+            let content = "";
 
             let searchMarker = new kakao.maps.Marker({
               // 새로운 마커 추가
@@ -71,7 +72,7 @@ function searchLocation() {
               userMarker.push({marker: searchMarker, infoWindow: null});
             } else {
               if(category) {
-                let content = `
+                content = `
                     <div class="info-window">
                         <h4 style="
                         font-size: ${mobile ? "12px" : "14px"};
@@ -85,7 +86,7 @@ function searchLocation() {
                         위치 : ${place.location} </p>
                     </div>`;
             } else {
-                let content = `
+                content = `
                     <div class="info-window">
                         <h4 style="
                         font-size: ${mobile ? "12px" : "14px"};
