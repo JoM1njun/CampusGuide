@@ -67,8 +67,16 @@ function searchLocation() {
             } else {
               let content = `
                     <div class="info-window">
-                        <h4>${place.name}</h4>
-                        <p>${place.etc} </p>
+                        <h4 style="
+                        font-size: ${mobile ? "12px" : "14px"};
+                        ">${place.name}</h4>
+                        <p style="
+                        font-size: ${mobile ? "10px" : "12px"};
+                        ">
+                        운영시간 : ${place.hours} <br>
+                        전화번호 : ${place.phone ? `<a href="tel:${place.phone.replace(/-/g, " ")}">
+                        ${place.phone}</a>` : "정보 없음" }<br>
+                        위치 : ${place.location} </p>
                     </div>`;
 
               // 마커 클릭 시 정보 창 띄움
