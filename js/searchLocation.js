@@ -43,6 +43,10 @@ function searchLocation() {
 
             let isBusstop =
               place.alias === "BUS" || place.name === "버스정류장";
+            
+            let category =
+              place.alias === "Cafe" || place.alias === "프린터" || place.alias === "편의점" || place.alias === "ATM" ||
+              place.type === "카페" || place.type === "프린터" || place.type === "편의점" || place.type === "ATM";
 
             let searchMarker = new kakao.maps.Marker({
               // 새로운 마커 추가
@@ -64,7 +68,7 @@ function searchLocation() {
                 // console.log("Alias : ", place.alias);
               });
               userMarker.push({marker: searchMarker, infoWindow: null});
-            } else {
+            } else if(category) {
               let content = `
                     <div class="info-window">
                         <h4 style="
@@ -78,7 +82,16 @@ function searchLocation() {
                         ${place.phone}</a>` : "정보 없음" }<br>
                         위치 : ${place.location} </p>
                     </div>`;
-
+            } else {
+              let content = `
+                    <div class="info-window">
+                        <h4 style="
+                        font-size: ${mobile ? "12px" : "14px"};
+                        ">${place.name}</h4>
+                        <p style="
+                        font-size: ${mobile ? "10px" : "12px"};
+                        ">${place.etc}</p>
+                    </div>`;
               // 마커 클릭 시 정보 창 띄움
               let infoWindow = new kakao.maps.InfoWindow({
                 content: content, // 마커 클릭 시 표시할 내용
