@@ -123,13 +123,14 @@ function showOverlay(show) {
 // 어떤 기능 버튼을 눌렀을 때
 document.querySelectorAll(".category_place").forEach(button => {
     button.addEventListener("click", async () => {
+        showOverlay(true);
 
-      const isAwake = await wakeServerIfNeeded();
-      if (!isAwake) {
-        showOverlay(false);
-        alert("서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.");
-        return;
-      }
+        const isAwake = await wakeServerIfNeeded();
+        if (!isAwake) {
+            showOverlay(false);
+            alert("서버가 응답하지 않습니다. 잠시 후 다시 시도해 주세요.");
+            return;
+        }
 
       // 서버가 깨어난 후 원하는 작업 처리
         try {
