@@ -4,229 +4,173 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>소방 응급 시설 관리 시스템</title>
-    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=124e4b785cbdd3fc46a37b0abd30547f&libraries=services"></script>
-    <script src="js/initmap.js" defer></script>
-    <script src="js/dbconnect.js" defer></script>
-    <script src="js/category.js" defer></script>
-    <script src="js/floor_map.js" defer></script>
-    <script src="js/management.js" defer></script>
-    <script src="js/sidebar.js" defer></script>
-    <script src="js/settings.js" defer></script>
-    <script src="js/setvhvw.js" defer></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    
+    <title>배재대학교 캠퍼스 맵</title>
+    <script type="text/javascript"
+        src="https://dapi.kakao.com/v2/maps/sdk.js?appkey=124e4b785cbdd3fc46a37b0abd30547f&autoload=false&libraries=services,clusterer"></script>
+    <link rel="icon" href="assets/logo/logo.png">
+    <link rel="stylesheet" href="css/style.css?v=<%= new Date().getTime() %>">
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=more_vert" />
-    
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <script src="js/db-connect.js" defer></script>
+    <script src="js/getCurrentLocation.js" defer></script>
+    <script src="js/busTime.js" defer></script>
+    <script src="js/searchLocation.js" defer></script>
+    <script src="js/category.js" defer></script>
+    <script src="js/place-info.js" defer></script>
+    <script src="js/place-hidden.js" defer></script>
+    <script src="js/serverControl.js" defer></script>
+    <script src="js/setvh.js" defer></script>
 </head>
 
 <body>
-    <div class="container">
-        <div class="sidebar" id="sidebar">
-            <div class="sidebar-header">
-                <div class="sidebar-title" data-lang-ko="소방 응급 시설<br>관리 체계"
-                    data-lang-en="Fire Emergency Facility<br>Management System">
-                    소방 응급 시설<br>관리 체계
-                </div>
-            </div>
+    <div id="header">
+        <div class="title">
+            <img src="assets/logo/title.svg" alt="배재대학교 캠퍼스 맵">
+        </div>
+    </div>
 
-            <div class="menu-item" data-page="dashboard">
-                <div class="menu-icon"><i class="fas fa-map"></i></div>
-                <span data-lang-ko="지도" data-lang-en="Map">지도</span>
-            </div>
-
-            <div class="menu-item" data-page="data-management">
-                <div class="menu-icon"><i class="fas fa-database"></i></div>
-                <span data-lang-ko="데이터 관리" data-lang-en="Data Management">데이터 관리</span>
-            </div>
-
-            <div class="menu-item" data-page="settings">
-                <div class="menu-icon"><i class="fas fa-cog"></i></div>
-                <span data-lang-ko="설정" data-lang-en="Settings">설정</span>
-            </div>
-
-            <button class="sidebar-toggle-btn" id="sidebarToggleBtn">
-                <i class="fas fa-chevron-left"></i>
+    <div id="container">
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="장소를 입력하세요" onkeypress="handleKeyPress(event)">
+            <button onclick="searchLocation()">
+                <span class="material-icons"> search </span>
             </button>
         </div>
 
-        <div class="main-content" id="mainContent">
-            <div class="header">
-                <div></div>
-                <div class="search-container">
-                    <input type="text" class="search-input" data-lang-ko-placeholder="전체 시스템 검색..."
-                        data-lang-en-placeholder="Search entire system..." placeholder="전체 시스템 검색...">
-                    <div class="search-icon"><i class="fas fa-search"></i></div>
-                </div>
-                <div class="header-icons">
-                    <div class="language-selector-wrapper">
-                        <div class="header-icon" id="languageToggleBtn">
-                            <i class="fas fa-globe"></i>
-                        </div>
-                        <div class="language-dropdown" id="languageDropdown">
-                            <div class="dropdown-item active" data-lang="ko">한국어</div>
-                            <div class="dropdown-item" data-lang="en">English</div>
-                        </div>
-                    </div>
+        <!--         <div id="menu-button">
+            <span class="material-icons"> menu </span>
+        </div> -->
 
-                    <div class="header-icon" id="darkModeIconToggle">
-                        <i class="fas fa-moon"></i>
-                    </div>
+        <!-- 메뉴 열기 버튼 -->
+        <button id="toggle-button">&lt;</button>
 
-                    <div class="notification-wrapper">
-                        <div class="header-icon" id="notificationBell">
-                            <i class="fas fa-bell"></i>
-                            <span class="notification-badge" id="notificationBadge"></span>
-                        </div>
-                        <div class="notification-dropdown" id="notificationDropdown">
-                            <div class="dropdown-item notification-item" data-notification-id="1">
-                                <img src="assets/images/소화기_black.png" alt="소화기 아이콘" class="notification-icon">
-                                <span data-lang-ko="하워드관 (H) 1F 1번 소화기 흔들어주세요"
-                                    data-lang-en="Howard Hall (H) 1F #1 Fire Extinguisher Needs Shaking">하워드관 (H) 1F 1번
-                                    소화기 흔들어주세요</span>
-                            </div>
-                            <div class="dropdown-item notification-item no-notifications-message" style="display: none;"
-                                data-lang-ko="새로운 알림이 없습니다." data-lang-en="No new notifications.">새로운 알림이 없습니다.</div>
-                        </div>
-                    </div>
-                    <div class="header-icon"><i class="fas fa-user-circle"></i></div>
-                </div>
+        <div id="place-buttons" class="hidden">
+            <div class="logo-buttons">
+                <a href="https://www.pcu.ac.kr/kor" target="_blank">
+                    <img src="assets/logo/Homepage.svg" alt="홈페이지 버튼">
+                </a>
+
+                <a href="https://www.instagram.com/paichaiuniv/#" target="_blank">
+                    <img src="assets/logo/instagram.svg" alt="인스타그램 버튼">
+                </a>
+
+                <a href="https://www.facebook.com/paichaiuniv" target="_blank">
+                    <img src="assets/logo/facebook.svg" alt="페이스북 버튼">
+                </a>
+
+                <a href="https://pf.kakao.com/_twcQG" target="_blank">
+                    <img src="assets/logo/Kakao.png" alt="카카오톡 버튼">
+                </a>
+
             </div>
 
-            <div class="page-content" id="dashboard-page-content">
-                <div class="map-container">
-                    <div id="map"></div>
-                    <div class="map-controls">
-                        <div class="control-btn active" data-query="소화기">
-                            <img src="assets/images/소화기.png" alt="소화기 아이콘" class="control-icon">
-                            <span data-lang-ko="소화기" data-lang-en="Fire Extinguisher">소화기</span>
-                        </div>
-                        <div class="control-btn" data-query="소화전">
-                            <img src="assets/images/소화전.png" alt="소화전 아이콘" class="control-icon">
-                            <span data-lang-ko="소화전" data-lang-en="Hydrant">소화전</span>
-                        </div>
-                        <div class="control-btn" data-query="AED">
-                            <img src="assets/images/자동제세동기.png" alt="자동제세동기 아이콘" class="control-icon">
-                            <span data-lang-ko="자동제세동기" data-lang-en="AED">자동제세동기</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="page-content" id="data-management-page-content" style="display: none;">
-                <div class="data-management-page-content-inner" style="padding: 20px;">
-                    <div class="page-title-header" style="margin-bottom: 20px;">
-                        <h1 data-lang-ko="시설 데이터 현황" data-lang-en="Facility Data Status">시설 데이터 현황</h1>
-                    </div>
-
-                    <div class="accordion-container">
-                        </div>
-                    <div id="data-pagination" style="text-align: center; margin-top: 20px;"></div>
-                </div>
-                <div id="detail-view" class="hidden">
-                    <div id="detail-container">
-                        <div id="detail-content"></div>
-                        <button id="back-button">
-                            <img src="assets/management/back.svg" alt="뒤로가기">
-                        </button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="page-content" id="settings-page-content" style="display: none;">
-                <div class="settings-page-content-inner">
-                    <div class="page-title-header">
-                        <h1 data-lang-ko="시스템 설정" data-lang-en="System Settings">시스템 설정</h1>
-                    </div>
-
-                    <div class="settings-card-group top-group">
-                        <div class="setting-card" id="darkModeToggle">
-                            <div class="setting-icon"><i class="fas fa-moon"></i></div> <span data-lang-ko="다크 모드"
-                                data-lang-en="Dark Mode">다크 모드</span>
-                            <label class="switch">
-                                <input type="checkbox" id="darkModeSwitch">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="setting-card" id="notificationToggle">
-                            <div class="setting-icon"><i class="fas fa-bell-slash"></i></div> <span
-                                data-lang-ko="알림 설정" data-lang-en="Notification Settings">알림 설정</span>
-                            <label class="switch">
-                                <input type="checkbox" id="notificationSwitch">
-                                <span class="slider round"></span>
-                            </label>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-language"></i></div>
-                            <span data-lang-ko="언어 변경" data-lang-en="Change Language">언어 변경</span>
-                            <div class="language-selector-inline"> <select id="settingLanguageSelect">
-                                    <option value="ko" data-lang-ko="한국어" data-lang-en="Korean">한국어</option>
-                                    <option value="en" data-lang-ko="영어" data-lang-en="English">English</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="settings-card-group middle-group">
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-cogs"></i></div>
-                            <span data-lang-ko="시설 정보 관리" data-lang-en="Facility Management">시설 정보 관리</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-user-circle"></i></div>
-                            <span data-lang-ko="계정 설정" data-lang-en="Account Settings">계정 설정</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-users-cog"></i></div>
-                            <span data-lang-ko="권한 관리" data-lang-en="Permission Management">권한 관리</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-clipboard-list"></i></div>
-                            <span data-lang-ko="로그 기록" data-lang-en="Log History">로그 기록</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-save"></i></div>
-                            <span data-lang-ko="데이터 백업" data-lang-en="Data Backup">데이터 백업</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-chart-pie"></i></div>
-                            <span data-lang-ko="보고서 생성" data-lang-en="Generate Reports">보고서 생성</span>
-                        </div>
-                        <div class="setting-card" id="fireExtinguisherDisposal">
-                            <div class="setting-icon"><i class="fas fa-fire-extinguisher"></i><i class="fas fa-times"
-                                    style="position: absolute; font-size: 0.7em; top: 0; right: 0; color: red;"></i></div>
-                            <span data-lang-ko="소화기 폐기" data-lang-en="Extinguisher Disposal">소화기 폐기</span>
-                        </div>
-                    </div>
-
-                    <div class="settings-card-group bottom-group">
-                        <div class="setting-card" id="customerSupportCard">
-                            <div class="setting-icon"><i class="fas fa-headset"></i></div> <span
-                                data-lang-ko="고객 상담" data-lang-en="Customer Support">고객 상담</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-question-circle"></i></div>
-                            <span data-lang-ko="자주 묻는 질문" data-lang-en="FAQ">자주 묻는 질문</span>
-                        </div>
-                        <div class="setting-card">
-                            <div class="setting-icon"><i class="fas fa-info-circle"></i></div>
-                            <span data-lang-ko="시스템 정보" data-lang-en="System Info">시스템 정보</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div id="floorMapContainer">
-                <div id="floorButtons"></div>
-                <object id="floorMap" type="image/svg+xml"></object>
-                <button id="closeBtn" onclick="closeFloorMap()">닫기</button>
+            <div class="scroll-buttons">
+                <button class="category_place" data-query="p" data-place-id="p" onclick="getLocation('P')">21세기관 대학본부 (
+                    P ) </button>
+                <button class="category_place" data-query="y" data-place-id="y" onclick="getLocation('Y')">예술관 ( Y )
+                </button>
+                <button class="category_place" data-query="am" data-place-id="am" onclick="getLocation('AM')">아펜젤러기념관 (
+                    AM ) </button>
+                <button class="category_place" data-query="g" data-place-id="g" onclick="getLocation('G')">국제교류관 ( G )
+                </button>
+                <button class="category_place" data-query="b" data-place-id="b" onclick="getLocation('B')">백산관 ( B )
+                </button>
+                <button class="category_place" data-query="w" data-place-id="w" onclick="getLocation('W')">우남관 ( W )
+                </button>
+                <button class="category_place" data-query="sp" data-place-id="sp" onclick="getLocation('SP')">스마트배재관 (
+                    SP ) </button>
+                <button class="category_place" data-query="a" data-place-id="a" onclick="getLocation('A')">아펜젤러관 ( A )
+                </button>
+                <button class="category_place" data-query="j" data-place-id="j" onclick="getLocation('J')">자연과학관 ( J )
+                </button>
+                <button class="category_place" data-query="h" data-place-id="h" onclick="getLocation('H')">하워드관 ( H )
+                </button>
+                <button class="category_place" data-query="mc" data-place-id="mc" onclick="getLocation('MC')">미래창조관 ( MC
+                    ) </button>
+                <button class="category_place" data-query="c" data-place-id="c" onclick="getLocation('C')">정보과학관 ( C )
+                </button>
+                <button class="category_place" data-query="s" data-place-id="s" onclick="getLocation('S')">소월관 ( S )
+                </button>
+                <button class="category_place" data-query="hm" data-place-id="hm" onclick="getLocation('HM')">하워드기념관 (
+                    HM ) </button>
+                <button class="category_place" data-query="k" data-place-id="k" onclick="getLocation('K')">김옥균관 ( K )
+                </button>
+                <button class="category_place" data-query="l" data-place-id="l" onclick="getLocation('L')">중앙도서관 ( L )
+                </button>
             </div>
         </div>
+
+        <div id="place-info">
+            <h3 id="place-name"></h3>
+            <div id="image-container">
+                <img id="place-image" src="" alt="place-image">
+            </div>
+
+            <button class="close-btn" onclick="closeInfo()">
+                <span class="material-icons"> close </span>
+            </button>
+        </div>
+
+        <div id="info-box">
+            <h4>층별 정보</h4>
+            <p id="floor-info"></p>
+
+        </div>
+
+        <div id="info-box">
+            <h4>학과 정보</h4>
+            <p id="major-info"></p>
+        </div>
+    </div>
+
+    <div id="map">
+        <div class="category-buttons">
+            <button class="category_place" data-query="atm" onclick="searchPlaces('ATM')">
+                <img src="assets/category/은행.svg" alt="ATM">
+                ATM & 은행
+            </button>
+
+            <button class="category_place" data-query="편의점" onclick="searchPlaces('편의점')">
+                <img src="assets/category/편의점.svg" alt="편의점">
+                편의점
+            </button>
+
+            <button class="category_place" data-query="카페" onclick="searchPlaces('카페')">
+                <img src="assets/category/카페.svg" alt="Cafe">
+                카페
+            </button>
+
+            <button class="category_place" data-query="프린터" onclick="searchPlaces('프린터')">
+                <img src="assets/category/프린터.svg" alt="프린터">
+                프린터
+            </button>
+
+            <button class="category_place" data-query="보건실" onclick="searchPlaces('보건실')">
+                <img src="assets/category/구급상자.svg" alt="보건실">
+                보건실
+            </button>
+
+            <button class="category_place" data-query="bus" onclick="searchPlaces('bus')">
+                <img src="assets/category/bus.svg" alt="Bus">
+                버스정류장
+            </button>
+        </div>
+
+        <div class="button-container">
+            <button onclick="getCurrentLocation()">
+                <span class="material-icons">my_location</span>
+            </button>
+        </div>
+
+        <button id="recent-button">내 위치</button>
+    </div>
+
+    <!--         <div id="timetable-container"></div> -->
+    </div>
+
+    <!-- 로딩 메시지와 스피너 표시할 div -->
+    <div id="loadingOverlay" class="loading-overlay">
+        <div class="spinner"></div>
+        <p id="loadingMessage">서버가 깨어나는 중입니다. 잠시만 기다려 주세요.</p>
     </div>
 </body>
-
-</html>
