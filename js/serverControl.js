@@ -56,58 +56,64 @@
 // }
 
 let isServerWaking = false;
+let serverWakePromise = null;
 
 async function wakeServerIfNeeded() {
-    if (isServerWaking)
-        return false;
-    
-    isServerWaking = true;
-
-    // 서버 상태가 이미 깨어있는지 먼저 확인
-    try {
-        const res = await fetch("https://campusguide-back.onrender.com/ping");
-        if (res.ok) {
-            const result = await res.json();
-            if (result.status === "alive") {
-                // 이미 서버가 깨어 있으면 바로 true 반환
-                isServerWaking = false;
-                return true;
-            }
-        }
-    } catch (e) {
-        // 네트워크 오류가 발생하면 서버가 잠들어 있을 가능성 있음
+    if (isServerWaking && serverWakePromise) {
+        // 다른 요청이 깨우는 중이면 그 Promise를 그대로 기다림
+        return serverWakePromise;
     }
 
-    showOverlay(true);
-
-    const maxRetries = 10;
-    let attempts = 0;
-    // 서버를 깨우는 중
-    while (attempts < maxRetries) {
+    isServerWaking = true;
+    serverWakePromise = (async () => {
+        // 먼저 서버가 이미 깨어있는지 확인
         try {
             const res = await fetch("https://campusguide-back.onrender.com/ping");
-
             if (res.ok) {
                 const result = await res.json();
                 if (result.status === "alive") {
-                    // 서버가 깨어 있으면 종료
                     isServerWaking = false;
-                    showOverlay(false);
+                    serverWakePromise = null;
                     return true;
                 }
             }
         } catch (e) {
-            // 실패할 경우 무시하고 retry
+            // 네트워크 오류 발생 가능
         }
 
-        // 2초 대기 후 재시도
-        await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
-        attempts++;
-    }
+        // 서버가 자고 있다면 로딩 오버레이 표시 후 재시도
+        showOverlay(true);
+        const maxRetries = 10;
+        let attempts = 0;
 
-    isServerWaking = false;
-    showOverlay(false);
-    return false;
+        while (attempts < maxRetries) {
+            try {
+                const res = await fetch("https://campusguide-back.onrender.com/ping");
+                if (res.ok) {
+                    const result = await res.json();
+                    if (result.status === "alive") {
+                        showOverlay(false);
+                        isServerWaking = false;
+                        serverWakePromise = null;
+                        return true;
+                    }
+                }
+            } catch (e) {
+                // 실패시 무시하고 재시도
+            }
+
+            await new Promise(resolve => setTimeout(resolve, 2000)); // 2초 대기
+            attempts++;
+        }
+
+        // 실패
+        showOverlay(false);
+        isServerWaking = false;
+        serverWakePromise = null;
+        return false;
+    })();
+
+    return serverWakePromise;
 }
 
 // 로딩 오버레이를 표시하거나 숨기는 함수
