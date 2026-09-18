@@ -340,7 +340,6 @@
         font-size: 14px;
         overflow-y: auto;
         scroll-behavior: smooth;
-        scrollbar-height: none;
         white-space: pre-line;
     }
 
@@ -413,7 +412,6 @@
         padding-top: 5px;
         overflow-y: auto;
         scroll-behavior: smooth;
-        scrollbar-height: none;
         white-space: pre-line;
     }
 
@@ -838,7 +836,6 @@
         font-size: 15px;
         overflow-y: auto;
         scroll-behavior: smooth;
-        scrollbar-height: none;
         white-space: pre-line;
     }
 
@@ -909,7 +906,6 @@
         padding-top: 5px;
         overflow-y: auto;
         scroll-behavior: smooth;
-        scrollbar-height: none;
         white-space: pre-line;
     }
 
