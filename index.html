@@ -20,6 +20,7 @@
     <script src="js/place-info.js" defer></script>
     <script src="js/place-hidden.js" defer></script>
     <script src="js/serverControl.js" defer></script>
+    <script src="js/theme.js" defer></script>
     <script src="js/setvh.js" defer></script>
 </head>
 
@@ -38,49 +39,79 @@
             </button>
         </div>
 
-<!--         <div id="menu-button">
+        <!--         <div id="menu-button">
             <span class="material-icons"> menu </span>
         </div> -->
 
-        <!-- 메뉴 열기 버튼 -->
-        <button id="toggle-button">&lt;</button>
+        <div id="menu-shell">
+            <!-- 메뉴 열기 버튼 -->
+            <button id="toggle-button">&lt;</button>
 
-        <div id="place-buttons" class="hidden">
-            <div class="logo-buttons">
-                <a href="https://www.pcu.ac.kr/kor" target="_blank">
-                    <img src="assets/logo/Homepage.svg" alt="홈페이지 버튼">
-                </a>
+            <div id="place-buttons">
+                <div class="logo-buttons">
+                    <a href="https://www.pcu.ac.kr/kor" target="_blank">
+                        <img src="assets/logo/Homepage.svg" alt="홈페이지 버튼">
+                    </a>
 
-                <a href="https://www.instagram.com/paichaiuniv/#" target="_blank">
-                    <img src="assets/logo/instagram.svg" alt="인스타그램 버튼">
-                </a>
+                    <a href="https://www.instagram.com/paichaiuniv/#" target="_blank">
+                        <img src="assets/logo/instagram.svg" alt="인스타그램 버튼">
+                    </a>
 
-                <a href="https://www.facebook.com/paichaiuniv" target="_blank">
-                    <img src="assets/logo/facebook.svg" alt="페이스북 버튼">
-                </a>
+                    <a href="https://www.facebook.com/paichaiuniv" target="_blank">
+                        <img src="assets/logo/facebook.svg" alt="페이스북 버튼">
+                    </a>
 
-                <a href="https://pf.kakao.com/_twcQG" target="_blank">
-                    <img src="assets/logo/Kakao.png" alt="카카오톡 버튼">
-                </a>
-            </div>
+                    <a href="https://pf.kakao.com/_twcQG" target="_blank">
+                        <img src="assets/logo/Kakao.png" alt="카카오톡 버튼">
+                    </a>
+                </div>
 
-            <div class="scroll-buttons">
-                <button class="category_place" data-query="p" data-place-id="p" onclick="getLocation('P')">21세기관 대학본부 ( P ) </button>
-                <button class="category_place" data-query="y" data-place-id="y" onclick="getLocation('Y')">예술관 ( Y ) </button>
-                <button class="category_place" data-query="am" data-place-id="am" onclick="getLocation('AM')">아펜젤러기념관 ( AM ) </button>
-                <button class="category_place" data-query="g" data-place-id="g" onclick="getLocation('G')">국제교류관 ( G ) </button>
-                <button class="category_place" data-query="b" data-place-id="b" onclick="getLocation('B')">백산관 ( B ) </button>
-                <button class="category_place" data-query="w" data-place-id="w" onclick="getLocation('W')">우남관 ( W ) </button>
-                <button class="category_place" data-query="sp" data-place-id="sp" onclick="getLocation('SP')">스마트배재관 ( SP ) </button>
-                <button class="category_place" data-query="a" data-place-id="a" onclick="getLocation('A')">아펜젤러관 ( A ) </button>
-                <button class="category_place" data-query="j" data-place-id="j" onclick="getLocation('J')">자연과학관 ( J ) </button>
-                <button class="category_place" data-query="h" data-place-id="h" onclick="getLocation('H')">하워드관 ( H ) </button>
-                <button class="category_place" data-query="mc" data-place-id="mc" onclick="getLocation('MC')">미래창조관 ( MC ) </button>
-                <button class="category_place" data-query="c" data-place-id="c" onclick="getLocation('C')">정보과학관 ( C ) </button>
-                <button class="category_place" data-query="s" data-place-id="s" onclick="getLocation('S')">소월관 ( S ) </button>
-                <button class="category_place" data-query="hm" data-place-id="hm" onclick="getLocation('HM')">하워드기념관 ( HM ) </button>
-                <button class="category_place" data-query="k" data-place-id="k" onclick="getLocation('K')">김옥균관 ( K ) </button>
-                <button class="category_place" data-query="l" data-place-id="l" onclick="getLocation('L')">중앙도서관 ( L ) </button>
+                <div class="scroll-buttons">
+                    <button class="category_place" data-query="p" data-place-id="p" onclick="getLocation('P')">21세기관
+                        대학본부 (
+                        P ) </button>
+                    <button class="category_place" data-query="y" data-place-id="y" onclick="getLocation('Y')">예술관 ( Y )
+                    </button>
+                    <button class="category_place" data-query="am" data-place-id="am"
+                        onclick="getLocation('AM')">아펜젤러기념관 (
+                        AM ) </button>
+                    <button class="category_place" data-query="g" data-place-id="g" onclick="getLocation('G')">국제교류관 ( G
+                        )
+                    </button>
+                    <button class="category_place" data-query="b" data-place-id="b" onclick="getLocation('B')">백산관 ( B )
+                    </button>
+                    <button class="category_place" data-query="w" data-place-id="w" onclick="getLocation('W')">우남관 ( W )
+                    </button>
+                    <button class="category_place" data-query="sp" data-place-id="sp" onclick="getLocation('SP')">스마트배재관
+                        (
+                        SP ) </button>
+                    <button class="category_place" data-query="a" data-place-id="a" onclick="getLocation('A')">아펜젤러관 ( A
+                        )
+                    </button>
+                    <button class="category_place" data-query="j" data-place-id="j" onclick="getLocation('J')">자연과학관 ( J
+                        )
+                    </button>
+                    <button class="category_place" data-query="h" data-place-id="h" onclick="getLocation('H')">하워드관 ( H
+                        )
+                    </button>
+                    <button class="category_place" data-query="mc" data-place-id="mc" onclick="getLocation('MC')">미래창조관
+                        ( MC
+                        ) </button>
+                    <button class="category_place" data-query="c" data-place-id="c" onclick="getLocation('C')">정보과학관 ( C
+                        )
+                    </button>
+                    <button class="category_place" data-query="s" data-place-id="s" onclick="getLocation('S')">소월관 ( S )
+                    </button>
+                    <button class="category_place" data-query="hm" data-place-id="hm" onclick="getLocation('HM')">하워드기념관
+                        (
+                        HM ) </button>
+                    <button class="category_place" data-query="k" data-place-id="k" onclick="getLocation('K')">김옥균관 ( K
+                        )
+                    </button>
+                    <button class="category_place" data-query="l" data-place-id="l" onclick="getLocation('L')">중앙도서관 ( L
+                        )
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -143,13 +174,17 @@
                 <button onclick="getCurrentLocation()">
                     <span class="material-icons">my_location</span>
                 </button>
+
+                <button id="theme-toggle" type="button" aria-label="다크모드 전환">
+                    <img class="theme-icon" src="assets/etc/moon.svg" alt="Dark Mode">
+                </button>
             </div>
 
             <button id="recent-button">내 위치</button>
 
         </div>
 
-<!--         <div id="timetable-container"></div> -->
+        <!--         <div id="timetable-container"></div> -->
     </div>
 
     <!-- 로딩 메시지와 스피너 표시할 div -->

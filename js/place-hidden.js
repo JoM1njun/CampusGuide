@@ -2,29 +2,28 @@ const menuButton = document.getElementById("menu-button");
 const placeInfo = document.getElementById("place-info");
 const toggleBtn = document.getElementById("toggle-button");
 const placeButtons = document.getElementById("place-buttons");
+const menuShell = document.getElementById("menu-shell");
 let isOpen = false;
 
 function closeMenu() {
-  placeButtons.classList.remove("active");
-  toggleBtn.classList.remove("active");
-  toggleBtn.style.right = "0";
+  menuShell.classList.remove("active");
   toggleBtn.innerHTML = "&lt;";
-  isOpen = false; // 메뉴가 닫히므로 상태 false로 설정
+  isOpen = false;
   
   if (isInfoVisible) {
     // 정보창이 열려 있으면 닫히면서 메뉴 다시 보이게
-    closeInfo();
+    placeInfo.classList.remove("active");
+    placeInfo.style.display = "none";
+    isInfoVisible = false;
     // placeButtons.classList.add("active");
     //placeButtons.classList.remove("hidden-by-info");
   }
 }
 
 function openMenu() {
-  placeButtons.style.display = "block";
-  placeButtons.classList.add("active");
-  toggleBtn.classList.add("active");
-  toggleBtn.innerHTML = "&gt;"; // 토글 버튼 방향
-  isOpen = true; // 메뉴 열림 상태
+  menuShell.classList.add("active");
+  toggleBtn.innerHTML = "&gt;";
+  isOpen = true;
 }
 
 function setupMapClickEvent() {
@@ -35,7 +34,6 @@ function setupMapClickEvent() {
 
   kakao.maps.event.addListener(map, "click", function () {
     console.log("✅ 지도 클릭됨!");
-    closeMenu();
     if (isInfoVisible) {
       closeInfo();
     }
@@ -55,22 +53,24 @@ setupMapClickEvent();
 function openInfo() {
   placeInfo.style.display = "block";
   placeInfo.classList.add("active");
-  isInfoVisible = true;
 
-  // 메뉴는 숨기기
-  placeButtons.classList.remove("active");
-  //placeButtons.classList.add("hidden-by-info");
+  menuShell.classList.remove("active");
+  toggleBtn.innerHTML = "&lt;";
+
+  isInfoVisible = true;
+  isOpen = false;
 }
 
 // 장소 정보창을 닫을 때 호출되는 함수
 function closeInfo() {
-  placeInfo.classList.remove("active"); // 창을 숨깁니다.
-  isInfoVisible = false; // 정보창이 닫혔으므로 상태를 false로 설정
-  
-  if (!isOpen || placeButtons.style.display === "none") {
-    // 메뉴가 열려 있지 않으면 다시 보여줌
-    openMenu();
-  }
+  placeInfo.classList.remove("active");
+  placeInfo.style.display = "none";
+
+  menuShell.classList.add("active");
+  toggleBtn.innerHTML = "&gt;";
+
+  isInfoVisible = false;
+  isOpen = true;
   // openMenu();
   // 메뉴 목록 다시 보이게
   //placeButtons.style.display = "block";

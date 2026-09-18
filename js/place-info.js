@@ -17,7 +17,7 @@ function getLocation(place) {
   infoWindows = [];
 
   console.log(place);
-  
+
   if (place) {
     fetch(
       `https://campusguide-back.onrender.com/api/place-info?alias=` + encodeURIComponent(place)
@@ -49,7 +49,8 @@ function getLocation(place) {
               };
 
               document.getElementById("place-info").style.display = "block";
-              document.getElementById("place-buttons").style.display = "none";
+              document.getElementById("place-buttons").classList.remove("active");
+              //document.getElementById("place-buttons").style.display = "none";
 
               let placeLocation = new kakao.maps.LatLng(
                 place.latitude,
@@ -80,17 +81,17 @@ function getLocation(place) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    const placeButtons = document.getElementById("place-buttons");
+  const placeButtons = document.getElementById("place-buttons");
 
-    placeButtons.addEventListener("touchstart", (e) => {
-        e.stopPropagation();
-    }, { passive: true });
+  placeButtons.addEventListener("touchstart", (e) => {
+    e.stopPropagation();
+  }, { passive: true });
 
-    placeButtons.addEventListener("touchmove", (e) => {
-        e.stopPropagation();
-    }, { passive: true });
+  placeButtons.addEventListener("touchmove", (e) => {
+    e.stopPropagation();
+  }, { passive: true });
 
-    placeButtons.addEventListener("touchend", (e) => {
-        e.stopPropagation();
-    }, { passive: true });
+  placeButtons.addEventListener("touchend", (e) => {
+    e.stopPropagation();
+  }, { passive: true });
 });
