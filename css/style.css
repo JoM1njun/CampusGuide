@@ -190,7 +190,7 @@
         width: var(--place-menu-width);
         /* vw = 현재 화면의 너비 */
         /*         height: calc(100vh - 38vh); */
-        height: 100dvh;
+        height: 100svh;
         max-width: none;
         /* 버튼들의 최대 너비 설정 */
         justify-content: flex-start;
