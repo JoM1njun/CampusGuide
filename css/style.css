@@ -85,7 +85,7 @@
     .search-container {
         display: flex;
         position: fixed;
-        top: calc(10dvh + 8px);
+        top: calc(10svh + 8px);
         left: 50%;
         transform: translateX(-50%);
         align-items: center;
