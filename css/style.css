@@ -19,7 +19,7 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-        height: 100dvh;
+        height: 100svh;
         position: relative;
         /* margin: auto; */
     }
@@ -1040,7 +1040,7 @@ body {
     top: 0;
     right: 0;
     width: calc(var(--place-menu-width) + var(--toggle-button-width));
-    height: 100dvh;
+    height: 100svh;
     z-index: 5;
     pointer-events: none;
     transform: translateX(calc(var(--place-menu-width)));
