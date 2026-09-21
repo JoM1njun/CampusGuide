@@ -4,7 +4,7 @@
 /* 중, 대형 스마트폰 (375px ~ 768px) iPhone 14 Pro Max */
 @media (max-width: 768px) {
     :root {
-        --place-menu-width: min(64vw, 360px);
+        --place-menu-width: min(84vw, 360px);
         --toggle-button-width: 42px;
     }
 
@@ -12,7 +12,7 @@
         width: 100%;
         align-items: center;
         justify-content: center;
-        height: calc(100dvh - 10dvh);
+        height: 100dvh;
         position: relative;
         /* margin: auto; */
     }
