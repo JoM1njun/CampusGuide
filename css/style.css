@@ -1,11 +1,18 @@
-/* 소형 스마트폰 (374px 이하) ex) iPhone se */
-
+:root {
+    --page-background: #ffffff;
+    --panel-background: #ffffff;
+    --panel-text: #111111;
+    --panel-border: #dddddd;
+    --panel-shadow: rgba(0, 0, 0, 0.2);
+    --place-menu-width: min(30vw, 420px);
+    --toggle-button-width: 42px;
+}
 
 /* 중, 대형 스마트폰 (375px ~ 768px) iPhone 14 Pro Max */
 @media (max-width: 768px) {
     :root {
-        --place-menu-width: min(84vw, 360px);
         --toggle-button-width: 42px;
+        --place-menu-width: min(62vw, 420px);
     }
 
     #map {
@@ -1002,16 +1009,6 @@
 *::before,
 *::after {
     box-sizing: border-box;
-}
-
-:root {
-    --page-background: #ffffff;
-    --panel-background: #ffffff;
-    --panel-text: #111111;
-    --panel-border: #dddddd;
-    --panel-shadow: rgba(0, 0, 0, 0.2);
-    --place-menu-width: min(30vw, 420px);
-    --toggle-button-width: 42px;
 }
 
 html,
